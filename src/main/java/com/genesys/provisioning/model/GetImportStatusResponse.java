@@ -23,7 +23,7 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * GetImportStatusResponse
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-07-16T14:55:58.320Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-07-16T15:07:50.631Z")
 public class GetImportStatusResponse {
   @SerializedName("status")
   private GetImportStatusResponseStatus status = null;

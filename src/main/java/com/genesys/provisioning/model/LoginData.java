@@ -21,7 +21,7 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * LoginData
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-07-16T14:55:58.320Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-07-16T15:07:50.631Z")
 public class LoginData {
   @SerializedName("domain_username")
   private String domainUsername = "domain.com\\login";
