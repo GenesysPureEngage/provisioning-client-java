@@ -24,7 +24,7 @@ import java.util.List;
  * Properties related to WWE. 
  */
 @ApiModel(description = "Properties related to WWE. ")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-07-16T13:45:26.856Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-07-16T14:45:37.464Z")
 public class UpdateUserDataWwe {
   @SerializedName("roles")
   private List<String> roles = new ArrayList<String>();
