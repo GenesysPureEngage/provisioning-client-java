@@ -14,24 +14,20 @@
 package com.genesys.provisioning.model;
 
 import java.util.Objects;
-import com.genesys.provisioning.model.LoginSuccessResponseData;
-import com.genesys.provisioning.model.LoginSuccessResponseStatus;
+import com.genesys.provisioning.model.GetObjectsSuccessResponseStatus;
 import com.google.gson.annotations.SerializedName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * LoginSuccessResponse
+ * GetObjectsSuccessResponse
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-07-16T12:58:02.542Z")
-public class LoginSuccessResponse {
+public class GetObjectsSuccessResponse {
   @SerializedName("status")
-  private LoginSuccessResponseStatus status = null;
+  private GetObjectsSuccessResponseStatus status = null;
 
-  @SerializedName("data")
-  private LoginSuccessResponseData data = null;
-
-  public LoginSuccessResponse status(LoginSuccessResponseStatus status) {
+  public GetObjectsSuccessResponse status(GetObjectsSuccessResponseStatus status) {
     this.status = status;
     return this;
   }
@@ -41,30 +37,12 @@ public class LoginSuccessResponse {
    * @return status
   **/
   @ApiModelProperty(example = "null", value = "")
-  public LoginSuccessResponseStatus getStatus() {
+  public GetObjectsSuccessResponseStatus getStatus() {
     return status;
   }
 
-  public void setStatus(LoginSuccessResponseStatus status) {
+  public void setStatus(GetObjectsSuccessResponseStatus status) {
     this.status = status;
-  }
-
-  public LoginSuccessResponse data(LoginSuccessResponseData data) {
-    this.data = data;
-    return this;
-  }
-
-   /**
-   * Get data
-   * @return data
-  **/
-  @ApiModelProperty(example = "null", value = "")
-  public LoginSuccessResponseData getData() {
-    return data;
-  }
-
-  public void setData(LoginSuccessResponseData data) {
-    this.data = data;
   }
 
 
@@ -76,24 +54,22 @@ public class LoginSuccessResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    LoginSuccessResponse loginSuccessResponse = (LoginSuccessResponse) o;
-    return Objects.equals(this.status, loginSuccessResponse.status) &&
-        Objects.equals(this.data, loginSuccessResponse.data);
+    GetObjectsSuccessResponse getObjectsSuccessResponse = (GetObjectsSuccessResponse) o;
+    return Objects.equals(this.status, getObjectsSuccessResponse.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(status, data);
+    return Objects.hash(status);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class LoginSuccessResponse {\n");
+    sb.append("class GetObjectsSuccessResponse {\n");
     
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("}");
     return sb.toString();
   }

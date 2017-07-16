@@ -14,24 +14,24 @@
 package com.genesys.provisioning.model;
 
 import java.util.Objects;
-import com.genesys.provisioning.model.LoginSuccessResponseData;
-import com.genesys.provisioning.model.LoginSuccessResponseStatus;
+import com.genesys.provisioning.model.GetImportStatusResponseData;
+import com.genesys.provisioning.model.GetImportStatusResponseStatus;
 import com.google.gson.annotations.SerializedName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * LoginSuccessResponse
+ * GetImportStatusResponse
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-07-16T12:58:02.542Z")
-public class LoginSuccessResponse {
+public class GetImportStatusResponse {
   @SerializedName("status")
-  private LoginSuccessResponseStatus status = null;
+  private GetImportStatusResponseStatus status = null;
 
   @SerializedName("data")
-  private LoginSuccessResponseData data = null;
+  private GetImportStatusResponseData data = null;
 
-  public LoginSuccessResponse status(LoginSuccessResponseStatus status) {
+  public GetImportStatusResponse status(GetImportStatusResponseStatus status) {
     this.status = status;
     return this;
   }
@@ -41,15 +41,15 @@ public class LoginSuccessResponse {
    * @return status
   **/
   @ApiModelProperty(example = "null", value = "")
-  public LoginSuccessResponseStatus getStatus() {
+  public GetImportStatusResponseStatus getStatus() {
     return status;
   }
 
-  public void setStatus(LoginSuccessResponseStatus status) {
+  public void setStatus(GetImportStatusResponseStatus status) {
     this.status = status;
   }
 
-  public LoginSuccessResponse data(LoginSuccessResponseData data) {
+  public GetImportStatusResponse data(GetImportStatusResponseData data) {
     this.data = data;
     return this;
   }
@@ -59,11 +59,11 @@ public class LoginSuccessResponse {
    * @return data
   **/
   @ApiModelProperty(example = "null", value = "")
-  public LoginSuccessResponseData getData() {
+  public GetImportStatusResponseData getData() {
     return data;
   }
 
-  public void setData(LoginSuccessResponseData data) {
+  public void setData(GetImportStatusResponseData data) {
     this.data = data;
   }
 
@@ -76,9 +76,9 @@ public class LoginSuccessResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    LoginSuccessResponse loginSuccessResponse = (LoginSuccessResponse) o;
-    return Objects.equals(this.status, loginSuccessResponse.status) &&
-        Objects.equals(this.data, loginSuccessResponse.data);
+    GetImportStatusResponse getImportStatusResponse = (GetImportStatusResponse) o;
+    return Objects.equals(this.status, getImportStatusResponse.status) &&
+        Objects.equals(this.data, getImportStatusResponse.data);
   }
 
   @Override
@@ -90,7 +90,7 @@ public class LoginSuccessResponse {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class LoginSuccessResponse {\n");
+    sb.append("class GetImportStatusResponse {\n");
     
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");

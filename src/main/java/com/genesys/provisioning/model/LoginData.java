@@ -14,57 +14,55 @@
 package com.genesys.provisioning.model;
 
 import java.util.Objects;
-import com.genesys.provisioning.model.LoginSuccessResponseData;
-import com.genesys.provisioning.model.LoginSuccessResponseStatus;
 import com.google.gson.annotations.SerializedName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * LoginSuccessResponse
+ * LoginData
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-07-16T12:58:02.542Z")
-public class LoginSuccessResponse {
-  @SerializedName("status")
-  private LoginSuccessResponseStatus status = null;
+public class LoginData {
+  @SerializedName("domain_username")
+  private String domainUsername = "domain.com\\login";
 
-  @SerializedName("data")
-  private LoginSuccessResponseData data = null;
+  @SerializedName("password")
+  private String password = "password";
 
-  public LoginSuccessResponse status(LoginSuccessResponseStatus status) {
-    this.status = status;
+  public LoginData domainUsername(String domainUsername) {
+    this.domainUsername = domainUsername;
     return this;
   }
 
    /**
-   * Get status
-   * @return status
+   * User unique login in form: domain.com\\login  Effect: Controls the value of the corresponding CfgPerson attribute 
+   * @return domainUsername
   **/
-  @ApiModelProperty(example = "null", value = "")
-  public LoginSuccessResponseStatus getStatus() {
-    return status;
+  @ApiModelProperty(example = "null", required = true, value = "User unique login in form: domain.com\\login  Effect: Controls the value of the corresponding CfgPerson attribute ")
+  public String getDomainUsername() {
+    return domainUsername;
   }
 
-  public void setStatus(LoginSuccessResponseStatus status) {
-    this.status = status;
+  public void setDomainUsername(String domainUsername) {
+    this.domainUsername = domainUsername;
   }
 
-  public LoginSuccessResponse data(LoginSuccessResponseData data) {
-    this.data = data;
+  public LoginData password(String password) {
+    this.password = password;
     return this;
   }
 
    /**
-   * Get data
-   * @return data
+   * Password as plain text.  Effect: Controls the value of the corresponding CfgPerson attribute 
+   * @return password
   **/
-  @ApiModelProperty(example = "null", value = "")
-  public LoginSuccessResponseData getData() {
-    return data;
+  @ApiModelProperty(example = "null", required = true, value = "Password as plain text.  Effect: Controls the value of the corresponding CfgPerson attribute ")
+  public String getPassword() {
+    return password;
   }
 
-  public void setData(LoginSuccessResponseData data) {
-    this.data = data;
+  public void setPassword(String password) {
+    this.password = password;
   }
 
 
@@ -76,24 +74,24 @@ public class LoginSuccessResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    LoginSuccessResponse loginSuccessResponse = (LoginSuccessResponse) o;
-    return Objects.equals(this.status, loginSuccessResponse.status) &&
-        Objects.equals(this.data, loginSuccessResponse.data);
+    LoginData loginData = (LoginData) o;
+    return Objects.equals(this.domainUsername, loginData.domainUsername) &&
+        Objects.equals(this.password, loginData.password);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(status, data);
+    return Objects.hash(domainUsername, password);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class LoginSuccessResponse {\n");
+    sb.append("class LoginData {\n");
     
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    data: ").append(toIndentedString(data)).append("\n");
+    sb.append("    domainUsername: ").append(toIndentedString(domainUsername)).append("\n");
+    sb.append("    password: ").append(toIndentedString(password)).append("\n");
     sb.append("}");
     return sb.toString();
   }

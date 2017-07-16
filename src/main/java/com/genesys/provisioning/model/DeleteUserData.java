@@ -14,57 +14,34 @@
 package com.genesys.provisioning.model;
 
 import java.util.Objects;
-import com.genesys.provisioning.model.LoginSuccessResponseData;
-import com.genesys.provisioning.model.LoginSuccessResponseStatus;
 import com.google.gson.annotations.SerializedName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * LoginSuccessResponse
+ * DeleteUserData
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-07-16T12:58:02.542Z")
-public class LoginSuccessResponse {
-  @SerializedName("status")
-  private LoginSuccessResponseStatus status = null;
+public class DeleteUserData {
+  @SerializedName("keep_places")
+  private Boolean keepPlaces = null;
 
-  @SerializedName("data")
-  private LoginSuccessResponseData data = null;
-
-  public LoginSuccessResponse status(LoginSuccessResponseStatus status) {
-    this.status = status;
+  public DeleteUserData keepPlaces(Boolean keepPlaces) {
+    this.keepPlaces = keepPlaces;
     return this;
   }
 
    /**
-   * Get status
-   * @return status
+   * If 'true' or absent, user's places and their DNs will not be deleted Effect: Controls if user's places and their DNs will be deleted 
+   * @return keepPlaces
   **/
-  @ApiModelProperty(example = "null", value = "")
-  public LoginSuccessResponseStatus getStatus() {
-    return status;
+  @ApiModelProperty(example = "null", value = "If 'true' or absent, user's places and their DNs will not be deleted Effect: Controls if user's places and their DNs will be deleted ")
+  public Boolean getKeepPlaces() {
+    return keepPlaces;
   }
 
-  public void setStatus(LoginSuccessResponseStatus status) {
-    this.status = status;
-  }
-
-  public LoginSuccessResponse data(LoginSuccessResponseData data) {
-    this.data = data;
-    return this;
-  }
-
-   /**
-   * Get data
-   * @return data
-  **/
-  @ApiModelProperty(example = "null", value = "")
-  public LoginSuccessResponseData getData() {
-    return data;
-  }
-
-  public void setData(LoginSuccessResponseData data) {
-    this.data = data;
+  public void setKeepPlaces(Boolean keepPlaces) {
+    this.keepPlaces = keepPlaces;
   }
 
 
@@ -76,24 +53,22 @@ public class LoginSuccessResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    LoginSuccessResponse loginSuccessResponse = (LoginSuccessResponse) o;
-    return Objects.equals(this.status, loginSuccessResponse.status) &&
-        Objects.equals(this.data, loginSuccessResponse.data);
+    DeleteUserData deleteUserData = (DeleteUserData) o;
+    return Objects.equals(this.keepPlaces, deleteUserData.keepPlaces);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(status, data);
+    return Objects.hash(keepPlaces);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class LoginSuccessResponse {\n");
+    sb.append("class DeleteUserData {\n");
     
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    data: ").append(toIndentedString(data)).append("\n");
+    sb.append("    keepPlaces: ").append(toIndentedString(keepPlaces)).append("\n");
     sb.append("}");
     return sb.toString();
   }

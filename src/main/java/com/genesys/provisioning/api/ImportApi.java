@@ -29,9 +29,8 @@ import java.io.IOException;
 
 import com.genesys.provisioning.model.ApiErrorResponse;
 import com.genesys.provisioning.model.ApiSuccessResponse;
-import com.genesys.provisioning.model.GetOptionsResponseSuccess;
-import com.genesys.provisioning.model.ModifyOptionsData;
-import com.genesys.provisioning.model.UpdateOptionsData;
+import java.io.File;
+import com.genesys.provisioning.model.GetImportStatusResponse;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -39,14 +38,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class OptionsApi {
+public class ImportApi {
     private ApiClient apiClient;
 
-    public OptionsApi() {
+    public ImportApi() {
         this(Configuration.getDefaultApiClient());
     }
 
-    public OptionsApi(ApiClient apiClient) {
+    public ImportApi(ApiClient apiClient) {
         this.apiClient = apiClient;
     }
 
@@ -58,18 +57,18 @@ public class OptionsApi {
         this.apiClient = apiClient;
     }
 
-    /* Build call for getOptions */
-    private com.squareup.okhttp.Call getOptionsCall(String personDbid, String agentGroupDbid, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    /* Build call for getImportStatus */
+    private com.squareup.okhttp.Call getImportStatusCall(String adminName, String tenantName, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
-        String localVarPath = "/options".replaceAll("\\{format\\}","json");
+        String localVarPath = "/import-users/check-status".replaceAll("\\{format\\}","json");
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        if (personDbid != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "person_dbid", personDbid));
-        if (agentGroupDbid != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "agent_group_dbid", agentGroupDbid));
+        if (adminName != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "adminName", adminName));
+        if (tenantName != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "tenantName", tenantName));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -104,10 +103,20 @@ public class OptionsApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getOptionsValidateBeforeCall(String personDbid, String agentGroupDbid, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getImportStatusValidateBeforeCall(String adminName, String tenantName, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'adminName' is set
+        if (adminName == null) {
+            throw new ApiException("Missing the required parameter 'adminName' when calling getImportStatus(Async)");
+        }
+        
+        // verify the required parameter 'tenantName' is set
+        if (tenantName == null) {
+            throw new ApiException("Missing the required parameter 'tenantName' when calling getImportStatus(Async)");
+        }
         
         
-        com.squareup.okhttp.Call call = getOptionsCall(personDbid, agentGroupDbid, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getImportStatusCall(adminName, tenantName, progressListener, progressRequestListener);
         return call;
 
         
@@ -117,42 +126,42 @@ public class OptionsApi {
     }
 
     /**
-     * Read options
-     * The GET operation will fetch CloudCluster/Options and merges it with person and sgent groups annexes.
-     * @param personDbid DBID of a person. Options will be merged with the Person&#39;s annex and annexes of it&#39;s agent groups. Mutual with agent_group_dbid. (optional)
-     * @param agentGroupDbid DBID of a person. Options will be merged with the Agent Groups&#39;s annex. Mutual with person_dbid. (optional)
-     * @return GetOptionsResponseSuccess
+     * Get import users status
+     * The GET operation will get active importers.
+     * @param adminName Admin login. (required)
+     * @param tenantName Tenant name. (required)
+     * @return GetImportStatusResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public GetOptionsResponseSuccess getOptions(String personDbid, String agentGroupDbid) throws ApiException {
-        ApiResponse<GetOptionsResponseSuccess> resp = getOptionsWithHttpInfo(personDbid, agentGroupDbid);
+    public GetImportStatusResponse getImportStatus(String adminName, String tenantName) throws ApiException {
+        ApiResponse<GetImportStatusResponse> resp = getImportStatusWithHttpInfo(adminName, tenantName);
         return resp.getData();
     }
 
     /**
-     * Read options
-     * The GET operation will fetch CloudCluster/Options and merges it with person and sgent groups annexes.
-     * @param personDbid DBID of a person. Options will be merged with the Person&#39;s annex and annexes of it&#39;s agent groups. Mutual with agent_group_dbid. (optional)
-     * @param agentGroupDbid DBID of a person. Options will be merged with the Agent Groups&#39;s annex. Mutual with person_dbid. (optional)
-     * @return ApiResponse&lt;GetOptionsResponseSuccess&gt;
+     * Get import users status
+     * The GET operation will get active importers.
+     * @param adminName Admin login. (required)
+     * @param tenantName Tenant name. (required)
+     * @return ApiResponse&lt;GetImportStatusResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<GetOptionsResponseSuccess> getOptionsWithHttpInfo(String personDbid, String agentGroupDbid) throws ApiException {
-        com.squareup.okhttp.Call call = getOptionsValidateBeforeCall(personDbid, agentGroupDbid, null, null);
-        Type localVarReturnType = new TypeToken<GetOptionsResponseSuccess>(){}.getType();
+    public ApiResponse<GetImportStatusResponse> getImportStatusWithHttpInfo(String adminName, String tenantName) throws ApiException {
+        com.squareup.okhttp.Call call = getImportStatusValidateBeforeCall(adminName, tenantName, null, null);
+        Type localVarReturnType = new TypeToken<GetImportStatusResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
     /**
-     * Read options (asynchronously)
-     * The GET operation will fetch CloudCluster/Options and merges it with person and sgent groups annexes.
-     * @param personDbid DBID of a person. Options will be merged with the Person&#39;s annex and annexes of it&#39;s agent groups. Mutual with agent_group_dbid. (optional)
-     * @param agentGroupDbid DBID of a person. Options will be merged with the Agent Groups&#39;s annex. Mutual with person_dbid. (optional)
+     * Get import users status (asynchronously)
+     * The GET operation will get active importers.
+     * @param adminName Admin login. (required)
+     * @param tenantName Tenant name. (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getOptionsAsync(String personDbid, String agentGroupDbid, final ApiCallback<GetOptionsResponseSuccess> callback) throws ApiException {
+    public com.squareup.okhttp.Call getImportStatusAsync(String adminName, String tenantName, final ApiCallback<GetImportStatusResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -173,23 +182,27 @@ public class OptionsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getOptionsValidateBeforeCall(personDbid, agentGroupDbid, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<GetOptionsResponseSuccess>(){}.getType();
+        com.squareup.okhttp.Call call = getImportStatusValidateBeforeCall(adminName, tenantName, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<GetImportStatusResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
-    /* Build call for modifyOptions */
-    private com.squareup.okhttp.Call modifyOptionsCall(ModifyOptionsData body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        Object localVarPostBody = body;
+    /* Build call for importFile */
+    private com.squareup.okhttp.Call importFileCall(File csvfile, Boolean validateBeforeImport, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
         
         // create path and map variables
-        String localVarPath = "/options".replaceAll("\\{format\\}","json");
+        String localVarPath = "/import-users/csv".replaceAll("\\{format\\}","json");
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        if (csvfile != null)
+        localVarFormParams.put("csvfile", csvfile);
+        if (validateBeforeImport != null)
+        localVarFormParams.put("validateBeforeImport", validateBeforeImport);
 
         final String[] localVarAccepts = {
             "application/json"
@@ -198,7 +211,7 @@ public class OptionsApi {
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
 
         final String[] localVarContentTypes = {
-            "application/json"
+            "multipart/form-data"
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
@@ -215,20 +228,15 @@ public class OptionsApi {
             });
         }
 
-        String[] localVarAuthNames = new String[] { "basicAuth" };
+        String[] localVarAuthNames = new String[] {  };
         return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call modifyOptionsValidateBeforeCall(ModifyOptionsData body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
-        // verify the required parameter 'body' is set
-        if (body == null) {
-            throw new ApiException("Missing the required parameter 'body' when calling modifyOptions(Async)");
-        }
+    private com.squareup.okhttp.Call importFileValidateBeforeCall(File csvfile, Boolean validateBeforeImport, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         
-        com.squareup.okhttp.Call call = modifyOptionsCall(body, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = importFileCall(csvfile, validateBeforeImport, progressListener, progressRequestListener);
         return call;
 
         
@@ -238,39 +246,42 @@ public class OptionsApi {
     }
 
     /**
-     * Modify options
-     * The POST operation will replace CloudCluster/Options with new values
-     * @param body Body Data (required)
+     * Import file
+     * The POST operation will import file.
+     * @param csvfile CSV/XLS file to import. (optional)
+     * @param validateBeforeImport Validate file before actual import. (optional, default to false)
      * @return ApiSuccessResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiSuccessResponse modifyOptions(ModifyOptionsData body) throws ApiException {
-        ApiResponse<ApiSuccessResponse> resp = modifyOptionsWithHttpInfo(body);
+    public ApiSuccessResponse importFile(File csvfile, Boolean validateBeforeImport) throws ApiException {
+        ApiResponse<ApiSuccessResponse> resp = importFileWithHttpInfo(csvfile, validateBeforeImport);
         return resp.getData();
     }
 
     /**
-     * Modify options
-     * The POST operation will replace CloudCluster/Options with new values
-     * @param body Body Data (required)
+     * Import file
+     * The POST operation will import file.
+     * @param csvfile CSV/XLS file to import. (optional)
+     * @param validateBeforeImport Validate file before actual import. (optional, default to false)
      * @return ApiResponse&lt;ApiSuccessResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiSuccessResponse> modifyOptionsWithHttpInfo(ModifyOptionsData body) throws ApiException {
-        com.squareup.okhttp.Call call = modifyOptionsValidateBeforeCall(body, null, null);
+    public ApiResponse<ApiSuccessResponse> importFileWithHttpInfo(File csvfile, Boolean validateBeforeImport) throws ApiException {
+        com.squareup.okhttp.Call call = importFileValidateBeforeCall(csvfile, validateBeforeImport, null, null);
         Type localVarReturnType = new TypeToken<ApiSuccessResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
     /**
-     * Modify options (asynchronously)
-     * The POST operation will replace CloudCluster/Options with new values
-     * @param body Body Data (required)
+     * Import file (asynchronously)
+     * The POST operation will import file.
+     * @param csvfile CSV/XLS file to import. (optional)
+     * @param validateBeforeImport Validate file before actual import. (optional, default to false)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call modifyOptionsAsync(ModifyOptionsData body, final ApiCallback<ApiSuccessResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call importFileAsync(File csvfile, Boolean validateBeforeImport, final ApiCallback<ApiSuccessResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -291,23 +302,25 @@ public class OptionsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = modifyOptionsValidateBeforeCall(body, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = importFileValidateBeforeCall(csvfile, validateBeforeImport, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiSuccessResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
-    /* Build call for updateOptions */
-    private com.squareup.okhttp.Call updateOptionsCall(UpdateOptionsData body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        Object localVarPostBody = body;
+    /* Build call for validateImportFile */
+    private com.squareup.okhttp.Call validateImportFileCall(File csvfile, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
         
         // create path and map variables
-        String localVarPath = "/options".replaceAll("\\{format\\}","json");
+        String localVarPath = "/import-users/validate-csv".replaceAll("\\{format\\}","json");
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        if (csvfile != null)
+        localVarFormParams.put("csvfile", csvfile);
 
         final String[] localVarAccepts = {
             "application/json"
@@ -316,7 +329,7 @@ public class OptionsApi {
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
 
         final String[] localVarContentTypes = {
-            "application/json"
+            "multipart/form-data"
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
@@ -333,20 +346,15 @@ public class OptionsApi {
             });
         }
 
-        String[] localVarAuthNames = new String[] { "basicAuth" };
-        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call updateOptionsValidateBeforeCall(UpdateOptionsData body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
-        // verify the required parameter 'body' is set
-        if (body == null) {
-            throw new ApiException("Missing the required parameter 'body' when calling updateOptions(Async)");
-        }
+    private com.squareup.okhttp.Call validateImportFileValidateBeforeCall(File csvfile, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         
-        com.squareup.okhttp.Call call = updateOptionsCall(body, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = validateImportFileCall(csvfile, progressListener, progressRequestListener);
         return call;
 
         
@@ -356,39 +364,39 @@ public class OptionsApi {
     }
 
     /**
-     * Add, edit or delete options
-     * The PUT operation will add, change or delete values in CloudCluster/Options.
-     * @param body Body Data (required)
+     * Perform import file prevalidation
+     * The POST operation validate import file.
+     * @param csvfile CSV/XLS file to import. (optional)
      * @return ApiSuccessResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiSuccessResponse updateOptions(UpdateOptionsData body) throws ApiException {
-        ApiResponse<ApiSuccessResponse> resp = updateOptionsWithHttpInfo(body);
+    public ApiSuccessResponse validateImportFile(File csvfile) throws ApiException {
+        ApiResponse<ApiSuccessResponse> resp = validateImportFileWithHttpInfo(csvfile);
         return resp.getData();
     }
 
     /**
-     * Add, edit or delete options
-     * The PUT operation will add, change or delete values in CloudCluster/Options.
-     * @param body Body Data (required)
+     * Perform import file prevalidation
+     * The POST operation validate import file.
+     * @param csvfile CSV/XLS file to import. (optional)
      * @return ApiResponse&lt;ApiSuccessResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiSuccessResponse> updateOptionsWithHttpInfo(UpdateOptionsData body) throws ApiException {
-        com.squareup.okhttp.Call call = updateOptionsValidateBeforeCall(body, null, null);
+    public ApiResponse<ApiSuccessResponse> validateImportFileWithHttpInfo(File csvfile) throws ApiException {
+        com.squareup.okhttp.Call call = validateImportFileValidateBeforeCall(csvfile, null, null);
         Type localVarReturnType = new TypeToken<ApiSuccessResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
     /**
-     * Add, edit or delete options (asynchronously)
-     * The PUT operation will add, change or delete values in CloudCluster/Options.
-     * @param body Body Data (required)
+     * Perform import file prevalidation (asynchronously)
+     * The POST operation validate import file.
+     * @param csvfile CSV/XLS file to import. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call updateOptionsAsync(UpdateOptionsData body, final ApiCallback<ApiSuccessResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call validateImportFileAsync(File csvfile, final ApiCallback<ApiSuccessResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -409,7 +417,7 @@ public class OptionsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = updateOptionsValidateBeforeCall(body, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = validateImportFileValidateBeforeCall(csvfile, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiSuccessResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

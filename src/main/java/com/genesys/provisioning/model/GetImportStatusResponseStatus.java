@@ -14,57 +14,35 @@
 package com.genesys.provisioning.model;
 
 import java.util.Objects;
-import com.genesys.provisioning.model.LoginSuccessResponseData;
-import com.genesys.provisioning.model.LoginSuccessResponseStatus;
 import com.google.gson.annotations.SerializedName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.math.BigDecimal;
 
 /**
- * LoginSuccessResponse
+ * GetImportStatusResponseStatus
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-07-16T12:58:02.542Z")
-public class LoginSuccessResponse {
-  @SerializedName("status")
-  private LoginSuccessResponseStatus status = null;
+public class GetImportStatusResponseStatus {
+  @SerializedName("code")
+  private BigDecimal code = null;
 
-  @SerializedName("data")
-  private LoginSuccessResponseData data = null;
-
-  public LoginSuccessResponse status(LoginSuccessResponseStatus status) {
-    this.status = status;
+  public GetImportStatusResponseStatus code(BigDecimal code) {
+    this.code = code;
     return this;
   }
 
    /**
-   * Get status
-   * @return status
+   * Operation code.
+   * @return code
   **/
-  @ApiModelProperty(example = "null", value = "")
-  public LoginSuccessResponseStatus getStatus() {
-    return status;
+  @ApiModelProperty(example = "null", value = "Operation code.")
+  public BigDecimal getCode() {
+    return code;
   }
 
-  public void setStatus(LoginSuccessResponseStatus status) {
-    this.status = status;
-  }
-
-  public LoginSuccessResponse data(LoginSuccessResponseData data) {
-    this.data = data;
-    return this;
-  }
-
-   /**
-   * Get data
-   * @return data
-  **/
-  @ApiModelProperty(example = "null", value = "")
-  public LoginSuccessResponseData getData() {
-    return data;
-  }
-
-  public void setData(LoginSuccessResponseData data) {
-    this.data = data;
+  public void setCode(BigDecimal code) {
+    this.code = code;
   }
 
 
@@ -76,24 +54,22 @@ public class LoginSuccessResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    LoginSuccessResponse loginSuccessResponse = (LoginSuccessResponse) o;
-    return Objects.equals(this.status, loginSuccessResponse.status) &&
-        Objects.equals(this.data, loginSuccessResponse.data);
+    GetImportStatusResponseStatus getImportStatusResponseStatus = (GetImportStatusResponseStatus) o;
+    return Objects.equals(this.code, getImportStatusResponseStatus.code);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(status, data);
+    return Objects.hash(code);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class LoginSuccessResponse {\n");
+    sb.append("class GetImportStatusResponseStatus {\n");
     
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    data: ").append(toIndentedString(data)).append("\n");
+    sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("}");
     return sb.toString();
   }

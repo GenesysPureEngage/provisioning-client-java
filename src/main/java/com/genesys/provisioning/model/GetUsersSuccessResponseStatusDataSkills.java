@@ -14,57 +14,55 @@
 package com.genesys.provisioning.model;
 
 import java.util.Objects;
-import com.genesys.provisioning.model.LoginSuccessResponseData;
-import com.genesys.provisioning.model.LoginSuccessResponseStatus;
 import com.google.gson.annotations.SerializedName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * LoginSuccessResponse
+ * GetUsersSuccessResponseStatusDataSkills
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-07-16T12:58:02.542Z")
-public class LoginSuccessResponse {
-  @SerializedName("status")
-  private LoginSuccessResponseStatus status = null;
+public class GetUsersSuccessResponseStatusDataSkills {
+  @SerializedName("DBID")
+  private String DBID = null;
 
-  @SerializedName("data")
-  private LoginSuccessResponseData data = null;
+  @SerializedName("name")
+  private String name = null;
 
-  public LoginSuccessResponse status(LoginSuccessResponseStatus status) {
-    this.status = status;
+  public GetUsersSuccessResponseStatusDataSkills DBID(String DBID) {
+    this.DBID = DBID;
     return this;
   }
 
    /**
-   * Get status
-   * @return status
+   * Get DBID
+   * @return DBID
   **/
   @ApiModelProperty(example = "null", value = "")
-  public LoginSuccessResponseStatus getStatus() {
-    return status;
+  public String getDBID() {
+    return DBID;
   }
 
-  public void setStatus(LoginSuccessResponseStatus status) {
-    this.status = status;
+  public void setDBID(String DBID) {
+    this.DBID = DBID;
   }
 
-  public LoginSuccessResponse data(LoginSuccessResponseData data) {
-    this.data = data;
+  public GetUsersSuccessResponseStatusDataSkills name(String name) {
+    this.name = name;
     return this;
   }
 
    /**
-   * Get data
-   * @return data
+   * Get name
+   * @return name
   **/
   @ApiModelProperty(example = "null", value = "")
-  public LoginSuccessResponseData getData() {
-    return data;
+  public String getName() {
+    return name;
   }
 
-  public void setData(LoginSuccessResponseData data) {
-    this.data = data;
+  public void setName(String name) {
+    this.name = name;
   }
 
 
@@ -76,24 +74,24 @@ public class LoginSuccessResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    LoginSuccessResponse loginSuccessResponse = (LoginSuccessResponse) o;
-    return Objects.equals(this.status, loginSuccessResponse.status) &&
-        Objects.equals(this.data, loginSuccessResponse.data);
+    GetUsersSuccessResponseStatusDataSkills getUsersSuccessResponseStatusDataSkills = (GetUsersSuccessResponseStatusDataSkills) o;
+    return Objects.equals(this.DBID, getUsersSuccessResponseStatusDataSkills.DBID) &&
+        Objects.equals(this.name, getUsersSuccessResponseStatusDataSkills.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(status, data);
+    return Objects.hash(DBID, name);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class LoginSuccessResponse {\n");
+    sb.append("class GetUsersSuccessResponseStatusDataSkills {\n");
     
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    data: ").append(toIndentedString(data)).append("\n");
+    sb.append("    DBID: ").append(toIndentedString(DBID)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }

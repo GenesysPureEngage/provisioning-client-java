@@ -14,57 +14,56 @@
 package com.genesys.provisioning.model;
 
 import java.util.Objects;
-import com.genesys.provisioning.model.LoginSuccessResponseData;
-import com.genesys.provisioning.model.LoginSuccessResponseStatus;
 import com.google.gson.annotations.SerializedName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.math.BigDecimal;
 
 /**
- * LoginSuccessResponse
+ * GetExportStatusResponseStatusData
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-07-16T12:58:02.542Z")
-public class LoginSuccessResponse {
-  @SerializedName("status")
-  private LoginSuccessResponseStatus status = null;
+public class GetExportStatusResponseStatusData {
+  @SerializedName("id")
+  private BigDecimal id = null;
 
-  @SerializedName("data")
-  private LoginSuccessResponseData data = null;
+  @SerializedName("progress")
+  private BigDecimal progress = null;
 
-  public LoginSuccessResponse status(LoginSuccessResponseStatus status) {
-    this.status = status;
+  public GetExportStatusResponseStatusData id(BigDecimal id) {
+    this.id = id;
     return this;
   }
 
    /**
-   * Get status
-   * @return status
+   * Export ID
+   * @return id
   **/
-  @ApiModelProperty(example = "null", value = "")
-  public LoginSuccessResponseStatus getStatus() {
-    return status;
+  @ApiModelProperty(example = "null", value = "Export ID")
+  public BigDecimal getId() {
+    return id;
   }
 
-  public void setStatus(LoginSuccessResponseStatus status) {
-    this.status = status;
+  public void setId(BigDecimal id) {
+    this.id = id;
   }
 
-  public LoginSuccessResponse data(LoginSuccessResponseData data) {
-    this.data = data;
+  public GetExportStatusResponseStatusData progress(BigDecimal progress) {
+    this.progress = progress;
     return this;
   }
 
    /**
-   * Get data
-   * @return data
+   * Export progress in percent
+   * @return progress
   **/
-  @ApiModelProperty(example = "null", value = "")
-  public LoginSuccessResponseData getData() {
-    return data;
+  @ApiModelProperty(example = "null", value = "Export progress in percent")
+  public BigDecimal getProgress() {
+    return progress;
   }
 
-  public void setData(LoginSuccessResponseData data) {
-    this.data = data;
+  public void setProgress(BigDecimal progress) {
+    this.progress = progress;
   }
 
 
@@ -76,24 +75,24 @@ public class LoginSuccessResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    LoginSuccessResponse loginSuccessResponse = (LoginSuccessResponse) o;
-    return Objects.equals(this.status, loginSuccessResponse.status) &&
-        Objects.equals(this.data, loginSuccessResponse.data);
+    GetExportStatusResponseStatusData getExportStatusResponseStatusData = (GetExportStatusResponseStatusData) o;
+    return Objects.equals(this.id, getExportStatusResponseStatusData.id) &&
+        Objects.equals(this.progress, getExportStatusResponseStatusData.progress);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(status, data);
+    return Objects.hash(id, progress);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class LoginSuccessResponse {\n");
+    sb.append("class GetExportStatusResponseStatusData {\n");
     
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    data: ").append(toIndentedString(data)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    progress: ").append(toIndentedString(progress)).append("\n");
     sb.append("}");
     return sb.toString();
   }

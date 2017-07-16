@@ -14,57 +14,34 @@
 package com.genesys.provisioning.model;
 
 import java.util.Objects;
-import com.genesys.provisioning.model.LoginSuccessResponseData;
-import com.genesys.provisioning.model.LoginSuccessResponseStatus;
 import com.google.gson.annotations.SerializedName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * LoginSuccessResponse
+ * ModifyOptionsData
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-07-16T12:58:02.542Z")
-public class LoginSuccessResponse {
-  @SerializedName("status")
-  private LoginSuccessResponseStatus status = null;
+public class ModifyOptionsData {
+  @SerializedName("options")
+  private Object options = null;
 
-  @SerializedName("data")
-  private LoginSuccessResponseData data = null;
-
-  public LoginSuccessResponse status(LoginSuccessResponseStatus status) {
-    this.status = status;
+  public ModifyOptionsData options(Object options) {
+    this.options = options;
     return this;
   }
 
    /**
-   * Get status
-   * @return status
+   * New CloudCluster app Options.  Effect: Replaces sections, keys and values in CloudCluster/Options 
+   * @return options
   **/
-  @ApiModelProperty(example = "null", value = "")
-  public LoginSuccessResponseStatus getStatus() {
-    return status;
+  @ApiModelProperty(example = "null", required = true, value = "New CloudCluster app Options.  Effect: Replaces sections, keys and values in CloudCluster/Options ")
+  public Object getOptions() {
+    return options;
   }
 
-  public void setStatus(LoginSuccessResponseStatus status) {
-    this.status = status;
-  }
-
-  public LoginSuccessResponse data(LoginSuccessResponseData data) {
-    this.data = data;
-    return this;
-  }
-
-   /**
-   * Get data
-   * @return data
-  **/
-  @ApiModelProperty(example = "null", value = "")
-  public LoginSuccessResponseData getData() {
-    return data;
-  }
-
-  public void setData(LoginSuccessResponseData data) {
-    this.data = data;
+  public void setOptions(Object options) {
+    this.options = options;
   }
 
 
@@ -76,24 +53,22 @@ public class LoginSuccessResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    LoginSuccessResponse loginSuccessResponse = (LoginSuccessResponse) o;
-    return Objects.equals(this.status, loginSuccessResponse.status) &&
-        Objects.equals(this.data, loginSuccessResponse.data);
+    ModifyOptionsData modifyOptionsData = (ModifyOptionsData) o;
+    return Objects.equals(this.options, modifyOptionsData.options);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(status, data);
+    return Objects.hash(options);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class LoginSuccessResponse {\n");
+    sb.append("class ModifyOptionsData {\n");
     
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    data: ").append(toIndentedString(data)).append("\n");
+    sb.append("    options: ").append(toIndentedString(options)).append("\n");
     sb.append("}");
     return sb.toString();
   }

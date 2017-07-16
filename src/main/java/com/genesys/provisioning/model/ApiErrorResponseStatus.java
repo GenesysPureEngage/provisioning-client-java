@@ -14,57 +14,55 @@
 package com.genesys.provisioning.model;
 
 import java.util.Objects;
-import com.genesys.provisioning.model.LoginSuccessResponseData;
-import com.genesys.provisioning.model.LoginSuccessResponseStatus;
 import com.google.gson.annotations.SerializedName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * LoginSuccessResponse
+ * ApiErrorResponseStatus
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-07-16T12:58:02.542Z")
-public class LoginSuccessResponse {
-  @SerializedName("status")
-  private LoginSuccessResponseStatus status = null;
+public class ApiErrorResponseStatus {
+  @SerializedName("code")
+  private Integer code = null;
 
-  @SerializedName("data")
-  private LoginSuccessResponseData data = null;
+  @SerializedName("message")
+  private String message = null;
 
-  public LoginSuccessResponse status(LoginSuccessResponseStatus status) {
-    this.status = status;
+  public ApiErrorResponseStatus code(Integer code) {
+    this.code = code;
     return this;
   }
 
    /**
-   * Get status
-   * @return status
+   * On error will provide a code that can be used to get more detail about the error.
+   * @return code
   **/
-  @ApiModelProperty(example = "null", value = "")
-  public LoginSuccessResponseStatus getStatus() {
-    return status;
+  @ApiModelProperty(example = "null", value = "On error will provide a code that can be used to get more detail about the error.")
+  public Integer getCode() {
+    return code;
   }
 
-  public void setStatus(LoginSuccessResponseStatus status) {
-    this.status = status;
+  public void setCode(Integer code) {
+    this.code = code;
   }
 
-  public LoginSuccessResponse data(LoginSuccessResponseData data) {
-    this.data = data;
+  public ApiErrorResponseStatus message(String message) {
+    this.message = message;
     return this;
   }
 
    /**
-   * Get data
-   * @return data
+   * On error will provide a message with more detail about the error. Keep in mind that the error message will be fairly general and internal details are not exposed.
+   * @return message
   **/
-  @ApiModelProperty(example = "null", value = "")
-  public LoginSuccessResponseData getData() {
-    return data;
+  @ApiModelProperty(example = "null", value = "On error will provide a message with more detail about the error. Keep in mind that the error message will be fairly general and internal details are not exposed.")
+  public String getMessage() {
+    return message;
   }
 
-  public void setData(LoginSuccessResponseData data) {
-    this.data = data;
+  public void setMessage(String message) {
+    this.message = message;
   }
 
 
@@ -76,24 +74,24 @@ public class LoginSuccessResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    LoginSuccessResponse loginSuccessResponse = (LoginSuccessResponse) o;
-    return Objects.equals(this.status, loginSuccessResponse.status) &&
-        Objects.equals(this.data, loginSuccessResponse.data);
+    ApiErrorResponseStatus apiErrorResponseStatus = (ApiErrorResponseStatus) o;
+    return Objects.equals(this.code, apiErrorResponseStatus.code) &&
+        Objects.equals(this.message, apiErrorResponseStatus.message);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(status, data);
+    return Objects.hash(code, message);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class LoginSuccessResponse {\n");
+    sb.append("class ApiErrorResponseStatus {\n");
     
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    data: ").append(toIndentedString(data)).append("\n");
+    sb.append("    code: ").append(toIndentedString(code)).append("\n");
+    sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("}");
     return sb.toString();
   }

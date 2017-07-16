@@ -14,57 +14,42 @@
 package com.genesys.provisioning.model;
 
 import java.util.Objects;
-import com.genesys.provisioning.model.LoginSuccessResponseData;
-import com.genesys.provisioning.model.LoginSuccessResponseStatus;
 import com.google.gson.annotations.SerializedName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
- * LoginSuccessResponse
+ * Properties related to WWE. 
  */
+@ApiModel(description = "Properties related to WWE. ")
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-07-16T12:58:02.542Z")
-public class LoginSuccessResponse {
-  @SerializedName("status")
-  private LoginSuccessResponseStatus status = null;
+public class AddUserDataWwe {
+  @SerializedName("roles")
+  private List<String> roles = new ArrayList<String>();
 
-  @SerializedName("data")
-  private LoginSuccessResponseData data = null;
+  public AddUserDataWwe roles(List<String> roles) {
+    this.roles = roles;
+    return this;
+  }
 
-  public LoginSuccessResponse status(LoginSuccessResponseStatus status) {
-    this.status = status;
+  public AddUserDataWwe addRolesItem(String rolesItem) {
+    this.roles.add(rolesItem);
     return this;
   }
 
    /**
-   * Get status
-   * @return status
+   * The roles that will be added to the user. 
+   * @return roles
   **/
-  @ApiModelProperty(example = "null", value = "")
-  public LoginSuccessResponseStatus getStatus() {
-    return status;
+  @ApiModelProperty(example = "null", value = "The roles that will be added to the user. ")
+  public List<String> getRoles() {
+    return roles;
   }
 
-  public void setStatus(LoginSuccessResponseStatus status) {
-    this.status = status;
-  }
-
-  public LoginSuccessResponse data(LoginSuccessResponseData data) {
-    this.data = data;
-    return this;
-  }
-
-   /**
-   * Get data
-   * @return data
-  **/
-  @ApiModelProperty(example = "null", value = "")
-  public LoginSuccessResponseData getData() {
-    return data;
-  }
-
-  public void setData(LoginSuccessResponseData data) {
-    this.data = data;
+  public void setRoles(List<String> roles) {
+    this.roles = roles;
   }
 
 
@@ -76,24 +61,22 @@ public class LoginSuccessResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    LoginSuccessResponse loginSuccessResponse = (LoginSuccessResponse) o;
-    return Objects.equals(this.status, loginSuccessResponse.status) &&
-        Objects.equals(this.data, loginSuccessResponse.data);
+    AddUserDataWwe addUserDataWwe = (AddUserDataWwe) o;
+    return Objects.equals(this.roles, addUserDataWwe.roles);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(status, data);
+    return Objects.hash(roles);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class LoginSuccessResponse {\n");
+    sb.append("class AddUserDataWwe {\n");
     
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    data: ").append(toIndentedString(data)).append("\n");
+    sb.append("    roles: ").append(toIndentedString(roles)).append("\n");
     sb.append("}");
     return sb.toString();
   }
