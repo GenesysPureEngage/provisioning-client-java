@@ -24,7 +24,7 @@ import java.util.List;
  * Map containing parameters to filter and sort users.  Effect: Only users passed the filter will be exported. 
  */
 @ApiModel(description = "Map containing parameters to filter and sort users.  Effect: Only users passed the filter will be exported. ")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-07-18T06:56:09.192Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-07-18T07:54:52.393Z")
 public class ExportFileDataFilterParameters {
   @SerializedName("agentGroupFilter")
   private List<String> agentGroupFilter = new ArrayList<String>();
