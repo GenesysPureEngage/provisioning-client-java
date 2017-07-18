@@ -22,7 +22,7 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * GetOptionsResponseSuccess
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-07-18T12:39:50.461Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-07-18T14:22:55.961Z")
 public class GetOptionsResponseSuccess {
   @SerializedName("status")
   private GetOptionsResponseSuccessStatus status = null;
