@@ -23,7 +23,7 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * LoginSuccessResponse
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-07-18T12:16:11.148Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-07-18T12:39:50.461Z")
 public class LoginSuccessResponse {
   @SerializedName("status")
   private LoginSuccessResponseStatus status = null;
