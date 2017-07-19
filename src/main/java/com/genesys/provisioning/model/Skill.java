@@ -21,7 +21,7 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * Skill
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-07-19T22:53:00.538Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-07-19T23:15:21.824Z")
 public class Skill {
   @SerializedName("level")
   private Integer level = null;
