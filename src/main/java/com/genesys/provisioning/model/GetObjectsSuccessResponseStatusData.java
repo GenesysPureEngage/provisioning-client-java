@@ -23,7 +23,7 @@ import java.util.List;
 /**
  * GetObjectsSuccessResponseStatusData
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-07-21T18:22:58.582Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-07-21T20:52:54.097Z")
 public class GetObjectsSuccessResponseStatusData {
   @SerializedName("dns")
   private List<Object> dns = new ArrayList<Object>();
