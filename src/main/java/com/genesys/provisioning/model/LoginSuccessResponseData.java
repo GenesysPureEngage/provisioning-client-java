@@ -21,7 +21,7 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * LoginSuccessResponseData
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-07-24T20:02:49.272Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-07-25T12:14:46.232Z")
 public class LoginSuccessResponseData {
   @SerializedName("sessionId")
   private String sessionId = null;
