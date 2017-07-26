@@ -22,7 +22,7 @@ import java.math.BigDecimal;
 /**
  * ExportFileResponseStatusData
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-07-26T22:28:40.837Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-07-26T22:54:39.490Z")
 public class ExportFileResponseStatusData {
   @SerializedName("id")
   private BigDecimal id = null;
