@@ -1,0 +1,97 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'signing'
+apply plugin: 'maven-publish'
+
+group = 'com.genesys'
+version = "1.0.0"
+sourceCompatibility = JavaVersion.VERSION_1_7
+targetCompatibility = JavaVersion.VERSION_1_7
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+}
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile 'io.swagger:swagger-annotations:1.5.8'
+    compile 'com.squareup.okhttp:okhttp:2.7.5'
+    compile 'com.squareup.okhttp:logging-interceptor:2.7.5'
+    compile 'com.google.code.gson:gson:2.6.2'
+    compile 'joda-time:joda-time:2.9.3'
+    testCompile 'junit:junit:4.12'
+}
+
+signing {
+    sign configurations.archives
+}
+
+task javadocJar(type: Jar) {
+    classifier = 'javadoc'
+    from javadoc
+}
+
+task sourcesJar(type: Jar) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+artifacts {
+    archives javadocJar, sourcesJar
+    //archives sourcesJar
+}
+
+task execute(type:JavaExec) {
+   main = System.getProperty('mainClass')
+   classpath = sourceSets.main.runtimeClasspath
+}
+
+uploadArchives {
+  repositories {
+    mavenDeployer {
+      beforeDeployment { deployment -> signing.signPom(deployment) }
+
+      repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
+        authentication(userName: ossrhUsername, password: ossrhPassword)
+      }
+
+      snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
+        authentication(userName: ossrhUsername, password: ossrhPassword)
+      }
+
+      pom.project {
+        name 'Provisioning API'	  
+        description 'A Java library to interface to Genesys Provisioning public API'
+        url 'https://developer.genhtcc.com/api/provisioning/index.html'
+
+        scm {
+          connection 'scm:git:git@github.com:GenesysPureEngage/provisioning-client-java.git'
+          developerConnection 'scm:git:git@github.com:GenesysPureEngage/provisioning-client-java.git'
+          url 'https://github.com/GenesysPureEngage/provisioning-client-java'
+        }
+
+        licenses {
+          license {
+            name 'MIT License'
+            url 'https://opensource.org/licenses/MIT'
+            distribution 'repo'
+          }
+        }
+
+        developers {
+          developer {
+            name 'Genesys Inc'
+            email 'support@genesys.com'
+            organization 'Genesys Inc'
+            organizationUrl 'https://developer.genhtcc.com'
+          }
+        }
+      }
+    }
+  }
+}
