@@ -14,8 +14,7 @@
 package com.genesys.provisioning.model;
 
 import java.util.Objects;
-import com.genesys.provisioning.model.ApiSuccessResponseStatus;
-import com.genesys.provisioning.model.LoginSuccessResponseData;
+import com.genesys.provisioning.model.GetUserSkillsSuccessResponseStatusDataSkills;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -24,52 +23,41 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
- * LoginSuccessResponse
+ * GetUserSkillsSuccessResponseStatusData
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-08-09T21:01:49.871Z")
-public class LoginSuccessResponse {
-  @SerializedName("status")
-  private ApiSuccessResponseStatus status = null;
+public class GetUserSkillsSuccessResponseStatusData {
+  @SerializedName("skills")
+  private List<GetUserSkillsSuccessResponseStatusDataSkills> skills = null;
 
-  @SerializedName("data")
-  private LoginSuccessResponseData data = null;
+  public GetUserSkillsSuccessResponseStatusData skills(List<GetUserSkillsSuccessResponseStatusDataSkills> skills) {
+    this.skills = skills;
+    return this;
+  }
 
-  public LoginSuccessResponse status(ApiSuccessResponseStatus status) {
-    this.status = status;
+  public GetUserSkillsSuccessResponseStatusData addSkillsItem(GetUserSkillsSuccessResponseStatusDataSkills skillsItem) {
+    if (this.skills == null) {
+      this.skills = new ArrayList<GetUserSkillsSuccessResponseStatusDataSkills>();
+    }
+    this.skills.add(skillsItem);
     return this;
   }
 
    /**
-   * Get status
-   * @return status
+   * skills assigned to any user. Available if dbid parameter is equal to &#39;skills&#39;.
+   * @return skills
   **/
-  @ApiModelProperty(value = "")
-  public ApiSuccessResponseStatus getStatus() {
-    return status;
+  @ApiModelProperty(value = "skills assigned to any user. Available if dbid parameter is equal to 'skills'.")
+  public List<GetUserSkillsSuccessResponseStatusDataSkills> getSkills() {
+    return skills;
   }
 
-  public void setStatus(ApiSuccessResponseStatus status) {
-    this.status = status;
-  }
-
-  public LoginSuccessResponse data(LoginSuccessResponseData data) {
-    this.data = data;
-    return this;
-  }
-
-   /**
-   * Get data
-   * @return data
-  **/
-  @ApiModelProperty(value = "")
-  public LoginSuccessResponseData getData() {
-    return data;
-  }
-
-  public void setData(LoginSuccessResponseData data) {
-    this.data = data;
+  public void setSkills(List<GetUserSkillsSuccessResponseStatusDataSkills> skills) {
+    this.skills = skills;
   }
 
 
@@ -81,24 +69,22 @@ public class LoginSuccessResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    LoginSuccessResponse loginSuccessResponse = (LoginSuccessResponse) o;
-    return Objects.equals(this.status, loginSuccessResponse.status) &&
-        Objects.equals(this.data, loginSuccessResponse.data);
+    GetUserSkillsSuccessResponseStatusData getUserSkillsSuccessResponseStatusData = (GetUserSkillsSuccessResponseStatusData) o;
+    return Objects.equals(this.skills, getUserSkillsSuccessResponseStatusData.skills);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(status, data);
+    return Objects.hash(skills);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class LoginSuccessResponse {\n");
+    sb.append("class GetUserSkillsSuccessResponseStatusData {\n");
     
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    data: ").append(toIndentedString(data)).append("\n");
+    sb.append("    skills: ").append(toIndentedString(skills)).append("\n");
     sb.append("}");
     return sb.toString();
   }

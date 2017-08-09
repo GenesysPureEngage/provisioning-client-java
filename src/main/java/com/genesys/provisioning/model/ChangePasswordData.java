@@ -24,17 +24,20 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * LoginData
+ * ChangePasswordData
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-08-09T21:01:49.871Z")
-public class LoginData {
+public class ChangePasswordData {
   @SerializedName("domain_username")
-  private String domainUsername = "domain.com\\login";
+  private String domainUsername = null;
 
-  @SerializedName("password")
-  private String password = "password";
+  @SerializedName("oldPassword")
+  private String oldPassword = null;
 
-  public LoginData domainUsername(String domainUsername) {
+  @SerializedName("newPassword")
+  private String newPassword = null;
+
+  public ChangePasswordData domainUsername(String domainUsername) {
     this.domainUsername = domainUsername;
     return this;
   }
@@ -52,22 +55,40 @@ public class LoginData {
     this.domainUsername = domainUsername;
   }
 
-  public LoginData password(String password) {
-    this.password = password;
+  public ChangePasswordData oldPassword(String oldPassword) {
+    this.oldPassword = oldPassword;
     return this;
   }
 
    /**
-   * Password as plain text. 
-   * @return password
+   * Old password as plain text. 
+   * @return oldPassword
   **/
-  @ApiModelProperty(required = true, value = "Password as plain text. ")
-  public String getPassword() {
-    return password;
+  @ApiModelProperty(required = true, value = "Old password as plain text. ")
+  public String getOldPassword() {
+    return oldPassword;
   }
 
-  public void setPassword(String password) {
-    this.password = password;
+  public void setOldPassword(String oldPassword) {
+    this.oldPassword = oldPassword;
+  }
+
+  public ChangePasswordData newPassword(String newPassword) {
+    this.newPassword = newPassword;
+    return this;
+  }
+
+   /**
+   * New password as plain text. 
+   * @return newPassword
+  **/
+  @ApiModelProperty(required = true, value = "New password as plain text. ")
+  public String getNewPassword() {
+    return newPassword;
+  }
+
+  public void setNewPassword(String newPassword) {
+    this.newPassword = newPassword;
   }
 
 
@@ -79,24 +100,26 @@ public class LoginData {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    LoginData loginData = (LoginData) o;
-    return Objects.equals(this.domainUsername, loginData.domainUsername) &&
-        Objects.equals(this.password, loginData.password);
+    ChangePasswordData changePasswordData = (ChangePasswordData) o;
+    return Objects.equals(this.domainUsername, changePasswordData.domainUsername) &&
+        Objects.equals(this.oldPassword, changePasswordData.oldPassword) &&
+        Objects.equals(this.newPassword, changePasswordData.newPassword);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(domainUsername, password);
+    return Objects.hash(domainUsername, oldPassword, newPassword);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class LoginData {\n");
+    sb.append("class ChangePasswordData {\n");
     
     sb.append("    domainUsername: ").append(toIndentedString(domainUsername)).append("\n");
-    sb.append("    password: ").append(toIndentedString(password)).append("\n");
+    sb.append("    oldPassword: ").append(toIndentedString(oldPassword)).append("\n");
+    sb.append("    newPassword: ").append(toIndentedString(newPassword)).append("\n");
     sb.append("}");
     return sb.toString();
   }

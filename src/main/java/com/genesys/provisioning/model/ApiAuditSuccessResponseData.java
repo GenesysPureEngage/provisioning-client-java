@@ -14,8 +14,7 @@
 package com.genesys.provisioning.model;
 
 import java.util.Objects;
-import com.genesys.provisioning.model.ApiSuccessResponseStatus;
-import com.genesys.provisioning.model.LoginSuccessResponseData;
+import com.genesys.provisioning.model.ApiAuditSuccessResponseDataRows;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -24,52 +23,38 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
- * LoginSuccessResponse
+ * ApiAuditSuccessResponseData
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-08-09T21:01:49.871Z")
-public class LoginSuccessResponse {
-  @SerializedName("status")
-  private ApiSuccessResponseStatus status = null;
+public class ApiAuditSuccessResponseData {
+  @SerializedName("rows")
+  private List<ApiAuditSuccessResponseDataRows> rows = new ArrayList<ApiAuditSuccessResponseDataRows>();
 
-  @SerializedName("data")
-  private LoginSuccessResponseData data = null;
+  public ApiAuditSuccessResponseData rows(List<ApiAuditSuccessResponseDataRows> rows) {
+    this.rows = rows;
+    return this;
+  }
 
-  public LoginSuccessResponse status(ApiSuccessResponseStatus status) {
-    this.status = status;
+  public ApiAuditSuccessResponseData addRowsItem(ApiAuditSuccessResponseDataRows rowsItem) {
+    this.rows.add(rowsItem);
     return this;
   }
 
    /**
-   * Get status
-   * @return status
+   * Get rows
+   * @return rows
   **/
-  @ApiModelProperty(value = "")
-  public ApiSuccessResponseStatus getStatus() {
-    return status;
+  @ApiModelProperty(required = true, value = "")
+  public List<ApiAuditSuccessResponseDataRows> getRows() {
+    return rows;
   }
 
-  public void setStatus(ApiSuccessResponseStatus status) {
-    this.status = status;
-  }
-
-  public LoginSuccessResponse data(LoginSuccessResponseData data) {
-    this.data = data;
-    return this;
-  }
-
-   /**
-   * Get data
-   * @return data
-  **/
-  @ApiModelProperty(value = "")
-  public LoginSuccessResponseData getData() {
-    return data;
-  }
-
-  public void setData(LoginSuccessResponseData data) {
-    this.data = data;
+  public void setRows(List<ApiAuditSuccessResponseDataRows> rows) {
+    this.rows = rows;
   }
 
 
@@ -81,24 +66,22 @@ public class LoginSuccessResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    LoginSuccessResponse loginSuccessResponse = (LoginSuccessResponse) o;
-    return Objects.equals(this.status, loginSuccessResponse.status) &&
-        Objects.equals(this.data, loginSuccessResponse.data);
+    ApiAuditSuccessResponseData apiAuditSuccessResponseData = (ApiAuditSuccessResponseData) o;
+    return Objects.equals(this.rows, apiAuditSuccessResponseData.rows);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(status, data);
+    return Objects.hash(rows);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class LoginSuccessResponse {\n");
+    sb.append("class ApiAuditSuccessResponseData {\n");
     
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    data: ").append(toIndentedString(data)).append("\n");
+    sb.append("    rows: ").append(toIndentedString(rows)).append("\n");
     sb.append("}");
     return sb.toString();
   }
