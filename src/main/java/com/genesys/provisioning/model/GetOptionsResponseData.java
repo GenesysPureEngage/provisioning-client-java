@@ -14,14 +14,19 @@
 package com.genesys.provisioning.model;
 
 import java.util.Objects;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 
 /**
  * GetOptionsResponseData
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-08-16T15:04:06.653Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-08-16T22:58:38.925Z")
 public class GetOptionsResponseData {
   @SerializedName("cmeAppDBID")
   private String cmeAppDBID = null;
@@ -41,7 +46,7 @@ public class GetOptionsResponseData {
    * DBID of the CME App.
    * @return cmeAppDBID
   **/
-  @ApiModelProperty(example = "null", value = "DBID of the CME App.")
+  @ApiModelProperty(value = "DBID of the CME App.")
   public String getCmeAppDBID() {
     return cmeAppDBID;
   }
@@ -59,7 +64,7 @@ public class GetOptionsResponseData {
    * Sections, keys and values of CloudCluster/Options.
    * @return options
   **/
-  @ApiModelProperty(example = "null", value = "Sections, keys and values of CloudCluster/Options.")
+  @ApiModelProperty(value = "Sections, keys and values of CloudCluster/Options.")
   public Object getOptions() {
     return options;
   }
@@ -77,7 +82,7 @@ public class GetOptionsResponseData {
    * Name of the CME App (CloudCluster by default).
    * @return cmeAppName
   **/
-  @ApiModelProperty(example = "null", value = "Name of the CME App (CloudCluster by default).")
+  @ApiModelProperty(value = "Name of the CME App (CloudCluster by default).")
   public String getCmeAppName() {
     return cmeAppName;
   }

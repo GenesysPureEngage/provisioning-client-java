@@ -14,14 +14,19 @@
 package com.genesys.provisioning.model;
 
 import java.util.Objects;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 
 /**
  * UpdateOptionsData
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-08-16T15:04:06.653Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-08-16T22:58:38.925Z")
 public class UpdateOptionsData {
   @SerializedName("changedOptions")
   private Object changedOptions = null;
@@ -41,7 +46,7 @@ public class UpdateOptionsData {
    * Changed CloudCluster app Options.  Effect: Updates existing values in CloudCluster/Options 
    * @return changedOptions
   **/
-  @ApiModelProperty(example = "null", value = "Changed CloudCluster app Options.  Effect: Updates existing values in CloudCluster/Options ")
+  @ApiModelProperty(value = "Changed CloudCluster app Options.  Effect: Updates existing values in CloudCluster/Options ")
   public Object getChangedOptions() {
     return changedOptions;
   }
@@ -59,7 +64,7 @@ public class UpdateOptionsData {
    * Deleted CloudCluster app Options.  Effect: Deletes sections, keys and values in CloudCluster/Options 
    * @return deletedOptions
   **/
-  @ApiModelProperty(example = "null", value = "Deleted CloudCluster app Options.  Effect: Deletes sections, keys and values in CloudCluster/Options ")
+  @ApiModelProperty(value = "Deleted CloudCluster app Options.  Effect: Deletes sections, keys and values in CloudCluster/Options ")
   public Object getDeletedOptions() {
     return deletedOptions;
   }
@@ -77,7 +82,7 @@ public class UpdateOptionsData {
    * New CloudCluster app Options.  Effect: Adds sections, keys and values in CloudCluster/Options 
    * @return newOptions
   **/
-  @ApiModelProperty(example = "null", value = "New CloudCluster app Options.  Effect: Adds sections, keys and values in CloudCluster/Options ")
+  @ApiModelProperty(value = "New CloudCluster app Options.  Effect: Adds sections, keys and values in CloudCluster/Options ")
   public Object getNewOptions() {
     return newOptions;
   }

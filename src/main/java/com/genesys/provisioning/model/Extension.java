@@ -14,14 +14,19 @@
 package com.genesys.provisioning.model;
 
 import java.util.Objects;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 
 /**
  * Extension
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-08-16T15:04:06.653Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-08-16T22:58:38.925Z")
 public class Extension {
   @SerializedName("placeName")
   private String placeName = null;
@@ -44,7 +49,7 @@ public class Extension {
    * Name of the corresponding place name
    * @return placeName
   **/
-  @ApiModelProperty(example = "null", value = "Name of the corresponding place name")
+  @ApiModelProperty(value = "Name of the corresponding place name")
   public String getPlaceName() {
     return placeName;
   }
@@ -62,7 +67,7 @@ public class Extension {
    * Phone number
    * @return number
   **/
-  @ApiModelProperty(example = "null", value = "Phone number")
+  @ApiModelProperty(value = "Phone number")
   public String getNumber() {
     return number;
   }
@@ -80,7 +85,7 @@ public class Extension {
    * true/false
    * @return isDefault
   **/
-  @ApiModelProperty(example = "null", value = "true/false")
+  @ApiModelProperty(value = "true/false")
   public Boolean getIsDefault() {
     return isDefault;
   }
@@ -98,7 +103,7 @@ public class Extension {
    * Desrciption (Mobile, Office)
    * @return description
   **/
-  @ApiModelProperty(example = "null", value = "Desrciption (Mobile, Office)")
+  @ApiModelProperty(value = "Desrciption (Mobile, Office)")
   public String getDescription() {
     return description;
   }

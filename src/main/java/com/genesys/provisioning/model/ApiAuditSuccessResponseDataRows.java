@@ -14,16 +14,21 @@
 package com.genesys.provisioning.model;
 
 import java.util.Objects;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.math.BigDecimal;
 
 /**
  * Object describing one audit line
  */
 @ApiModel(description = "Object describing one audit line")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-08-16T15:04:06.653Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-08-16T22:58:38.925Z")
 public class ApiAuditSuccessResponseDataRows {
   @SerializedName("username")
   private String username = null;
@@ -52,7 +57,7 @@ public class ApiAuditSuccessResponseDataRows {
    * User name for audit action in domain\\login format
    * @return username
   **/
-  @ApiModelProperty(example = "null", value = "User name for audit action in domain\\login format")
+  @ApiModelProperty(value = "User name for audit action in domain\\login format")
   public String getUsername() {
     return username;
   }
@@ -70,7 +75,7 @@ public class ApiAuditSuccessResponseDataRows {
    * Audit level (info, error)
    * @return level
   **/
-  @ApiModelProperty(example = "null", value = "Audit level (info, error)")
+  @ApiModelProperty(value = "Audit level (info, error)")
   public String getLevel() {
     return level;
   }
@@ -88,7 +93,7 @@ public class ApiAuditSuccessResponseDataRows {
    * Additional Audit data
    * @return extradata
   **/
-  @ApiModelProperty(example = "null", value = "Additional Audit data")
+  @ApiModelProperty(value = "Additional Audit data")
   public Object getExtradata() {
     return extradata;
   }
@@ -106,7 +111,7 @@ public class ApiAuditSuccessResponseDataRows {
    * Audit message
    * @return msg
   **/
-  @ApiModelProperty(example = "null", value = "Audit message")
+  @ApiModelProperty(value = "Audit message")
   public String getMsg() {
     return msg;
   }
@@ -124,7 +129,7 @@ public class ApiAuditSuccessResponseDataRows {
    * Database ID of Audit log line
    * @return id
   **/
-  @ApiModelProperty(example = "null", value = "Database ID of Audit log line")
+  @ApiModelProperty(value = "Database ID of Audit log line")
   public BigDecimal getId() {
     return id;
   }
@@ -142,7 +147,7 @@ public class ApiAuditSuccessResponseDataRows {
    * Audit log line create time
    * @return createdat
   **/
-  @ApiModelProperty(example = "null", value = "Audit log line create time")
+  @ApiModelProperty(value = "Audit log line create time")
   public String getCreatedat() {
     return createdat;
   }

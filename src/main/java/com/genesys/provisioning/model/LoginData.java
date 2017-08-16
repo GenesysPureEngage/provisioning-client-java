@@ -14,14 +14,19 @@
 package com.genesys.provisioning.model;
 
 import java.util.Objects;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 
 /**
  * LoginData
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-08-16T15:04:06.653Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-08-16T22:58:38.925Z")
 public class LoginData {
   @SerializedName("domain_username")
   private String domainUsername = "domain.com\\login";
@@ -38,7 +43,7 @@ public class LoginData {
    * User unique login in form: domain.com\\login 
    * @return domainUsername
   **/
-  @ApiModelProperty(example = "null", required = true, value = "User unique login in form: domain.com\\login ")
+  @ApiModelProperty(required = true, value = "User unique login in form: domain.com\\login ")
   public String getDomainUsername() {
     return domainUsername;
   }
@@ -56,7 +61,7 @@ public class LoginData {
    * Password as plain text. 
    * @return password
   **/
-  @ApiModelProperty(example = "null", required = true, value = "Password as plain text. ")
+  @ApiModelProperty(required = true, value = "Password as plain text. ")
   public String getPassword() {
     return password;
   }

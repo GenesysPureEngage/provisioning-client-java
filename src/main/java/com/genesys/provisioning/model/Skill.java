@@ -14,14 +14,19 @@
 package com.genesys.provisioning.model;
 
 import java.util.Objects;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 
 /**
  * Skill
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-08-16T15:04:06.653Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-08-16T22:58:38.925Z")
 public class Skill {
   @SerializedName("name")
   private String name = null;
@@ -38,7 +43,7 @@ public class Skill {
    * Skill name
    * @return name
   **/
-  @ApiModelProperty(example = "null", value = "Skill name")
+  @ApiModelProperty(value = "Skill name")
   public String getName() {
     return name;
   }
@@ -53,10 +58,10 @@ public class Skill {
   }
 
    /**
-   * Skill level. Should be a positive integer number in numeric or string format. If level is equal to '' the skill will be unassigned.
+   * Skill level. Should be a positive integer number in numeric or string format. If level is equal to &#39;&#39; the skill will be unassigned.
    * @return level
   **/
-  @ApiModelProperty(example = "null", value = "Skill level. Should be a positive integer number in numeric or string format. If level is equal to '' the skill will be unassigned.")
+  @ApiModelProperty(value = "Skill level. Should be a positive integer number in numeric or string format. If level is equal to '' the skill will be unassigned.")
   public Integer getLevel() {
     return level;
   }

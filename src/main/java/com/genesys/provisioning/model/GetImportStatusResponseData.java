@@ -14,9 +14,14 @@
 package com.genesys.provisioning.model;
 
 import java.util.Objects;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,10 +29,10 @@ import java.util.List;
 /**
  * GetImportStatusResponseData
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-08-16T15:04:06.653Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-08-16T22:58:38.925Z")
 public class GetImportStatusResponseData {
   @SerializedName("activeImporters")
-  private List<String> activeImporters = new ArrayList<String>();
+  private List<String> activeImporters = null;
 
   @SerializedName("lastEntity")
   private String lastEntity = null;
@@ -48,7 +53,7 @@ public class GetImportStatusResponseData {
   private BigDecimal succeedCount = null;
 
   @SerializedName("failed")
-  private List<String> failed = new ArrayList<String>();
+  private List<String> failed = null;
 
   @SerializedName("stopped")
   private Boolean stopped = null;
@@ -62,6 +67,9 @@ public class GetImportStatusResponseData {
   }
 
   public GetImportStatusResponseData addActiveImportersItem(String activeImportersItem) {
+    if (this.activeImporters == null) {
+      this.activeImporters = new ArrayList<String>();
+    }
     this.activeImporters.add(activeImportersItem);
     return this;
   }
@@ -70,7 +78,7 @@ public class GetImportStatusResponseData {
    * Active importers IDs.
    * @return activeImporters
   **/
-  @ApiModelProperty(example = "null", value = "Active importers IDs.")
+  @ApiModelProperty(value = "Active importers IDs.")
   public List<String> getActiveImporters() {
     return activeImporters;
   }
@@ -88,7 +96,7 @@ public class GetImportStatusResponseData {
    * Last object name processed.
    * @return lastEntity
   **/
-  @ApiModelProperty(example = "null", value = "Last object name processed.")
+  @ApiModelProperty(value = "Last object name processed.")
   public String getLastEntity() {
     return lastEntity;
   }
@@ -106,7 +114,7 @@ public class GetImportStatusResponseData {
    * Admin login.
    * @return adminName
   **/
-  @ApiModelProperty(example = "null", value = "Admin login.")
+  @ApiModelProperty(value = "Admin login.")
   public String getAdminName() {
     return adminName;
   }
@@ -124,7 +132,7 @@ public class GetImportStatusResponseData {
    * Sheet name processed.
    * @return sheetName
   **/
-  @ApiModelProperty(example = "null", value = "Sheet name processed.")
+  @ApiModelProperty(value = "Sheet name processed.")
   public String getSheetName() {
     return sheetName;
   }
@@ -142,7 +150,7 @@ public class GetImportStatusResponseData {
    * Number of records processed total.
    * @return totalCount
   **/
-  @ApiModelProperty(example = "null", value = "Number of records processed total.")
+  @ApiModelProperty(value = "Number of records processed total.")
   public BigDecimal getTotalCount() {
     return totalCount;
   }
@@ -160,7 +168,7 @@ public class GetImportStatusResponseData {
    * true if user pressed Stop Import
    * @return stopRequested
   **/
-  @ApiModelProperty(example = "null", value = "true if user pressed Stop Import")
+  @ApiModelProperty(value = "true if user pressed Stop Import")
   public Boolean getStopRequested() {
     return stopRequested;
   }
@@ -178,7 +186,7 @@ public class GetImportStatusResponseData {
    * Number of records processed succesfully.
    * @return succeedCount
   **/
-  @ApiModelProperty(example = "null", value = "Number of records processed succesfully.")
+  @ApiModelProperty(value = "Number of records processed succesfully.")
   public BigDecimal getSucceedCount() {
     return succeedCount;
   }
@@ -193,6 +201,9 @@ public class GetImportStatusResponseData {
   }
 
   public GetImportStatusResponseData addFailedItem(String failedItem) {
+    if (this.failed == null) {
+      this.failed = new ArrayList<String>();
+    }
     this.failed.add(failedItem);
     return this;
   }
@@ -201,7 +212,7 @@ public class GetImportStatusResponseData {
    * Array of errors during import.
    * @return failed
   **/
-  @ApiModelProperty(example = "null", value = "Array of errors during import.")
+  @ApiModelProperty(value = "Array of errors during import.")
   public List<String> getFailed() {
     return failed;
   }
@@ -219,7 +230,7 @@ public class GetImportStatusResponseData {
    * true if import stopped.
    * @return stopped
   **/
-  @ApiModelProperty(example = "null", value = "true if import stopped.")
+  @ApiModelProperty(value = "true if import stopped.")
   public Boolean getStopped() {
     return stopped;
   }
@@ -237,7 +248,7 @@ public class GetImportStatusResponseData {
    * Current operation.
    * @return operation
   **/
-  @ApiModelProperty(example = "null", value = "Current operation.")
+  @ApiModelProperty(value = "Current operation.")
   public String getOperation() {
     return operation;
   }

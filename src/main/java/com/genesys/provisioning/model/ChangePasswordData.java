@@ -14,14 +14,19 @@
 package com.genesys.provisioning.model;
 
 import java.util.Objects;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 
 /**
  * ChangePasswordData
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-08-16T15:04:06.653Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-08-16T22:58:38.925Z")
 public class ChangePasswordData {
   @SerializedName("domain_username")
   private String domainUsername = null;
@@ -41,7 +46,7 @@ public class ChangePasswordData {
    * User unique login in form: domain.com\\login 
    * @return domainUsername
   **/
-  @ApiModelProperty(example = "null", required = true, value = "User unique login in form: domain.com\\login ")
+  @ApiModelProperty(required = true, value = "User unique login in form: domain.com\\login ")
   public String getDomainUsername() {
     return domainUsername;
   }
@@ -59,7 +64,7 @@ public class ChangePasswordData {
    * New password as plain text. 
    * @return newPassword
   **/
-  @ApiModelProperty(example = "null", required = true, value = "New password as plain text. ")
+  @ApiModelProperty(required = true, value = "New password as plain text. ")
   public String getNewPassword() {
     return newPassword;
   }
@@ -77,7 +82,7 @@ public class ChangePasswordData {
    * Old password as plain text. 
    * @return oldPassword
   **/
-  @ApiModelProperty(example = "null", required = true, value = "Old password as plain text. ")
+  @ApiModelProperty(required = true, value = "Old password as plain text. ")
   public String getOldPassword() {
     return oldPassword;
   }

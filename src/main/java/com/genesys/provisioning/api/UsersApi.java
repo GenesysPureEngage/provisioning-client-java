@@ -60,12 +60,19 @@ public class UsersApi {
         this.apiClient = apiClient;
     }
 
-    /* Build call for addUser */
-    private com.squareup.okhttp.Call addUserCall(AddUserData body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    /**
+     * Build call for addUser
+     * @param body Body Data (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call addUserCall(AddUserData body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = body;
         
         // create path and map variables
-        String localVarPath = "/users".replaceAll("\\{format\\}","json");
+        String localVarPath = "/users";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
 
@@ -178,13 +185,21 @@ public class UsersApi {
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
-    /* Build call for deleteUser */
-    private com.squareup.okhttp.Call deleteUserCall(String dbid, DeleteUserData deleteUserData, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    /**
+     * Build call for deleteUser
+     * @param dbid User DBID (required)
+     * @param deleteUserData Delete user data (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call deleteUserCall(String dbid, DeleteUserData deleteUserData, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = deleteUserData;
         
         // create path and map variables
-        String localVarPath = "/users/{dbid}".replaceAll("\\{format\\}","json")
-        .replaceAll("\\{" + "dbid" + "\\}", apiClient.escapeString(dbid.toString()));
+        String localVarPath = "/users/{dbid}"
+            .replaceAll("\\{" + "dbid" + "\\}", apiClient.escapeString(dbid.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
 
@@ -305,12 +320,18 @@ public class UsersApi {
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
-    /* Build call for getCurrentUser */
-    private com.squareup.okhttp.Call getCurrentUserCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    /**
+     * Build call for getCurrentUser
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getCurrentUserCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
-        String localVarPath = "/users/me".replaceAll("\\{format\\}","json");
+        String localVarPath = "/users/me";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
 
@@ -415,13 +436,20 @@ public class UsersApi {
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
-    /* Build call for getUser */
-    private com.squareup.okhttp.Call getUserCall(String dbid, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    /**
+     * Build call for getUser
+     * @param dbid User DBID or string &#39;me&#39; or &#39;skills&#39; (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getUserCall(String dbid, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
-        String localVarPath = "/users/{dbid}".replaceAll("\\{format\\}","json")
-        .replaceAll("\\{" + "dbid" + "\\}", apiClient.escapeString(dbid.toString()));
+        String localVarPath = "/users/{dbid}"
+            .replaceAll("\\{" + "dbid" + "\\}", apiClient.escapeString(dbid.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
 
@@ -534,12 +562,18 @@ public class UsersApi {
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
-    /* Build call for getUserSkills */
-    private com.squareup.okhttp.Call getUserSkillsCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    /**
+     * Build call for getUserSkills
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getUserSkillsCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
-        String localVarPath = "/users/skills".replaceAll("\\{format\\}","json");
+        String localVarPath = "/users/skills";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
 
@@ -644,12 +678,28 @@ public class UsersApi {
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
-    /* Build call for getUsers */
-    private com.squareup.okhttp.Call getUsersCall(Integer limit, Integer offset, String order, String sortBy, String filterName, String filterParameters, String roles, String skills, Boolean userEnabled, String userValid, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    /**
+     * Build call for getUsers
+     * @param limit Limit number of users to fetch (optional)
+     * @param offset Skip first N matches (optional)
+     * @param order Sort results ascending/descending (optional)
+     * @param sortBy comma-separated list of fields to sort on, supported: firstName,lastName,userName  (optional)
+     * @param filterName Users filter name (optional)
+     * @param filterParameters Part of users first or last name, if filterName: FirstNameOrLastNameMatches specified.  (optional)
+     * @param roles Only fetch users with specified wwe roles, comma-separated. Supported: ROLE_AGENT,ROLE_ADMIN,ROLE_SUPERVISOR  (optional)
+     * @param skills Only fetch users with specified skills, comma-separated.  (optional)
+     * @param userEnabled Fetch only enabled or disabled users. (optional)
+     * @param userValid Fetch only valid or invalid users. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getUsersCall(Integer limit, Integer offset, String order, String sortBy, String filterName, String filterParameters, String roles, String skills, Boolean userEnabled, String userValid, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
-        String localVarPath = "/users".replaceAll("\\{format\\}","json");
+        String localVarPath = "/users";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         if (limit != null)
@@ -804,13 +854,21 @@ public class UsersApi {
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
-    /* Build call for updateUser */
-    private com.squareup.okhttp.Call updateUserCall(String dbid, UpdateUserData updateUserData, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    /**
+     * Build call for updateUser
+     * @param dbid User DBID (required)
+     * @param updateUserData Update user data (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call updateUserCall(String dbid, UpdateUserData updateUserData, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = updateUserData;
         
         // create path and map variables
-        String localVarPath = "/users/{dbid}".replaceAll("\\{format\\}","json")
-        .replaceAll("\\{" + "dbid" + "\\}", apiClient.escapeString(dbid.toString()));
+        String localVarPath = "/users/{dbid}"
+            .replaceAll("\\{" + "dbid" + "\\}", apiClient.escapeString(dbid.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
 

@@ -17,16 +17,21 @@ import java.util.Objects;
 import com.genesys.provisioning.model.AddUserDataWwe;
 import com.genesys.provisioning.model.Extension;
 import com.genesys.provisioning.model.Skill;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * AddUserData
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-08-16T15:04:06.653Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-08-16T22:58:38.925Z")
 public class AddUserData {
   @SerializedName("supportSoftPhone")
   private Boolean supportSoftPhone = false;
@@ -35,10 +40,10 @@ public class AddUserData {
   private String employeeID = "empid123";
 
   @SerializedName("phones")
-  private List<Extension> phones = new ArrayList<Extension>();
+  private List<Extension> phones = null;
 
   @SerializedName("accessGroups")
-  private List<String> accessGroups = new ArrayList<String>();
+  private List<String> accessGroups = null;
 
   @SerializedName("wwe")
   private AddUserDataWwe wwe = null;
@@ -47,10 +52,10 @@ public class AddUserData {
   private String externalID = "extid123";
 
   @SerializedName("placeNames")
-  private List<String> placeNames = new ArrayList<String>();
+  private List<String> placeNames = null;
 
   @SerializedName("agentGroups")
-  private List<String> agentGroups = new ArrayList<String>();
+  private List<String> agentGroups = null;
 
   @SerializedName("voiceMail")
   private Integer voiceMail = null;
@@ -71,7 +76,7 @@ public class AddUserData {
   private String firstName = "firstname123";
 
   @SerializedName("skills")
-  private List<Skill> skills = new ArrayList<Skill>();
+  private List<Skill> skills = null;
 
   @SerializedName("lastName")
   private String lastName = "lastname123";
@@ -80,22 +85,19 @@ public class AddUserData {
   private Boolean enabled = true;
 
   @SerializedName("switchNames")
-  private List<String> switchNames = new ArrayList<String>();
+  private List<String> switchNames = null;
 
   /**
-   * Specifies the sip phone typed if supportSoftPhone = true.  Effect: Specifies  the sip phone type and corresponding annex to be written to the DN's \"TServer\" section 
+   * Specifies the sip phone typed if supportSoftPhone &#x3D; true.  Effect: Specifies  the sip phone type and corresponding annex to be written to the DN&#39;s \&quot;TServer\&quot; section 
    */
+  @JsonAdapter(SipPhoneTypeEnum.Adapter.class)
   public enum SipPhoneTypeEnum {
-    @SerializedName("DISABLE_CTI")
     DISABLE_CTI("DISABLE_CTI"),
     
-    @SerializedName("GENESYS_SOFTPHONE")
     GENESYS_SOFTPHONE("GENESYS_SOFTPHONE"),
     
-    @SerializedName("GENESYS_420HT_AUDIOCODES_4xxHD")
     GENESYS_420HT_AUDIOCODES_4XXHD("GENESYS_420HT_AUDIOCODES_4xxHD"),
     
-    @SerializedName("GENERIC_PHONE")
     GENERIC_PHONE("GENERIC_PHONE");
 
     private String value;
@@ -104,9 +106,35 @@ public class AddUserData {
       this.value = value;
     }
 
+    public String getValue() {
+      return value;
+    }
+
     @Override
     public String toString() {
       return String.valueOf(value);
+    }
+
+    public static SipPhoneTypeEnum fromValue(String text) {
+      for (SipPhoneTypeEnum b : SipPhoneTypeEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+    public static class Adapter extends TypeAdapter<SipPhoneTypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final SipPhoneTypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public SipPhoneTypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value = jsonReader.nextString();
+        return SipPhoneTypeEnum.fromValue(String.valueOf(value));
+      }
     }
   }
 
@@ -131,7 +159,7 @@ public class AddUserData {
    * Enable SIP Phone, true/false.  Effect: Writes corresponding information to the TServer annex of the created DNs (see sipPhoneType) 
    * @return supportSoftPhone
   **/
-  @ApiModelProperty(example = "null", value = "Enable SIP Phone, true/false.  Effect: Writes corresponding information to the TServer annex of the created DNs (see sipPhoneType) ")
+  @ApiModelProperty(value = "Enable SIP Phone, true/false.  Effect: Writes corresponding information to the TServer annex of the created DNs (see sipPhoneType) ")
   public Boolean getSupportSoftPhone() {
     return supportSoftPhone;
   }
@@ -146,10 +174,10 @@ public class AddUserData {
   }
 
    /**
-   * user's Employee ID.  Effect: Controls the value of the corresponding CfgPerson attribute 
+   * user&#39;s Employee ID.  Effect: Controls the value of the corresponding CfgPerson attribute 
    * @return employeeID
   **/
-  @ApiModelProperty(example = "null", value = "user's Employee ID.  Effect: Controls the value of the corresponding CfgPerson attribute ")
+  @ApiModelProperty(value = "user's Employee ID.  Effect: Controls the value of the corresponding CfgPerson attribute ")
   public String getEmployeeID() {
     return employeeID;
   }
@@ -164,15 +192,18 @@ public class AddUserData {
   }
 
   public AddUserData addPhonesItem(Extension phonesItem) {
+    if (this.phones == null) {
+      this.phones = new ArrayList<Extension>();
+    }
     this.phones.add(phonesItem);
     return this;
   }
 
    /**
-   * A list of phone number descriptors used to create the user's DNs.  Effect: For each phone number, a corresponding DN will be created on all of the switches specified by \"switchNames\" and assigned to the specified place. 
+   * A list of phone number descriptors used to create the user&#39;s DNs.  Effect: For each phone number, a corresponding DN will be created on all of the switches specified by \&quot;switchNames\&quot; and assigned to the specified place. 
    * @return phones
   **/
-  @ApiModelProperty(example = "null", value = "A list of phone number descriptors used to create the user's DNs.  Effect: For each phone number, a corresponding DN will be created on all of the switches specified by \"switchNames\" and assigned to the specified place. ")
+  @ApiModelProperty(value = "A list of phone number descriptors used to create the user's DNs.  Effect: For each phone number, a corresponding DN will be created on all of the switches specified by \"switchNames\" and assigned to the specified place. ")
   public List<Extension> getPhones() {
     return phones;
   }
@@ -187,6 +218,9 @@ public class AddUserData {
   }
 
   public AddUserData addAccessGroupsItem(String accessGroupsItem) {
+    if (this.accessGroups == null) {
+      this.accessGroups = new ArrayList<String>();
+    }
     this.accessGroups.add(accessGroupsItem);
     return this;
   }
@@ -195,7 +229,7 @@ public class AddUserData {
    * List of access groups that the user should belong to.  Effect: The user will be assigned to each group that can be located. If a group does not already exist, it will NOT be created. 
    * @return accessGroups
   **/
-  @ApiModelProperty(example = "null", value = "List of access groups that the user should belong to.  Effect: The user will be assigned to each group that can be located. If a group does not already exist, it will NOT be created. ")
+  @ApiModelProperty(value = "List of access groups that the user should belong to.  Effect: The user will be assigned to each group that can be located. If a group does not already exist, it will NOT be created. ")
   public List<String> getAccessGroups() {
     return accessGroups;
   }
@@ -213,7 +247,7 @@ public class AddUserData {
    * Get wwe
    * @return wwe
   **/
-  @ApiModelProperty(example = "null", value = "")
+  @ApiModelProperty(value = "")
   public AddUserDataWwe getWwe() {
     return wwe;
   }
@@ -231,7 +265,7 @@ public class AddUserData {
    * External ID.  Effect: Controls the value of the corresponding CfgPerson attribute 
    * @return externalID
   **/
-  @ApiModelProperty(example = "null", value = "External ID.  Effect: Controls the value of the corresponding CfgPerson attribute ")
+  @ApiModelProperty(value = "External ID.  Effect: Controls the value of the corresponding CfgPerson attribute ")
   public String getExternalID() {
     return externalID;
   }
@@ -246,15 +280,18 @@ public class AddUserData {
   }
 
   public AddUserData addPlaceNamesItem(String placeNamesItem) {
+    if (this.placeNames == null) {
+      this.placeNames = new ArrayList<String>();
+    }
     this.placeNames.add(placeNamesItem);
     return this;
   }
 
    /**
-   * A list of places available to the user (for multimedia only users). This field is mutual with 'phones'. Effect: The list is written to the current CfgPerson's \"htcc\" annex. e.g. CfgPerson/userProperties/htcc/place = p1, p2, p3 
+   * A list of places available to the user (for multimedia only users). This field is mutual with &#39;phones&#39;. Effect: The list is written to the current CfgPerson&#39;s \&quot;htcc\&quot; annex. e.g. CfgPerson/userProperties/htcc/place &#x3D; p1, p2, p3 
    * @return placeNames
   **/
-  @ApiModelProperty(example = "null", value = "A list of places available to the user (for multimedia only users). This field is mutual with 'phones'. Effect: The list is written to the current CfgPerson's \"htcc\" annex. e.g. CfgPerson/userProperties/htcc/place = p1, p2, p3 ")
+  @ApiModelProperty(value = "A list of places available to the user (for multimedia only users). This field is mutual with 'phones'. Effect: The list is written to the current CfgPerson's \"htcc\" annex. e.g. CfgPerson/userProperties/htcc/place = p1, p2, p3 ")
   public List<String> getPlaceNames() {
     return placeNames;
   }
@@ -269,6 +306,9 @@ public class AddUserData {
   }
 
   public AddUserData addAgentGroupsItem(String agentGroupsItem) {
+    if (this.agentGroups == null) {
+      this.agentGroups = new ArrayList<String>();
+    }
     this.agentGroups.add(agentGroupsItem);
     return this;
   }
@@ -277,7 +317,7 @@ public class AddUserData {
    * List of agent groups that the user should be assigned to.  Effect: The user will be assigned to each group that already exists. If a particular group is not already in the system it will be created. 
    * @return agentGroups
   **/
-  @ApiModelProperty(example = "null", value = "List of agent groups that the user should be assigned to.  Effect: The user will be assigned to each group that already exists. If a particular group is not already in the system it will be created. ")
+  @ApiModelProperty(value = "List of agent groups that the user should be assigned to.  Effect: The user will be assigned to each group that already exists. If a particular group is not already in the system it will be created. ")
   public List<String> getAgentGroups() {
     return agentGroups;
   }
@@ -292,10 +332,10 @@ public class AddUserData {
   }
 
    /**
-   * User's Voice Mail. Effect: Written to the user's CfgAgentLogin.userProperties.TServer.gvm_mailbox 
+   * User&#39;s Voice Mail. Effect: Written to the user&#39;s CfgAgentLogin.userProperties.TServer.gvm_mailbox 
    * @return voiceMail
   **/
-  @ApiModelProperty(example = "null", value = "User's Voice Mail. Effect: Written to the user's CfgAgentLogin.userProperties.TServer.gvm_mailbox ")
+  @ApiModelProperty(value = "User's Voice Mail. Effect: Written to the user's CfgAgentLogin.userProperties.TServer.gvm_mailbox ")
   public Integer getVoiceMail() {
     return voiceMail;
   }
@@ -310,10 +350,10 @@ public class AddUserData {
   }
 
    /**
-   * User's email.  Effect: Controls the value of the corresponding CfgPerson attribute 
+   * User&#39;s email.  Effect: Controls the value of the corresponding CfgPerson attribute 
    * @return emailAddress
   **/
-  @ApiModelProperty(example = "null", value = "User's email.  Effect: Controls the value of the corresponding CfgPerson attribute ")
+  @ApiModelProperty(value = "User's email.  Effect: Controls the value of the corresponding CfgPerson attribute ")
   public String getEmailAddress() {
     return emailAddress;
   }
@@ -331,7 +371,7 @@ public class AddUserData {
    * Password as plain text.  Effect: Controls the value of the corresponding CfgPerson attribute 
    * @return password
   **/
-  @ApiModelProperty(example = "null", required = true, value = "Password as plain text.  Effect: Controls the value of the corresponding CfgPerson attribute ")
+  @ApiModelProperty(required = true, value = "Password as plain text.  Effect: Controls the value of the corresponding CfgPerson attribute ")
   public String getPassword() {
     return password;
   }
@@ -346,10 +386,10 @@ public class AddUserData {
   }
 
    /**
-   * if 'true', user will be asked to change password on first login.  Effect: Controls the value of the corresponding CfgPerson attribute 
+   * if &#39;true&#39;, user will be asked to change password on first login.  Effect: Controls the value of the corresponding CfgPerson attribute 
    * @return changePasswordOnNextLogin
   **/
-  @ApiModelProperty(example = "null", value = "if 'true', user will be asked to change password on first login.  Effect: Controls the value of the corresponding CfgPerson attribute ")
+  @ApiModelProperty(value = "if 'true', user will be asked to change password on first login.  Effect: Controls the value of the corresponding CfgPerson attribute ")
   public Boolean getChangePasswordOnNextLogin() {
     return changePasswordOnNextLogin;
   }
@@ -367,7 +407,7 @@ public class AddUserData {
    * User unique login.  Effect: Controls the value of the corresponding CfgPerson attribute 
    * @return userName
   **/
-  @ApiModelProperty(example = "null", required = true, value = "User unique login.  Effect: Controls the value of the corresponding CfgPerson attribute ")
+  @ApiModelProperty(required = true, value = "User unique login.  Effect: Controls the value of the corresponding CfgPerson attribute ")
   public String getUserName() {
     return userName;
   }
@@ -382,10 +422,10 @@ public class AddUserData {
   }
 
    /**
-   * User's first name.  Effect: Controls the value of the corresponding CfgPerson attribute 
+   * User&#39;s first name.  Effect: Controls the value of the corresponding CfgPerson attribute 
    * @return firstName
   **/
-  @ApiModelProperty(example = "null", required = true, value = "User's first name.  Effect: Controls the value of the corresponding CfgPerson attribute ")
+  @ApiModelProperty(required = true, value = "User's first name.  Effect: Controls the value of the corresponding CfgPerson attribute ")
   public String getFirstName() {
     return firstName;
   }
@@ -400,6 +440,9 @@ public class AddUserData {
   }
 
   public AddUserData addSkillsItem(Skill skillsItem) {
+    if (this.skills == null) {
+      this.skills = new ArrayList<Skill>();
+    }
     this.skills.add(skillsItem);
     return this;
   }
@@ -408,7 +451,7 @@ public class AddUserData {
    * List of Skills to assign to the user.  Effect: The list contains a collection of skill descriptors. If the corresponding skill is found, it is assigned to the user with the specified level. If it is not found, the skill is created and then assigned. 
    * @return skills
   **/
-  @ApiModelProperty(example = "null", value = "List of Skills to assign to the user.  Effect: The list contains a collection of skill descriptors. If the corresponding skill is found, it is assigned to the user with the specified level. If it is not found, the skill is created and then assigned. ")
+  @ApiModelProperty(value = "List of Skills to assign to the user.  Effect: The list contains a collection of skill descriptors. If the corresponding skill is found, it is assigned to the user with the specified level. If it is not found, the skill is created and then assigned. ")
   public List<Skill> getSkills() {
     return skills;
   }
@@ -423,10 +466,10 @@ public class AddUserData {
   }
 
    /**
-   * User's last name.  Effect: Controls the value of the corresponding CfgPerson attribute 
+   * User&#39;s last name.  Effect: Controls the value of the corresponding CfgPerson attribute 
    * @return lastName
   **/
-  @ApiModelProperty(example = "null", required = true, value = "User's last name.  Effect: Controls the value of the corresponding CfgPerson attribute ")
+  @ApiModelProperty(required = true, value = "User's last name.  Effect: Controls the value of the corresponding CfgPerson attribute ")
   public String getLastName() {
     return lastName;
   }
@@ -444,7 +487,7 @@ public class AddUserData {
    * User is enabled or disabled.  Effect: Controls the value of the corresponding CfgPerson attribute 
    * @return enabled
   **/
-  @ApiModelProperty(example = "null", value = "User is enabled or disabled.  Effect: Controls the value of the corresponding CfgPerson attribute ")
+  @ApiModelProperty(value = "User is enabled or disabled.  Effect: Controls the value of the corresponding CfgPerson attribute ")
   public Boolean getEnabled() {
     return enabled;
   }
@@ -459,15 +502,18 @@ public class AddUserData {
   }
 
   public AddUserData addSwitchNamesItem(String switchNamesItem) {
+    if (this.switchNames == null) {
+      this.switchNames = new ArrayList<String>();
+    }
     this.switchNames.add(switchNamesItem);
     return this;
   }
 
    /**
-   * The switch names that the user will work on.  Effect: A list of switches where the user's telephony objects will be created (i.e. dns, agent logins) 
+   * The switch names that the user will work on.  Effect: A list of switches where the user&#39;s telephony objects will be created (i.e. dns, agent logins) 
    * @return switchNames
   **/
-  @ApiModelProperty(example = "null", value = "The switch names that the user will work on.  Effect: A list of switches where the user's telephony objects will be created (i.e. dns, agent logins) ")
+  @ApiModelProperty(value = "The switch names that the user will work on.  Effect: A list of switches where the user's telephony objects will be created (i.e. dns, agent logins) ")
   public List<String> getSwitchNames() {
     return switchNames;
   }
@@ -482,10 +528,10 @@ public class AddUserData {
   }
 
    /**
-   * Specifies the sip phone typed if supportSoftPhone = true.  Effect: Specifies  the sip phone type and corresponding annex to be written to the DN's \"TServer\" section 
+   * Specifies the sip phone typed if supportSoftPhone &#x3D; true.  Effect: Specifies  the sip phone type and corresponding annex to be written to the DN&#39;s \&quot;TServer\&quot; section 
    * @return sipPhoneType
   **/
-  @ApiModelProperty(example = "null", value = "Specifies the sip phone typed if supportSoftPhone = true.  Effect: Specifies  the sip phone type and corresponding annex to be written to the DN's \"TServer\" section ")
+  @ApiModelProperty(value = "Specifies the sip phone typed if supportSoftPhone = true.  Effect: Specifies  the sip phone type and corresponding annex to be written to the DN's \"TServer\" section ")
   public SipPhoneTypeEnum getSipPhoneType() {
     return sipPhoneType;
   }
@@ -503,7 +549,7 @@ public class AddUserData {
    * Specifies if the user is an agent. 
    * @return isAgent
   **/
-  @ApiModelProperty(example = "null", value = "Specifies if the user is an agent. ")
+  @ApiModelProperty(value = "Specifies if the user is an agent. ")
   public Boolean getIsAgent() {
     return isAgent;
   }
@@ -518,10 +564,10 @@ public class AddUserData {
   }
 
    /**
-   * User's Wrap Up Time.  Effect: Configured for each CfgAgentLogin 
+   * User&#39;s Wrap Up Time.  Effect: Configured for each CfgAgentLogin 
    * @return wrapUpTime
   **/
-  @ApiModelProperty(example = "null", value = "User's Wrap Up Time.  Effect: Configured for each CfgAgentLogin ")
+  @ApiModelProperty(value = "User's Wrap Up Time.  Effect: Configured for each CfgAgentLogin ")
   public String getWrapUpTime() {
     return wrapUpTime;
   }
@@ -536,10 +582,10 @@ public class AddUserData {
   }
 
    /**
-   * The user's login code.  Effect: A corresponding CfgAgentLogin will be created on all switches in the \"switchNames\" collection. It will then be assigned to the CfgPerson that's being created. 
+   * The user&#39;s login code.  Effect: A corresponding CfgAgentLogin will be created on all switches in the \&quot;switchNames\&quot; collection. It will then be assigned to the CfgPerson that&#39;s being created. 
    * @return loginCode
   **/
-  @ApiModelProperty(example = "null", value = "The user's login code.  Effect: A corresponding CfgAgentLogin will be created on all switches in the \"switchNames\" collection. It will then be assigned to the CfgPerson that's being created. ")
+  @ApiModelProperty(value = "The user's login code.  Effect: A corresponding CfgAgentLogin will be created on all switches in the \"switchNames\" collection. It will then be assigned to the CfgPerson that's being created. ")
   public String getLoginCode() {
     return loginCode;
   }

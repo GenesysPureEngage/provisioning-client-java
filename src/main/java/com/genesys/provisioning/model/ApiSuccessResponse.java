@@ -15,14 +15,19 @@ package com.genesys.provisioning.model;
 
 import java.util.Objects;
 import com.genesys.provisioning.model.LoginSuccessResponseStatus;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 
 /**
  * ApiSuccessResponse
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-08-16T15:04:06.653Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-08-16T22:58:38.925Z")
 public class ApiSuccessResponse {
   @SerializedName("status")
   private LoginSuccessResponseStatus status = null;
@@ -36,7 +41,7 @@ public class ApiSuccessResponse {
    * Get status
    * @return status
   **/
-  @ApiModelProperty(example = "null", value = "")
+  @ApiModelProperty(value = "")
   public LoginSuccessResponseStatus getStatus() {
     return status;
   }

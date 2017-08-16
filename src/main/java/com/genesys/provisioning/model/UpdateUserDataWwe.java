@@ -14,9 +14,14 @@
 package com.genesys.provisioning.model;
 
 import java.util.Objects;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,13 +29,13 @@ import java.util.List;
  * Properties related to WWE. 
  */
 @ApiModel(description = "Properties related to WWE. ")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-08-16T15:04:06.653Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-08-16T22:58:38.925Z")
 public class UpdateUserDataWwe {
   @SerializedName("deletedRoles")
-  private List<String> deletedRoles = new ArrayList<String>();
+  private List<String> deletedRoles = null;
 
   @SerializedName("roles")
-  private List<String> roles = new ArrayList<String>();
+  private List<String> roles = null;
 
   public UpdateUserDataWwe deletedRoles(List<String> deletedRoles) {
     this.deletedRoles = deletedRoles;
@@ -38,6 +43,9 @@ public class UpdateUserDataWwe {
   }
 
   public UpdateUserDataWwe addDeletedRolesItem(String deletedRolesItem) {
+    if (this.deletedRoles == null) {
+      this.deletedRoles = new ArrayList<String>();
+    }
     this.deletedRoles.add(deletedRolesItem);
     return this;
   }
@@ -46,7 +54,7 @@ public class UpdateUserDataWwe {
    * The roles that will be removed from the user. 
    * @return deletedRoles
   **/
-  @ApiModelProperty(example = "null", value = "The roles that will be removed from the user. ")
+  @ApiModelProperty(value = "The roles that will be removed from the user. ")
   public List<String> getDeletedRoles() {
     return deletedRoles;
   }
@@ -61,6 +69,9 @@ public class UpdateUserDataWwe {
   }
 
   public UpdateUserDataWwe addRolesItem(String rolesItem) {
+    if (this.roles == null) {
+      this.roles = new ArrayList<String>();
+    }
     this.roles.add(rolesItem);
     return this;
   }
@@ -69,7 +80,7 @@ public class UpdateUserDataWwe {
    * The roles that will be added to the user. 
    * @return roles
   **/
-  @ApiModelProperty(example = "null", value = "The roles that will be added to the user. ")
+  @ApiModelProperty(value = "The roles that will be added to the user. ")
   public List<String> getRoles() {
     return roles;
   }

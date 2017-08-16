@@ -16,14 +16,19 @@ package com.genesys.provisioning.model;
 import java.util.Objects;
 import com.genesys.provisioning.model.GetImportStatusResponseData;
 import com.genesys.provisioning.model.GetImportStatusResponseStatus;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 
 /**
  * GetImportStatusResponse
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-08-16T15:04:06.653Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-08-16T22:58:38.925Z")
 public class GetImportStatusResponse {
   @SerializedName("status")
   private GetImportStatusResponseStatus status = null;
@@ -40,7 +45,7 @@ public class GetImportStatusResponse {
    * Get status
    * @return status
   **/
-  @ApiModelProperty(example = "null", value = "")
+  @ApiModelProperty(value = "")
   public GetImportStatusResponseStatus getStatus() {
     return status;
   }
@@ -58,7 +63,7 @@ public class GetImportStatusResponse {
    * Get data
    * @return data
   **/
-  @ApiModelProperty(example = "null", value = "")
+  @ApiModelProperty(value = "")
   public GetImportStatusResponseData getData() {
     return data;
   }

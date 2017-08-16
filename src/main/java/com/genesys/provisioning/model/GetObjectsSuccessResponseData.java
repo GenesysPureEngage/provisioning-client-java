@@ -14,25 +14,30 @@
 package com.genesys.provisioning.model;
 
 import java.util.Objects;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * GetObjectsSuccessResponseData
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-08-16T15:04:06.653Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-08-16T22:58:38.925Z")
 public class GetObjectsSuccessResponseData {
   @SerializedName("agent-groups")
-  private List<Object> agentGroups = new ArrayList<Object>();
+  private List<Object> agentGroups = null;
 
   @SerializedName("totalCount")
   private Integer totalCount = null;
 
   @SerializedName("dns")
-  private List<Object> dns = new ArrayList<Object>();
+  private List<Object> dns = null;
 
   public GetObjectsSuccessResponseData agentGroups(List<Object> agentGroups) {
     this.agentGroups = agentGroups;
@@ -40,6 +45,9 @@ public class GetObjectsSuccessResponseData {
   }
 
   public GetObjectsSuccessResponseData addAgentGroupsItem(Object agentGroupsItem) {
+    if (this.agentGroups == null) {
+      this.agentGroups = new ArrayList<Object>();
+    }
     this.agentGroups.add(agentGroupsItem);
     return this;
   }
@@ -48,7 +56,7 @@ public class GetObjectsSuccessResponseData {
    * List of Agent Group objects fetched.
    * @return agentGroups
   **/
-  @ApiModelProperty(example = "null", value = "List of Agent Group objects fetched.")
+  @ApiModelProperty(value = "List of Agent Group objects fetched.")
   public List<Object> getAgentGroups() {
     return agentGroups;
   }
@@ -66,7 +74,7 @@ public class GetObjectsSuccessResponseData {
    * Total number of object.
    * @return totalCount
   **/
-  @ApiModelProperty(example = "null", value = "Total number of object.")
+  @ApiModelProperty(value = "Total number of object.")
   public Integer getTotalCount() {
     return totalCount;
   }
@@ -81,6 +89,9 @@ public class GetObjectsSuccessResponseData {
   }
 
   public GetObjectsSuccessResponseData addDnsItem(Object dnsItem) {
+    if (this.dns == null) {
+      this.dns = new ArrayList<Object>();
+    }
     this.dns.add(dnsItem);
     return this;
   }
@@ -89,7 +100,7 @@ public class GetObjectsSuccessResponseData {
    * List of DN objects fetched
    * @return dns
   **/
-  @ApiModelProperty(example = "null", value = "List of DN objects fetched")
+  @ApiModelProperty(value = "List of DN objects fetched")
   public List<Object> getDns() {
     return dns;
   }

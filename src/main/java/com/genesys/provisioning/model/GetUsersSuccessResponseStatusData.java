@@ -14,22 +14,27 @@
 package com.genesys.provisioning.model;
 
 import java.util.Objects;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * GetUsersSuccessResponseStatusData
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-08-16T15:04:06.653Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-08-16T22:58:38.925Z")
 public class GetUsersSuccessResponseStatusData {
   @SerializedName("totalCount")
   private Integer totalCount = null;
 
   @SerializedName("users")
-  private List<Object> users = new ArrayList<Object>();
+  private List<Object> users = null;
 
   @SerializedName("user")
   private Object user = null;
@@ -43,7 +48,7 @@ public class GetUsersSuccessResponseStatusData {
    * Total number of users. Available if dbid parameter is absent.
    * @return totalCount
   **/
-  @ApiModelProperty(example = "null", value = "Total number of users. Available if dbid parameter is absent.")
+  @ApiModelProperty(value = "Total number of users. Available if dbid parameter is absent.")
   public Integer getTotalCount() {
     return totalCount;
   }
@@ -58,6 +63,9 @@ public class GetUsersSuccessResponseStatusData {
   }
 
   public GetUsersSuccessResponseStatusData addUsersItem(Object usersItem) {
+    if (this.users == null) {
+      this.users = new ArrayList<Object>();
+    }
     this.users.add(usersItem);
     return this;
   }
@@ -66,7 +74,7 @@ public class GetUsersSuccessResponseStatusData {
    * List of user objects fetched if dbid parameter is absent.
    * @return users
   **/
-  @ApiModelProperty(example = "null", value = "List of user objects fetched if dbid parameter is absent.")
+  @ApiModelProperty(value = "List of user objects fetched if dbid parameter is absent.")
   public List<Object> getUsers() {
     return users;
   }
@@ -81,10 +89,10 @@ public class GetUsersSuccessResponseStatusData {
   }
 
    /**
-   * User object fetched if dbid parameter is a person DBID or 'me'.
+   * User object fetched if dbid parameter is a person DBID or &#39;me&#39;.
    * @return user
   **/
-  @ApiModelProperty(example = "null", value = "User object fetched if dbid parameter is a person DBID or 'me'.")
+  @ApiModelProperty(value = "User object fetched if dbid parameter is a person DBID or 'me'.")
   public Object getUser() {
     return user;
   }

@@ -15,19 +15,24 @@ package com.genesys.provisioning.model;
 
 import java.util.Objects;
 import com.genesys.provisioning.model.GetUserSkillsSuccessResponseStatusDataSkills;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * GetUserSkillsSuccessResponseStatusData
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-08-16T15:04:06.653Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-08-16T22:58:38.925Z")
 public class GetUserSkillsSuccessResponseStatusData {
   @SerializedName("skills")
-  private List<GetUserSkillsSuccessResponseStatusDataSkills> skills = new ArrayList<GetUserSkillsSuccessResponseStatusDataSkills>();
+  private List<GetUserSkillsSuccessResponseStatusDataSkills> skills = null;
 
   public GetUserSkillsSuccessResponseStatusData skills(List<GetUserSkillsSuccessResponseStatusDataSkills> skills) {
     this.skills = skills;
@@ -35,15 +40,18 @@ public class GetUserSkillsSuccessResponseStatusData {
   }
 
   public GetUserSkillsSuccessResponseStatusData addSkillsItem(GetUserSkillsSuccessResponseStatusDataSkills skillsItem) {
+    if (this.skills == null) {
+      this.skills = new ArrayList<GetUserSkillsSuccessResponseStatusDataSkills>();
+    }
     this.skills.add(skillsItem);
     return this;
   }
 
    /**
-   * skills assigned to any user. Available if dbid parameter is equal to 'skills'.
+   * skills assigned to any user. Available if dbid parameter is equal to &#39;skills&#39;.
    * @return skills
   **/
-  @ApiModelProperty(example = "null", value = "skills assigned to any user. Available if dbid parameter is equal to 'skills'.")
+  @ApiModelProperty(value = "skills assigned to any user. Available if dbid parameter is equal to 'skills'.")
   public List<GetUserSkillsSuccessResponseStatusDataSkills> getSkills() {
     return skills;
   }

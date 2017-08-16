@@ -57,12 +57,19 @@ public class ExportApi {
         this.apiClient = apiClient;
     }
 
-    /* Build call for exportFile */
-    private com.squareup.okhttp.Call exportFileCall(ExportFileData exportFileData, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    /**
+     * Build call for exportFile
+     * @param exportFileData Export File Data (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call exportFileCall(ExportFileData exportFileData, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = exportFileData;
         
         // create path and map variables
-        String localVarPath = "/export_users".replaceAll("\\{format\\}","json");
+        String localVarPath = "/export_users";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
 
@@ -175,12 +182,19 @@ public class ExportApi {
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
-    /* Build call for getExportStatus */
-    private com.squareup.okhttp.Call getExportStatusCall(Integer id, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    /**
+     * Build call for getExportStatus
+     * @param id Previously got export ID. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getExportStatusCall(Integer id, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
-        String localVarPath = "/export_users".replaceAll("\\{format\\}","json");
+        String localVarPath = "/export_users";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         if (id != null)

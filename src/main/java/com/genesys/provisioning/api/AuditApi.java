@@ -55,12 +55,24 @@ public class AuditApi {
         this.apiClient = apiClient;
     }
 
-    /* Build call for getAuditInfo */
-    private com.squareup.okhttp.Call getAuditInfoCall(Integer limit, String asc, String orderBy, String username, String auditId, String auditFileId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    /**
+     * Build call for getAuditInfo
+     * @param limit Limit number of users to fetch (optional)
+     * @param asc Sort results ascending/descending (optional, default to desc)
+     * @param orderBy comma-separated list of fields to sort on, supported: id, createdAt, msg, username  (optional, default to id)
+     * @param username Only users with exact match will pass (optional)
+     * @param auditId Only one row will be displayed with specified ID (optional)
+     * @param auditFileId If specified, sends raw file data with content-type application/octet-stream for specified file-id.  (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getAuditInfoCall(Integer limit, String asc, String orderBy, String username, String auditId, String auditFileId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
-        String localVarPath = "/audit".replaceAll("\\{format\\}","json");
+        String localVarPath = "/audit";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         if (limit != null)

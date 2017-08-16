@@ -14,9 +14,14 @@
 package com.genesys.provisioning.model;
 
 import java.util.Objects;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,7 +29,7 @@ import java.util.List;
  * Map containing parameters to filter and sort users.  Effect: Only users passed the filter will be exported. 
  */
 @ApiModel(description = "Map containing parameters to filter and sort users.  Effect: Only users passed the filter will be exported. ")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-08-16T15:04:06.653Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-08-16T22:58:38.925Z")
 public class ExportFileDataFilterParameters {
   @SerializedName("subresources")
   private String subresources = "skills,devices";
@@ -33,10 +38,10 @@ public class ExportFileDataFilterParameters {
   private String order = null;
 
   @SerializedName("agentGroupFilter")
-  private List<String> agentGroupFilter = new ArrayList<String>();
+  private List<String> agentGroupFilter = null;
 
   @SerializedName("sortBy")
-  private List<String> sortBy = new ArrayList<String>();
+  private List<String> sortBy = null;
 
   public ExportFileDataFilterParameters subresources(String subresources) {
     this.subresources = subresources;
@@ -47,7 +52,7 @@ public class ExportFileDataFilterParameters {
    * Comma-separated list of subresources to include to export.
    * @return subresources
   **/
-  @ApiModelProperty(example = "null", value = "Comma-separated list of subresources to include to export.")
+  @ApiModelProperty(value = "Comma-separated list of subresources to include to export.")
   public String getSubresources() {
     return subresources;
   }
@@ -65,7 +70,7 @@ public class ExportFileDataFilterParameters {
    * Sort order - Ascending or Descending
    * @return order
   **/
-  @ApiModelProperty(example = "null", value = "Sort order - Ascending or Descending")
+  @ApiModelProperty(value = "Sort order - Ascending or Descending")
   public String getOrder() {
     return order;
   }
@@ -80,6 +85,9 @@ public class ExportFileDataFilterParameters {
   }
 
   public ExportFileDataFilterParameters addAgentGroupFilterItem(String agentGroupFilterItem) {
+    if (this.agentGroupFilter == null) {
+      this.agentGroupFilter = new ArrayList<String>();
+    }
     this.agentGroupFilter.add(agentGroupFilterItem);
     return this;
   }
@@ -88,7 +96,7 @@ public class ExportFileDataFilterParameters {
    * Array of group names to which user should be included.
    * @return agentGroupFilter
   **/
-  @ApiModelProperty(example = "null", value = "Array of group names to which user should be included.")
+  @ApiModelProperty(value = "Array of group names to which user should be included.")
   public List<String> getAgentGroupFilter() {
     return agentGroupFilter;
   }
@@ -103,6 +111,9 @@ public class ExportFileDataFilterParameters {
   }
 
   public ExportFileDataFilterParameters addSortByItem(String sortByItem) {
+    if (this.sortBy == null) {
+      this.sortBy = new ArrayList<String>();
+    }
     this.sortBy.add(sortByItem);
     return this;
   }
@@ -111,7 +122,7 @@ public class ExportFileDataFilterParameters {
    * Comma-separated list of fields to sort on.
    * @return sortBy
   **/
-  @ApiModelProperty(example = "null", value = "Comma-separated list of fields to sort on.")
+  @ApiModelProperty(value = "Comma-separated list of fields to sort on.")
   public List<String> getSortBy() {
     return sortBy;
   }

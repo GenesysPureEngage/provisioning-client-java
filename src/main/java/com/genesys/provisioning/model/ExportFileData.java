@@ -15,16 +15,21 @@ package com.genesys.provisioning.model;
 
 import java.util.Objects;
 import com.genesys.provisioning.model.ExportFileDataFilterParameters;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * ExportFileData
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-08-16T15:04:06.653Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-08-16T22:58:38.925Z")
 public class ExportFileData {
   @SerializedName("fields")
   private List<String> fields = new ArrayList<String>();
@@ -52,7 +57,7 @@ public class ExportFileData {
    * Array of user property names to include  Effect: Only these names will be included in exported user structure 
    * @return fields
   **/
-  @ApiModelProperty(example = "null", required = true, value = "Array of user property names to include  Effect: Only these names will be included in exported user structure ")
+  @ApiModelProperty(required = true, value = "Array of user property names to include  Effect: Only these names will be included in exported user structure ")
   public List<String> getFields() {
     return fields;
   }
@@ -70,7 +75,7 @@ public class ExportFileData {
    * Get filterParameters
    * @return filterParameters
   **/
-  @ApiModelProperty(example = "null", value = "")
+  @ApiModelProperty(value = "")
   public ExportFileDataFilterParameters getFilterParameters() {
     return filterParameters;
   }
@@ -93,7 +98,7 @@ public class ExportFileData {
    * List of User IDs to export  Effect: Controls which users will be exported. 
    * @return personDBIDs
   **/
-  @ApiModelProperty(example = "null", required = true, value = "List of User IDs to export  Effect: Controls which users will be exported. ")
+  @ApiModelProperty(required = true, value = "List of User IDs to export  Effect: Controls which users will be exported. ")
   public List<String> getPersonDBIDs() {
     return personDBIDs;
   }
@@ -111,7 +116,7 @@ public class ExportFileData {
    * File Name to save exported users.  Effect: Controls the file name to save. 
    * @return fileName
   **/
-  @ApiModelProperty(example = "null", required = true, value = "File Name to save exported users.  Effect: Controls the file name to save. ")
+  @ApiModelProperty(required = true, value = "File Name to save exported users.  Effect: Controls the file name to save. ")
   public String getFileName() {
     return fileName;
   }

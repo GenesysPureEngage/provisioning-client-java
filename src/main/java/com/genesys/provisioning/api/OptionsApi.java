@@ -58,12 +58,20 @@ public class OptionsApi {
         this.apiClient = apiClient;
     }
 
-    /* Build call for getOptions */
-    private com.squareup.okhttp.Call getOptionsCall(String personDbid, String agentGroupDbid, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    /**
+     * Build call for getOptions
+     * @param personDbid DBID of a person. Options will be merged with the Person&#39;s annex and annexes of it&#39;s agent groups. Mutual with agent_group_dbid. (optional)
+     * @param agentGroupDbid DBID of a person. Options will be merged with the Agent Groups&#39;s annex. Mutual with person_dbid. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getOptionsCall(String personDbid, String agentGroupDbid, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
-        String localVarPath = "/options".replaceAll("\\{format\\}","json");
+        String localVarPath = "/options";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         if (personDbid != null)
@@ -178,12 +186,19 @@ public class OptionsApi {
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
-    /* Build call for modifyOptions */
-    private com.squareup.okhttp.Call modifyOptionsCall(ModifyOptionsData body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    /**
+     * Build call for modifyOptions
+     * @param body Body Data (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call modifyOptionsCall(ModifyOptionsData body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = body;
         
         // create path and map variables
-        String localVarPath = "/options".replaceAll("\\{format\\}","json");
+        String localVarPath = "/options";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
 
@@ -296,12 +311,19 @@ public class OptionsApi {
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
-    /* Build call for updateOptions */
-    private com.squareup.okhttp.Call updateOptionsCall(UpdateOptionsData body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    /**
+     * Build call for updateOptions
+     * @param body Body Data (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call updateOptionsCall(UpdateOptionsData body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = body;
         
         // create path and map variables
-        String localVarPath = "/options".replaceAll("\\{format\\}","json");
+        String localVarPath = "/options";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
 

@@ -14,14 +14,19 @@
 package com.genesys.provisioning.model;
 
 import java.util.Objects;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 
 /**
  * DeleteUserData
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-08-16T15:04:06.653Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-08-16T22:58:38.925Z")
 public class DeleteUserData {
   @SerializedName("keep_places")
   private Boolean keepPlaces = null;
@@ -32,10 +37,10 @@ public class DeleteUserData {
   }
 
    /**
-   * if 'true' or absent, user's places and their DNs will not be deleted  Effect: Controls if user's places and their DNs will be deleted 
+   * if &#39;true&#39; or absent, user&#39;s places and their DNs will not be deleted  Effect: Controls if user&#39;s places and their DNs will be deleted 
    * @return keepPlaces
   **/
-  @ApiModelProperty(example = "null", value = "if 'true' or absent, user's places and their DNs will not be deleted  Effect: Controls if user's places and their DNs will be deleted ")
+  @ApiModelProperty(value = "if 'true' or absent, user's places and their DNs will not be deleted  Effect: Controls if user's places and their DNs will be deleted ")
   public Boolean getKeepPlaces() {
     return keepPlaces;
   }

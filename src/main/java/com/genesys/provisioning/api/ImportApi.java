@@ -57,12 +57,20 @@ public class ImportApi {
         this.apiClient = apiClient;
     }
 
-    /* Build call for getImportStatus */
-    private com.squareup.okhttp.Call getImportStatusCall(String adminName, String tenantName, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    /**
+     * Build call for getImportStatus
+     * @param adminName Admin login. (required)
+     * @param tenantName Tenant name. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getImportStatusCall(String adminName, String tenantName, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
-        String localVarPath = "/import-users/check-status".replaceAll("\\{format\\}","json");
+        String localVarPath = "/import-users/check-status";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         if (adminName != null)
@@ -187,12 +195,20 @@ public class ImportApi {
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
-    /* Build call for importFile */
-    private com.squareup.okhttp.Call importFileCall(File csvfile, Boolean validateBeforeImport, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    /**
+     * Build call for importFile
+     * @param csvfile CSV/XLS file to import. (optional)
+     * @param validateBeforeImport Validate file before actual import. (optional, default to false)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call importFileCall(File csvfile, Boolean validateBeforeImport, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
-        String localVarPath = "/import-users/csv".replaceAll("\\{format\\}","json");
+        String localVarPath = "/import-users/csv";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
 
@@ -307,12 +323,18 @@ public class ImportApi {
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
-    /* Build call for terminateImport */
-    private com.squareup.okhttp.Call terminateImportCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    /**
+     * Build call for terminateImport
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call terminateImportCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
-        String localVarPath = "/import-users/csv".replaceAll("\\{format\\}","json");
+        String localVarPath = "/import-users/csv";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
 
@@ -417,12 +439,19 @@ public class ImportApi {
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
-    /* Build call for validateImportFile */
-    private com.squareup.okhttp.Call validateImportFileCall(File csvfile, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    /**
+     * Build call for validateImportFile
+     * @param csvfile CSV/XLS file to import. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call validateImportFileCall(File csvfile, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
-        String localVarPath = "/import-users/validate-csv".replaceAll("\\{format\\}","json");
+        String localVarPath = "/import-users/validate-csv";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
 
