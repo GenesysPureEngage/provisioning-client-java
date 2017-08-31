@@ -26,7 +26,7 @@ import java.io.IOException;
 /**
  * GetUserSkillsSuccessResponseStatusDataSkills
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-08-31T23:04:34.903Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-08-31T23:14:53.952Z")
 public class GetUserSkillsSuccessResponseStatusDataSkills {
   @SerializedName("DBID")
   private String DBID = null;
