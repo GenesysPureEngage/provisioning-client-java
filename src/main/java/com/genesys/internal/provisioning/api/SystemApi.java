@@ -27,6 +27,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import com.genesys.internal.provisioning.model.ApiErrorResponse;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -34,14 +35,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class DocumentationApi {
+public class SystemApi {
     private ApiClient apiClient;
 
-    public DocumentationApi() {
+    public SystemApi() {
         this(Configuration.getDefaultApiClient());
     }
 
-    public DocumentationApi(ApiClient apiClient) {
+    public SystemApi(ApiClient apiClient) {
         this.apiClient = apiClient;
     }
 
@@ -54,17 +55,19 @@ public class DocumentationApi {
     }
 
     /**
-     * Build call for swaggerDoc
+     * Build call for executeServiceMethod
+     * @param serviceName Service name (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call swaggerDocCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call executeServiceMethodCall(String serviceName, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
-        String localVarPath = "/doc";
+        String localVarPath = "/service-proxy/{serviceName}"
+            .replaceAll("\\{" + "serviceName" + "\\}", apiClient.escapeString(serviceName.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
 
@@ -97,14 +100,19 @@ public class DocumentationApi {
         }
 
         String[] localVarAuthNames = new String[] {  };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call swaggerDocValidateBeforeCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call executeServiceMethodValidateBeforeCall(String serviceName, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'serviceName' is set
+        if (serviceName == null) {
+            throw new ApiException("Missing the required parameter 'serviceName' when calling executeServiceMethod(Async)");
+        }
         
         
-        com.squareup.okhttp.Call call = swaggerDocCall(progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = executeServiceMethodCall(serviceName, progressListener, progressRequestListener);
         return call;
 
         
@@ -114,33 +122,36 @@ public class DocumentationApi {
     }
 
     /**
-     * Returns API description in Swagger format
-     * Returns API description in Swagger format
+     * execute service method on Node to avoid excessive requests from client
+     * This operation will execute service method on Node
+     * @param serviceName Service name (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void swaggerDoc() throws ApiException {
-        swaggerDocWithHttpInfo();
+    public void executeServiceMethod(String serviceName) throws ApiException {
+        executeServiceMethodWithHttpInfo(serviceName);
     }
 
     /**
-     * Returns API description in Swagger format
-     * Returns API description in Swagger format
+     * execute service method on Node to avoid excessive requests from client
+     * This operation will execute service method on Node
+     * @param serviceName Service name (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> swaggerDocWithHttpInfo() throws ApiException {
-        com.squareup.okhttp.Call call = swaggerDocValidateBeforeCall(null, null);
+    public ApiResponse<Void> executeServiceMethodWithHttpInfo(String serviceName) throws ApiException {
+        com.squareup.okhttp.Call call = executeServiceMethodValidateBeforeCall(serviceName, null, null);
         return apiClient.execute(call);
     }
 
     /**
-     * Returns API description in Swagger format (asynchronously)
-     * Returns API description in Swagger format
+     * execute service method on Node to avoid excessive requests from client (asynchronously)
+     * This operation will execute service method on Node
+     * @param serviceName Service name (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call swaggerDocAsync(final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call executeServiceMethodAsync(String serviceName, final ApiCallback<Void> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -161,7 +172,7 @@ public class DocumentationApi {
             };
         }
 
-        com.squareup.okhttp.Call call = swaggerDocValidateBeforeCall(progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = executeServiceMethodValidateBeforeCall(serviceName, progressListener, progressRequestListener);
         apiClient.executeAsync(call, callback);
         return call;
     }
