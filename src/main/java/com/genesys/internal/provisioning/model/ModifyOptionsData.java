@@ -26,7 +26,7 @@ import java.io.IOException;
 /**
  * ModifyOptionsData
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-09-11T18:32:53.026Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-09-11T21:04:11.018Z")
 public class ModifyOptionsData {
   @SerializedName("options")
   private Object options = null;
