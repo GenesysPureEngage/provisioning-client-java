@@ -26,7 +26,7 @@ import java.io.IOException;
 /**
  * LoginData
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-09-27T18:04:16.759Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-09-27T19:04:16.962Z")
 public class LoginData {
   @SerializedName("domain_username")
   private String domainUsername = "domain.com\\login";
