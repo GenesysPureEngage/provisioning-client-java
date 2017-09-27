@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * GetUserSkillsSuccessResponse
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-09-27T17:04:17.399Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-09-27T18:04:16.759Z")
 public class GetUserSkillsSuccessResponse {
   @SerializedName("status")
   private GetUserSkillsSuccessResponseStatus status = null;
