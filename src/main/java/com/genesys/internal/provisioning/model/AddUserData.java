@@ -31,7 +31,7 @@ import java.util.List;
 /**
  * AddUserData
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-09-25T16:38:00.820Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-09-27T16:05:47.034Z")
 public class AddUserData {
   @SerializedName("changePasswordOnNextLogin")
   private Boolean changePasswordOnNextLogin = false;
@@ -47,6 +47,9 @@ public class AddUserData {
 
   @SerializedName("enabled")
   private Boolean enabled = true;
+
+  @SerializedName("folder")
+  private String folder = null;
 
   @SerializedName("userName")
   private String userName = "username123";
@@ -238,6 +241,24 @@ public class AddUserData {
 
   public void setEnabled(Boolean enabled) {
     this.enabled = enabled;
+  }
+
+  public AddUserData folder(String folder) {
+    this.folder = folder;
+    return this;
+  }
+
+   /**
+   * Folder where create a new user. If no folder is specified user will be created in a root folder 
+   * @return folder
+  **/
+  @ApiModelProperty(value = "Folder where create a new user. If no folder is specified user will be created in a root folder ")
+  public String getFolder() {
+    return folder;
+  }
+
+  public void setFolder(String folder) {
+    this.folder = folder;
   }
 
   public AddUserData userName(String userName) {
@@ -609,6 +630,7 @@ public class AddUserData {
         Objects.equals(this.employeeID, addUserData.employeeID) &&
         Objects.equals(this.externalID, addUserData.externalID) &&
         Objects.equals(this.enabled, addUserData.enabled) &&
+        Objects.equals(this.folder, addUserData.folder) &&
         Objects.equals(this.userName, addUserData.userName) &&
         Objects.equals(this.firstName, addUserData.firstName) &&
         Objects.equals(this.lastName, addUserData.lastName) &&
@@ -630,7 +652,7 @@ public class AddUserData {
 
   @Override
   public int hashCode() {
-    return Objects.hash(changePasswordOnNextLogin, emailAddress, employeeID, externalID, enabled, userName, firstName, lastName, loginCode, password, placeNames, isAgent, wwe, switchNames, phones, supportSoftPhone, sipPhoneType, skills, agentGroups, accessGroups, voiceMail, wrapUpTime);
+    return Objects.hash(changePasswordOnNextLogin, emailAddress, employeeID, externalID, enabled, folder, userName, firstName, lastName, loginCode, password, placeNames, isAgent, wwe, switchNames, phones, supportSoftPhone, sipPhoneType, skills, agentGroups, accessGroups, voiceMail, wrapUpTime);
   }
 
 
@@ -644,6 +666,7 @@ public class AddUserData {
     sb.append("    employeeID: ").append(toIndentedString(employeeID)).append("\n");
     sb.append("    externalID: ").append(toIndentedString(externalID)).append("\n");
     sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
+    sb.append("    folder: ").append(toIndentedString(folder)).append("\n");
     sb.append("    userName: ").append(toIndentedString(userName)).append("\n");
     sb.append("    firstName: ").append(toIndentedString(firstName)).append("\n");
     sb.append("    lastName: ").append(toIndentedString(lastName)).append("\n");
