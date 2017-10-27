@@ -31,7 +31,7 @@ import java.util.List;
 /**
  * AddUserData
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-10-27T12:37:58.526Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-10-27T16:02:03.881Z")
 public class AddUserData {
   @SerializedName("changePasswordOnNextLogin")
   private Boolean changePasswordOnNextLogin = false;
