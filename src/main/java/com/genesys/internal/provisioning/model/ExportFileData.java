@@ -29,7 +29,7 @@ import java.util.List;
 /**
  * ExportFileData
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-10-25T18:39:49.386Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-10-27T11:58:47.592Z")
 public class ExportFileData {
   @SerializedName("fields")
   private List<String> fields = new ArrayList<String>();
