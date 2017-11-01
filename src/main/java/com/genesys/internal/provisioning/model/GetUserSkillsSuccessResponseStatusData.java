@@ -29,7 +29,7 @@ import java.util.List;
 /**
  * GetUserSkillsSuccessResponseStatusData
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-10-31T23:59:45.181Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-11-01T08:04:23.048Z")
 public class GetUserSkillsSuccessResponseStatusData {
   @SerializedName("skills")
   private List<GetUserSkillsSuccessResponseStatusDataSkills> skills = null;
