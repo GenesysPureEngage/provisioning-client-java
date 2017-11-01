@@ -27,7 +27,7 @@ import java.math.BigDecimal;
 /**
  * ExportStatusResponseData
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-11-01T15:04:21.231Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-11-01T20:25:44.926Z")
 public class ExportStatusResponseData {
   @SerializedName("id")
   private Integer id = null;
@@ -112,6 +112,6 @@ public class ExportStatusResponseData {
     }
     return o.toString().replace("\n", "\n    ");
   }
-  
+
 }
 

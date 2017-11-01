@@ -75,18 +75,19 @@ public class AuditApi {
         String localVarPath = "/audit";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (limit != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "limit", limit));
+        localVarQueryParams.addAll(apiClient.parameterToPair("limit", limit));
         if (asc != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "asc", asc));
+        localVarQueryParams.addAll(apiClient.parameterToPair("asc", asc));
         if (orderBy != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "orderBy", orderBy));
+        localVarQueryParams.addAll(apiClient.parameterToPair("orderBy", orderBy));
         if (username != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "username", username));
+        localVarQueryParams.addAll(apiClient.parameterToPair("username", username));
         if (auditId != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "audit_id", auditId));
+        localVarQueryParams.addAll(apiClient.parameterToPair("audit_id", auditId));
         if (auditFileId != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "audit_file_id", auditFileId));
+        localVarQueryParams.addAll(apiClient.parameterToPair("audit_file_id", auditFileId));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -117,7 +118,7 @@ public class AuditApi {
         }
 
         String[] localVarAuthNames = new String[] {  };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
     @SuppressWarnings("rawtypes")

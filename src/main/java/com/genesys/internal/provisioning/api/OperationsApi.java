@@ -70,8 +70,9 @@ public class OperationsApi {
         String localVarPath = "/operations/get-used-skills";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (aioId != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "_aioId", aioId));
+        localVarQueryParams.addAll(apiClient.parameterToPair("_aioId", aioId));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -102,7 +103,7 @@ public class OperationsApi {
         }
 
         String[] localVarAuthNames = new String[] {  };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
     @SuppressWarnings("rawtypes")
@@ -202,28 +203,29 @@ public class OperationsApi {
         String localVarPath = "/operations/get-users";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (aioId != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "_aioId", aioId));
+        localVarQueryParams.addAll(apiClient.parameterToPair("_aioId", aioId));
         if (limit != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "limit", limit));
+        localVarQueryParams.addAll(apiClient.parameterToPair("limit", limit));
         if (offset != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "offset", offset));
+        localVarQueryParams.addAll(apiClient.parameterToPair("offset", offset));
         if (order != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "order", order));
+        localVarQueryParams.addAll(apiClient.parameterToPair("order", order));
         if (sortBy != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "sortBy", sortBy));
+        localVarQueryParams.addAll(apiClient.parameterToPair("sortBy", sortBy));
         if (filterName != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "filterName", filterName));
+        localVarQueryParams.addAll(apiClient.parameterToPair("filterName", filterName));
         if (filterParameters != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "filterParameters", filterParameters));
+        localVarQueryParams.addAll(apiClient.parameterToPair("filterParameters", filterParameters));
         if (roles != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "roles", roles));
+        localVarQueryParams.addAll(apiClient.parameterToPair("roles", roles));
         if (skills != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "skills", skills));
+        localVarQueryParams.addAll(apiClient.parameterToPair("skills", skills));
         if (userEnabled != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "userEnabled", userEnabled));
+        localVarQueryParams.addAll(apiClient.parameterToPair("userEnabled", userEnabled));
         if (userValid != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "userValid", userValid));
+        localVarQueryParams.addAll(apiClient.parameterToPair("userValid", userValid));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -254,7 +256,7 @@ public class OperationsApi {
         }
 
         String[] localVarAuthNames = new String[] {  };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
     @SuppressWarnings("rawtypes")

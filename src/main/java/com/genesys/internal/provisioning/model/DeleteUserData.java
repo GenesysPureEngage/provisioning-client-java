@@ -26,7 +26,7 @@ import java.io.IOException;
 /**
  * DeleteUserData
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-11-01T15:04:21.231Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-11-01T20:25:44.926Z")
 public class DeleteUserData {
   @SerializedName("keep_places")
   private Boolean keepPlaces = null;
@@ -41,7 +41,7 @@ public class DeleteUserData {
    * @return keepPlaces
   **/
   @ApiModelProperty(value = "if 'true' or absent, user's places and their DNs will not be deleted  Effect: Controls if user's places and their DNs will be deleted ")
-  public Boolean getKeepPlaces() {
+  public Boolean isKeepPlaces() {
     return keepPlaces;
   }
 
@@ -88,6 +88,6 @@ public class DeleteUserData {
     }
     return o.toString().replace("\n", "\n    ");
   }
-  
+
 }
 

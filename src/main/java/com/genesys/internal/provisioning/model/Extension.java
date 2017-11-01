@@ -26,7 +26,7 @@ import java.io.IOException;
 /**
  * Extension
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-11-01T15:04:21.231Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-11-01T20:25:44.926Z")
 public class Extension {
   @SerializedName("number")
   private String number = null;
@@ -86,7 +86,7 @@ public class Extension {
    * @return isDefault
   **/
   @ApiModelProperty(value = "true/false")
-  public Boolean getIsDefault() {
+  public Boolean isIsDefault() {
     return isDefault;
   }
 
@@ -157,6 +157,6 @@ public class Extension {
     }
     return o.toString().replace("\n", "\n    ");
   }
-  
+
 }
 

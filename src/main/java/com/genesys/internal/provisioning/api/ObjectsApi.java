@@ -77,18 +77,19 @@ public class ObjectsApi {
             .replaceAll("\\{" + "object_type" + "\\}", apiClient.escapeString(objectType.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (dnType != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "dn_type", dnType));
+        localVarQueryParams.addAll(apiClient.parameterToPair("dn_type", dnType));
         if (limit != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "limit", limit));
+        localVarQueryParams.addAll(apiClient.parameterToPair("limit", limit));
         if (offset != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "offset", offset));
+        localVarQueryParams.addAll(apiClient.parameterToPair("offset", offset));
         if (searchTerm != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "search_term", searchTerm));
+        localVarQueryParams.addAll(apiClient.parameterToPair("search_term", searchTerm));
         if (searchKey != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "search_key", searchKey));
+        localVarQueryParams.addAll(apiClient.parameterToPair("search_key", searchKey));
         if (matchMethod != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "match_method", matchMethod));
+        localVarQueryParams.addAll(apiClient.parameterToPair("match_method", matchMethod));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -119,7 +120,7 @@ public class ObjectsApi {
         }
 
         String[] localVarAuthNames = new String[] {  };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
     @SuppressWarnings("rawtypes")

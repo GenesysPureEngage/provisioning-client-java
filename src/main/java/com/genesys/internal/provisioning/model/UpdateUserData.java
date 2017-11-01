@@ -31,7 +31,7 @@ import java.util.List;
 /**
  * UpdateUserData
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-11-01T15:04:21.231Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-11-01T20:25:44.926Z")
 public class UpdateUserData {
   @SerializedName("changePasswordOnNextLogin")
   private Boolean changePasswordOnNextLogin = null;
@@ -163,7 +163,7 @@ public class UpdateUserData {
    * @return changePasswordOnNextLogin
   **/
   @ApiModelProperty(value = "if 'true', user will be asked to change password on first login.  Effect: Controls the value of the corresponding CfgPerson attribute ")
-  public Boolean getChangePasswordOnNextLogin() {
+  public Boolean isChangePasswordOnNextLogin() {
     return changePasswordOnNextLogin;
   }
 
@@ -235,7 +235,7 @@ public class UpdateUserData {
    * @return enabled
   **/
   @ApiModelProperty(value = "User is enabled or disabled.  Effect: Controls the value of the corresponding CfgPerson attribute ")
-  public Boolean getEnabled() {
+  public Boolean isEnabled() {
     return enabled;
   }
 
@@ -465,7 +465,7 @@ public class UpdateUserData {
    * @return supportSoftPhone
   **/
   @ApiModelProperty(value = "Enable SIP Phone, true/false.  Effect: Writes corresponding information to the TServer annex of the created DNs (see sipPhoneType) ")
-  public Boolean getSupportSoftPhone() {
+  public Boolean isSupportSoftPhone() {
     return supportSoftPhone;
   }
 
@@ -770,6 +770,6 @@ public class UpdateUserData {
     }
     return o.toString().replace("\n", "\n    ");
   }
-  
+
 }
 
