@@ -29,7 +29,7 @@ import java.util.List;
 /**
  * ApiAuditSuccessResponseData
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-11-10T21:20:06.212Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-11-12T07:48:38.611Z")
 public class ApiAuditSuccessResponseData {
   @SerializedName("rows")
   private List<ApiAuditSuccessResponseDataRows> rows = new ArrayList<ApiAuditSuccessResponseDataRows>();
