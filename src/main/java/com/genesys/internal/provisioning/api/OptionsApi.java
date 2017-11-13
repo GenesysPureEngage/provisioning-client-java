@@ -69,7 +69,7 @@ public class OptionsApi {
      */
     public com.squareup.okhttp.Call getOptionsCall(String personDbid, String agentGroupDbid, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
-        
+
         // create path and map variables
         String localVarPath = "/options";
 
@@ -111,18 +111,14 @@ public class OptionsApi {
         String[] localVarAuthNames = new String[] {  };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
-    
+
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getOptionsValidateBeforeCall(String personDbid, String agentGroupDbid, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
-        
+
         com.squareup.okhttp.Call call = getOptionsCall(personDbid, agentGroupDbid, progressListener, progressRequestListener);
         return call;
 
-        
-        
-        
-        
     }
 
     /**
@@ -197,7 +193,7 @@ public class OptionsApi {
      */
     public com.squareup.okhttp.Call modifyOptionsCall(ModifyOptionsData body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = body;
-        
+
         // create path and map variables
         String localVarPath = "/options";
 
@@ -235,7 +231,7 @@ public class OptionsApi {
         String[] localVarAuthNames = new String[] { "basicAuth" };
         return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
-    
+
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call modifyOptionsValidateBeforeCall(ModifyOptionsData body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
@@ -244,14 +240,10 @@ public class OptionsApi {
             throw new ApiException("Missing the required parameter 'body' when calling modifyOptions(Async)");
         }
         
-        
+
         com.squareup.okhttp.Call call = modifyOptionsCall(body, progressListener, progressRequestListener);
         return call;
 
-        
-        
-        
-        
     }
 
     /**
@@ -323,7 +315,7 @@ public class OptionsApi {
      */
     public com.squareup.okhttp.Call updateOptionsCall(UpdateOptionsData body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = body;
-        
+
         // create path and map variables
         String localVarPath = "/options";
 
@@ -361,7 +353,7 @@ public class OptionsApi {
         String[] localVarAuthNames = new String[] { "basicAuth" };
         return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
-    
+
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call updateOptionsValidateBeforeCall(UpdateOptionsData body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
@@ -370,14 +362,10 @@ public class OptionsApi {
             throw new ApiException("Missing the required parameter 'body' when calling updateOptions(Async)");
         }
         
-        
+
         com.squareup.okhttp.Call call = updateOptionsCall(body, progressListener, progressRequestListener);
         return call;
 
-        
-        
-        
-        
     }
 
     /**

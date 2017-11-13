@@ -67,7 +67,7 @@ public class ExportApi {
      */
     public com.squareup.okhttp.Call exportFileCall(ExportFileData exportFileData, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = exportFileData;
-        
+
         // create path and map variables
         String localVarPath = "/export_users";
 
@@ -105,7 +105,7 @@ public class ExportApi {
         String[] localVarAuthNames = new String[] {  };
         return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
-    
+
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call exportFileValidateBeforeCall(ExportFileData exportFileData, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
@@ -114,14 +114,10 @@ public class ExportApi {
             throw new ApiException("Missing the required parameter 'exportFileData' when calling exportFile(Async)");
         }
         
-        
+
         com.squareup.okhttp.Call call = exportFileCall(exportFileData, progressListener, progressRequestListener);
         return call;
 
-        
-        
-        
-        
     }
 
     /**
@@ -193,7 +189,7 @@ public class ExportApi {
      */
     public com.squareup.okhttp.Call getExportStatusCall(Integer id, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
-        
+
         // create path and map variables
         String localVarPath = "/export_users";
 
@@ -233,7 +229,7 @@ public class ExportApi {
         String[] localVarAuthNames = new String[] {  };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
-    
+
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getExportStatusValidateBeforeCall(Integer id, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
@@ -242,14 +238,10 @@ public class ExportApi {
             throw new ApiException("Missing the required parameter 'id' when calling getExportStatus(Async)");
         }
         
-        
+
         com.squareup.okhttp.Call call = getExportStatusCall(id, progressListener, progressRequestListener);
         return call;
 
-        
-        
-        
-        
     }
 
     /**

@@ -70,7 +70,7 @@ public class AuditApi {
      */
     public com.squareup.okhttp.Call getAuditInfoCall(Integer limit, String asc, String orderBy, String username, String auditId, String auditFileId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
-        
+
         // create path and map variables
         String localVarPath = "/audit";
 
@@ -120,18 +120,14 @@ public class AuditApi {
         String[] localVarAuthNames = new String[] {  };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
-    
+
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getAuditInfoValidateBeforeCall(Integer limit, String asc, String orderBy, String username, String auditId, String auditFileId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
-        
+
         com.squareup.okhttp.Call call = getAuditInfoCall(limit, asc, orderBy, username, auditId, auditFileId, progressListener, progressRequestListener);
         return call;
 
-        
-        
-        
-        
     }
 
     /**

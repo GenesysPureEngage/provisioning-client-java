@@ -64,7 +64,7 @@ public class SystemApi {
      */
     public com.squareup.okhttp.Call executeServiceMethodCall(String serviceName, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
-        
+
         // create path and map variables
         String localVarPath = "/service-proxy/{serviceName}"
             .replaceAll("\\{" + "serviceName" + "\\}", apiClient.escapeString(serviceName.toString()));
@@ -103,7 +103,7 @@ public class SystemApi {
         String[] localVarAuthNames = new String[] {  };
         return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
-    
+
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call executeServiceMethodValidateBeforeCall(String serviceName, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
@@ -112,14 +112,10 @@ public class SystemApi {
             throw new ApiException("Missing the required parameter 'serviceName' when calling executeServiceMethod(Async)");
         }
         
-        
+
         com.squareup.okhttp.Call call = executeServiceMethodCall(serviceName, progressListener, progressRequestListener);
         return call;
 
-        
-        
-        
-        
     }
 
     /**

@@ -71,7 +71,7 @@ public class ObjectsApi {
      */
     public com.squareup.okhttp.Call getObjectCall(String objectType, String dnType, Integer limit, Integer offset, String searchTerm, String searchKey, String matchMethod, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
-        
+
         // create path and map variables
         String localVarPath = "/objects/{object_type}"
             .replaceAll("\\{" + "object_type" + "\\}", apiClient.escapeString(objectType.toString()));
@@ -122,7 +122,7 @@ public class ObjectsApi {
         String[] localVarAuthNames = new String[] {  };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
-    
+
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getObjectValidateBeforeCall(String objectType, String dnType, Integer limit, Integer offset, String searchTerm, String searchKey, String matchMethod, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
@@ -131,14 +131,10 @@ public class ObjectsApi {
             throw new ApiException("Missing the required parameter 'objectType' when calling getObject(Async)");
         }
         
-        
+
         com.squareup.okhttp.Call call = getObjectCall(objectType, dnType, limit, offset, searchTerm, searchKey, matchMethod, progressListener, progressRequestListener);
         return call;
 
-        
-        
-        
-        
     }
 
     /**

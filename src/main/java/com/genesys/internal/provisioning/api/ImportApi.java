@@ -68,7 +68,7 @@ public class ImportApi {
      */
     public com.squareup.okhttp.Call getImportStatusCall(String adminName, String tenantName, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
-        
+
         // create path and map variables
         String localVarPath = "/import-users/check-status";
 
@@ -110,7 +110,7 @@ public class ImportApi {
         String[] localVarAuthNames = new String[] {  };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
-    
+
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getImportStatusValidateBeforeCall(String adminName, String tenantName, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
@@ -124,14 +124,10 @@ public class ImportApi {
             throw new ApiException("Missing the required parameter 'tenantName' when calling getImportStatus(Async)");
         }
         
-        
+
         com.squareup.okhttp.Call call = getImportStatusCall(adminName, tenantName, progressListener, progressRequestListener);
         return call;
 
-        
-        
-        
-        
     }
 
     /**
@@ -207,7 +203,7 @@ public class ImportApi {
      */
     public com.squareup.okhttp.Call importFileCall(File csvfile, Boolean validateBeforeImport, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
-        
+
         // create path and map variables
         String localVarPath = "/import-users/csv";
 
@@ -249,18 +245,14 @@ public class ImportApi {
         String[] localVarAuthNames = new String[] {  };
         return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
-    
+
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call importFileValidateBeforeCall(File csvfile, Boolean validateBeforeImport, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
-        
+
         com.squareup.okhttp.Call call = importFileCall(csvfile, validateBeforeImport, progressListener, progressRequestListener);
         return call;
 
-        
-        
-        
-        
     }
 
     /**
@@ -334,7 +326,7 @@ public class ImportApi {
      */
     public com.squareup.okhttp.Call terminateImportCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
-        
+
         // create path and map variables
         String localVarPath = "/import-users/csv";
 
@@ -372,18 +364,14 @@ public class ImportApi {
         String[] localVarAuthNames = new String[] {  };
         return apiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
-    
+
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call terminateImportValidateBeforeCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
-        
+
         com.squareup.okhttp.Call call = terminateImportCall(progressListener, progressRequestListener);
         return call;
 
-        
-        
-        
-        
     }
 
     /**
@@ -452,7 +440,7 @@ public class ImportApi {
      */
     public com.squareup.okhttp.Call validateImportFileCall(File csvfile, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
-        
+
         // create path and map variables
         String localVarPath = "/import-users/validate-csv";
 
@@ -492,18 +480,14 @@ public class ImportApi {
         String[] localVarAuthNames = new String[] {  };
         return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
-    
+
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call validateImportFileValidateBeforeCall(File csvfile, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
-        
+
         com.squareup.okhttp.Call call = validateImportFileCall(csvfile, progressListener, progressRequestListener);
         return call;
 
-        
-        
-        
-        
     }
 
     /**

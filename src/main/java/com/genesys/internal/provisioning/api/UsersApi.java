@@ -70,7 +70,7 @@ public class UsersApi {
      */
     public com.squareup.okhttp.Call addUserCall(AddUserData body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = body;
-        
+
         // create path and map variables
         String localVarPath = "/users";
 
@@ -108,7 +108,7 @@ public class UsersApi {
         String[] localVarAuthNames = new String[] {  };
         return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
-    
+
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call addUserValidateBeforeCall(AddUserData body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
@@ -117,14 +117,10 @@ public class UsersApi {
             throw new ApiException("Missing the required parameter 'body' when calling addUser(Async)");
         }
         
-        
+
         com.squareup.okhttp.Call call = addUserCall(body, progressListener, progressRequestListener);
         return call;
 
-        
-        
-        
-        
     }
 
     /**
@@ -197,7 +193,7 @@ public class UsersApi {
      */
     public com.squareup.okhttp.Call deleteUserCall(String dbid, DeleteUserData deleteUserData, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = deleteUserData;
-        
+
         // create path and map variables
         String localVarPath = "/users/{dbid}"
             .replaceAll("\\{" + "dbid" + "\\}", apiClient.escapeString(dbid.toString()));
@@ -236,7 +232,7 @@ public class UsersApi {
         String[] localVarAuthNames = new String[] {  };
         return apiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
-    
+
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call deleteUserValidateBeforeCall(String dbid, DeleteUserData deleteUserData, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
@@ -250,14 +246,10 @@ public class UsersApi {
             throw new ApiException("Missing the required parameter 'deleteUserData' when calling deleteUser(Async)");
         }
         
-        
+
         com.squareup.okhttp.Call call = deleteUserCall(dbid, deleteUserData, progressListener, progressRequestListener);
         return call;
 
-        
-        
-        
-        
     }
 
     /**
@@ -331,7 +323,7 @@ public class UsersApi {
      */
     public com.squareup.okhttp.Call getCurrentUserCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
-        
+
         // create path and map variables
         String localVarPath = "/users/me";
 
@@ -369,18 +361,14 @@ public class UsersApi {
         String[] localVarAuthNames = new String[] {  };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
-    
+
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getCurrentUserValidateBeforeCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
-        
+
         com.squareup.okhttp.Call call = getCurrentUserCall(progressListener, progressRequestListener);
         return call;
 
-        
-        
-        
-        
     }
 
     /**
@@ -449,7 +437,7 @@ public class UsersApi {
      */
     public com.squareup.okhttp.Call getUserCall(String dbid, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
-        
+
         // create path and map variables
         String localVarPath = "/users/{dbid}"
             .replaceAll("\\{" + "dbid" + "\\}", apiClient.escapeString(dbid.toString()));
@@ -488,7 +476,7 @@ public class UsersApi {
         String[] localVarAuthNames = new String[] {  };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
-    
+
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getUserValidateBeforeCall(String dbid, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
@@ -497,14 +485,10 @@ public class UsersApi {
             throw new ApiException("Missing the required parameter 'dbid' when calling getUser(Async)");
         }
         
-        
+
         com.squareup.okhttp.Call call = getUserCall(dbid, progressListener, progressRequestListener);
         return call;
 
-        
-        
-        
-        
     }
 
     /**
@@ -575,7 +559,7 @@ public class UsersApi {
      */
     public com.squareup.okhttp.Call getUserSkillsCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
-        
+
         // create path and map variables
         String localVarPath = "/users/skills";
 
@@ -613,18 +597,14 @@ public class UsersApi {
         String[] localVarAuthNames = new String[] {  };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
-    
+
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getUserSkillsValidateBeforeCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
-        
+
         com.squareup.okhttp.Call call = getUserSkillsCall(progressListener, progressRequestListener);
         return call;
 
-        
-        
-        
-        
     }
 
     /**
@@ -702,7 +682,7 @@ public class UsersApi {
      */
     public com.squareup.okhttp.Call getUsersCall(Integer limit, Integer offset, String order, String sortBy, String filterName, String filterParameters, String roles, String skills, Boolean userEnabled, String userValid, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
-        
+
         // create path and map variables
         String localVarPath = "/users";
 
@@ -760,18 +740,14 @@ public class UsersApi {
         String[] localVarAuthNames = new String[] {  };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
-    
+
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getUsersValidateBeforeCall(Integer limit, Integer offset, String order, String sortBy, String filterName, String filterParameters, String roles, String skills, Boolean userEnabled, String userValid, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
-        
+
         com.squareup.okhttp.Call call = getUsersCall(limit, offset, order, sortBy, filterName, filterParameters, roles, skills, userEnabled, userValid, progressListener, progressRequestListener);
         return call;
 
-        
-        
-        
-        
     }
 
     /**
@@ -871,7 +847,7 @@ public class UsersApi {
      */
     public com.squareup.okhttp.Call updateUserCall(String dbid, UpdateUserData updateUserData, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = updateUserData;
-        
+
         // create path and map variables
         String localVarPath = "/users/{dbid}"
             .replaceAll("\\{" + "dbid" + "\\}", apiClient.escapeString(dbid.toString()));
@@ -910,7 +886,7 @@ public class UsersApi {
         String[] localVarAuthNames = new String[] {  };
         return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
-    
+
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call updateUserValidateBeforeCall(String dbid, UpdateUserData updateUserData, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
@@ -924,14 +900,10 @@ public class UsersApi {
             throw new ApiException("Missing the required parameter 'updateUserData' when calling updateUser(Async)");
         }
         
-        
+
         com.squareup.okhttp.Call call = updateUserCall(dbid, updateUserData, progressListener, progressRequestListener);
         return call;
 
-        
-        
-        
-        
     }
 
     /**

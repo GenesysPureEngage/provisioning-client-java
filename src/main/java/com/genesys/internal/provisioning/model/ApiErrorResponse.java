@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * ApiErrorResponse
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-11-12T22:04:38.786Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-11-13T19:20:13.805Z")
 public class ApiErrorResponse {
   @SerializedName("status")
   private ApiErrorResponseStatus status = null;
@@ -41,7 +41,7 @@ public class ApiErrorResponse {
    * Get status
    * @return status
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
   public ApiErrorResponseStatus getStatus() {
     return status;
   }

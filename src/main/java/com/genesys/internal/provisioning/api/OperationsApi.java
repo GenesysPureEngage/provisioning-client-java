@@ -65,7 +65,7 @@ public class OperationsApi {
      */
     public com.squareup.okhttp.Call getUsedSkillsAsyncCall(String aioId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
-        
+
         // create path and map variables
         String localVarPath = "/operations/get-used-skills";
 
@@ -105,18 +105,14 @@ public class OperationsApi {
         String[] localVarAuthNames = new String[] {  };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
-    
+
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getUsedSkillsAsyncValidateBeforeCall(String aioId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
-        
+
         com.squareup.okhttp.Call call = getUsedSkillsAsyncCall(aioId, progressListener, progressRequestListener);
         return call;
 
-        
-        
-        
-        
     }
 
     /**
@@ -198,7 +194,7 @@ public class OperationsApi {
      */
     public com.squareup.okhttp.Call getUsersAsyncCall(String aioId, Integer limit, Integer offset, String order, String sortBy, String filterName, String filterParameters, String roles, String skills, Boolean userEnabled, String userValid, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
-        
+
         // create path and map variables
         String localVarPath = "/operations/get-users";
 
@@ -258,18 +254,14 @@ public class OperationsApi {
         String[] localVarAuthNames = new String[] {  };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
-    
+
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getUsersAsyncValidateBeforeCall(String aioId, Integer limit, Integer offset, String order, String sortBy, String filterName, String filterParameters, String roles, String skills, Boolean userEnabled, String userValid, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
-        
+
         com.squareup.okhttp.Call call = getUsersAsyncCall(aioId, limit, offset, order, sortBy, filterName, filterParameters, roles, skills, userEnabled, userValid, progressListener, progressRequestListener);
         return call;
 
-        
-        
-        
-        
     }
 
     /**
