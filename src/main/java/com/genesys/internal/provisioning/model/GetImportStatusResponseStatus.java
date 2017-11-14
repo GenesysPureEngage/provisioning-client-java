@@ -27,7 +27,7 @@ import java.math.BigDecimal;
 /**
  * GetImportStatusResponseStatus
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-11-14T21:04:43.377Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-11-14T22:46:34.287Z")
 public class GetImportStatusResponseStatus {
   @SerializedName("code")
   private BigDecimal code = null;
