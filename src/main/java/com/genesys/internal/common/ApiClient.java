@@ -52,7 +52,7 @@ import com.genesys.internal.common.auth.OAuth;
 
 public class ApiClient {
 
-    private String basePath = "https://localhost/provisioning/v3";
+    private String basePath = "http://localhost/provisioning/v3";
     private boolean debugging = false;
     private Map<String, String> defaultHeaderMap = new HashMap<String, String>();
     private String tempFolderPath = null;
@@ -89,7 +89,7 @@ public class ApiClient {
 
         // Setup authentications (key: authentication name, value: authentication).
         authentications = new HashMap<String, Authentication>();
-        authentications.put("basicAuth", new HttpBasicAuth());
+        authentications.put("Authorization", new ApiKeyAuth("header", "Authorization"));
         // Prevent the authentications from being modified.
         authentications = Collections.unmodifiableMap(authentications);
     }
@@ -106,7 +106,7 @@ public class ApiClient {
     /**
      * Set base path
      *
-     * @param basePath Base path of the URL (e.g https://localhost/provisioning/v3
+     * @param basePath Base path of the URL (e.g http://localhost/provisioning/v3
      * @return An instance of OkHttpClient
      */
     public ApiClient setBasePath(String basePath) {
