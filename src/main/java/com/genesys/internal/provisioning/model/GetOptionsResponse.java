@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * GetOptionsResponse
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-11-20T20:47:12.749Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-11-21T00:04:43.031Z")
 public class GetOptionsResponse {
   @SerializedName("code")
   private Integer code = null;
