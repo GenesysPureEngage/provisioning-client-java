@@ -26,7 +26,7 @@ import java.io.IOException;
 /**
  * Skill
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-11-22T14:04:52.744Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-11-22T15:04:34.958Z")
 public class Skill {
   @SerializedName("level")
   private Integer level = null;
