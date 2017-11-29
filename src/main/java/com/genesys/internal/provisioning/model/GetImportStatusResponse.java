@@ -28,7 +28,7 @@ import java.io.IOException;
 /**
  * GetImportStatusResponse
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-11-29T19:04:45.085Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-11-29T21:04:43.303Z")
 public class GetImportStatusResponse {
   @SerializedName("status")
   private GetImportStatusResponseStatus status = null;
