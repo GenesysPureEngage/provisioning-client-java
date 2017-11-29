@@ -26,7 +26,7 @@ import java.io.IOException;
 /**
  * Extension
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-11-29T10:05:08.921Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-11-29T14:04:44.521Z")
 public class Extension {
   @SerializedName("number")
   private String number = null;
