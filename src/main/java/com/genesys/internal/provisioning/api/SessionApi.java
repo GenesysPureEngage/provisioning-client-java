@@ -59,7 +59,7 @@ public class SessionApi {
 
     /**
      * Build call for initializeProvisioning
-     * @param code Authentication code recieved from the Auth service (required)
+     * @param code Authentication code received from the Auth service (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -123,7 +123,7 @@ public class SessionApi {
     /**
      * Authenticate user
      * Initialize-provisioning operation will create a new sessionId and set default.yml:common.cookieName cookie (PROVISIONING_SESSIONID by default). 
-     * @param code Authentication code recieved from the Auth service (required)
+     * @param code Authentication code received from the Auth service (required)
      * @return LoginSuccessResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -135,7 +135,7 @@ public class SessionApi {
     /**
      * Authenticate user
      * Initialize-provisioning operation will create a new sessionId and set default.yml:common.cookieName cookie (PROVISIONING_SESSIONID by default). 
-     * @param code Authentication code recieved from the Auth service (required)
+     * @param code Authentication code received from the Auth service (required)
      * @return ApiResponse&lt;LoginSuccessResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -148,7 +148,7 @@ public class SessionApi {
     /**
      * Authenticate user (asynchronously)
      * Initialize-provisioning operation will create a new sessionId and set default.yml:common.cookieName cookie (PROVISIONING_SESSIONID by default). 
-     * @param code Authentication code recieved from the Auth service (required)
+     * @param code Authentication code received from the Auth service (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

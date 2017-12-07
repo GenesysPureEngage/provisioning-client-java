@@ -234,7 +234,7 @@ public class OptionsApi {
             });
         }
 
-        String[] localVarAuthNames = new String[] { "basicAuth" };
+        String[] localVarAuthNames = new String[] {  };
         return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
 
@@ -356,7 +356,7 @@ public class OptionsApi {
             });
         }
 
-        String[] localVarAuthNames = new String[] { "basicAuth" };
+        String[] localVarAuthNames = new String[] {  };
         return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
 
