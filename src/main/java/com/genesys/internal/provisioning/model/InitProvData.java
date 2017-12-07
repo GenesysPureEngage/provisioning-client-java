@@ -14,7 +14,6 @@
 package com.genesys.internal.provisioning.model;
 
 import java.util.Objects;
-import com.genesys.internal.provisioning.model.ApiSuccessResponseStatus;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -25,29 +24,29 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * ApiSuccessResponse
+ * InitProvData
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-12-07T19:29:43.022Z")
-public class ApiSuccessResponse {
-  @SerializedName("status")
-  private ApiSuccessResponseStatus status = null;
+public class InitProvData {
+  @SerializedName("code")
+  private String code = null;
 
-  public ApiSuccessResponse status(ApiSuccessResponseStatus status) {
-    this.status = status;
+  public InitProvData code(String code) {
+    this.code = code;
     return this;
   }
 
    /**
-   * Get status
-   * @return status
+   * Authentication code received from the Auth service. 
+   * @return code
   **/
-  @ApiModelProperty(value = "")
-  public ApiSuccessResponseStatus getStatus() {
-    return status;
+  @ApiModelProperty(required = true, value = "Authentication code received from the Auth service. ")
+  public String getCode() {
+    return code;
   }
 
-  public void setStatus(ApiSuccessResponseStatus status) {
-    this.status = status;
+  public void setCode(String code) {
+    this.code = code;
   }
 
 
@@ -59,22 +58,22 @@ public class ApiSuccessResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ApiSuccessResponse apiSuccessResponse = (ApiSuccessResponse) o;
-    return Objects.equals(this.status, apiSuccessResponse.status);
+    InitProvData initProvData = (InitProvData) o;
+    return Objects.equals(this.code, initProvData.code);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(status);
+    return Objects.hash(code);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ApiSuccessResponse {\n");
+    sb.append("class InitProvData {\n");
     
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -14,7 +14,6 @@
 package com.genesys.internal.provisioning.model;
 
 import java.util.Objects;
-import com.genesys.internal.provisioning.model.ApiSuccessResponseStatus;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -25,29 +24,29 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * ApiSuccessResponse
+ * LoginSuccessResponseData
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-12-07T19:29:43.022Z")
-public class ApiSuccessResponse {
-  @SerializedName("status")
-  private ApiSuccessResponseStatus status = null;
+public class LoginSuccessResponseData {
+  @SerializedName("sessionId")
+  private String sessionId = null;
 
-  public ApiSuccessResponse status(ApiSuccessResponseStatus status) {
-    this.status = status;
+  public LoginSuccessResponseData sessionId(String sessionId) {
+    this.sessionId = sessionId;
     return this;
   }
 
    /**
-   * Get status
-   * @return status
+   * Generated session ID
+   * @return sessionId
   **/
-  @ApiModelProperty(value = "")
-  public ApiSuccessResponseStatus getStatus() {
-    return status;
+  @ApiModelProperty(value = "Generated session ID")
+  public String getSessionId() {
+    return sessionId;
   }
 
-  public void setStatus(ApiSuccessResponseStatus status) {
-    this.status = status;
+  public void setSessionId(String sessionId) {
+    this.sessionId = sessionId;
   }
 
 
@@ -59,22 +58,22 @@ public class ApiSuccessResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ApiSuccessResponse apiSuccessResponse = (ApiSuccessResponse) o;
-    return Objects.equals(this.status, apiSuccessResponse.status);
+    LoginSuccessResponseData loginSuccessResponseData = (LoginSuccessResponseData) o;
+    return Objects.equals(this.sessionId, loginSuccessResponseData.sessionId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(status);
+    return Objects.hash(sessionId);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ApiSuccessResponse {\n");
+    sb.append("class LoginSuccessResponseData {\n");
     
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    sessionId: ").append(toIndentedString(sessionId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

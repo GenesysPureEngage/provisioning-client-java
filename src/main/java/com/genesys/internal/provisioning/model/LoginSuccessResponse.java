@@ -15,6 +15,7 @@ package com.genesys.internal.provisioning.model;
 
 import java.util.Objects;
 import com.genesys.internal.provisioning.model.ApiSuccessResponseStatus;
+import com.genesys.internal.provisioning.model.LoginSuccessResponseData;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -25,14 +26,17 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * ApiSuccessResponse
+ * LoginSuccessResponse
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-12-07T19:29:43.022Z")
-public class ApiSuccessResponse {
+public class LoginSuccessResponse {
   @SerializedName("status")
   private ApiSuccessResponseStatus status = null;
 
-  public ApiSuccessResponse status(ApiSuccessResponseStatus status) {
+  @SerializedName("data")
+  private LoginSuccessResponseData data = null;
+
+  public LoginSuccessResponse status(ApiSuccessResponseStatus status) {
     this.status = status;
     return this;
   }
@@ -50,6 +54,24 @@ public class ApiSuccessResponse {
     this.status = status;
   }
 
+  public LoginSuccessResponse data(LoginSuccessResponseData data) {
+    this.data = data;
+    return this;
+  }
+
+   /**
+   * Get data
+   * @return data
+  **/
+  @ApiModelProperty(value = "")
+  public LoginSuccessResponseData getData() {
+    return data;
+  }
+
+  public void setData(LoginSuccessResponseData data) {
+    this.data = data;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -59,22 +81,24 @@ public class ApiSuccessResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ApiSuccessResponse apiSuccessResponse = (ApiSuccessResponse) o;
-    return Objects.equals(this.status, apiSuccessResponse.status);
+    LoginSuccessResponse loginSuccessResponse = (LoginSuccessResponse) o;
+    return Objects.equals(this.status, loginSuccessResponse.status) &&
+        Objects.equals(this.data, loginSuccessResponse.data);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(status);
+    return Objects.hash(status, data);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ApiSuccessResponse {\n");
+    sb.append("class LoginSuccessResponse {\n");
     
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("}");
     return sb.toString();
   }
