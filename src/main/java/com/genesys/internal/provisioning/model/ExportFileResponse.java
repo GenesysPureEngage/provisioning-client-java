@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * ExportFileResponse
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-12-08T10:29:11.444Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-12-08T20:04:57.131Z")
 public class ExportFileResponse {
   @SerializedName("code")
   private Integer code = null;
