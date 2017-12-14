@@ -26,7 +26,7 @@ import java.io.IOException;
 /**
  * DeleteUserData
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-12-14T21:04:33.150Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-12-14T21:44:36.308Z")
 public class DeleteUserData {
   @SerializedName("keep_places")
   private String keepPlaces = null;
