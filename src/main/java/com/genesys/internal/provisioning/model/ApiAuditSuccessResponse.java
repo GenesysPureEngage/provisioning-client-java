@@ -28,7 +28,7 @@ import java.math.BigDecimal;
 /**
  * ApiAuditSuccessResponse
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-12-14T23:18:16.206Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-12-15T13:43:09.461Z")
 public class ApiAuditSuccessResponse {
   @SerializedName("code")
   private BigDecimal code = null;
