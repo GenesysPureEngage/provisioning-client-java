@@ -29,7 +29,7 @@ import java.util.List;
  * A map containing parameters to filter and sort users. Only users that match the filter are exported. 
  */
 @ApiModel(description = "A map containing parameters to filter and sort users. Only users that match the filter are exported. ")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-12-15T20:12:59.466Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-12-15T21:18:47.792Z")
 public class ExportFileDataFilterParameters {
   @SerializedName("agentGroupFilter")
   private List<String> agentGroupFilter = null;
