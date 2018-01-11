@@ -189,7 +189,7 @@ public class UsersApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call deleteUserCall(String dbid, String keepPlaces, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call deleteUserCall(String dbid, Boolean keepPlaces, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -234,7 +234,7 @@ public class UsersApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call deleteUserValidateBeforeCall(String dbid, String keepPlaces, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call deleteUserValidateBeforeCall(String dbid, Boolean keepPlaces, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'dbid' is set
         if (dbid == null) {
@@ -255,7 +255,7 @@ public class UsersApi {
      * @return ApiSuccessResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiSuccessResponse deleteUser(String dbid, String keepPlaces) throws ApiException {
+    public ApiSuccessResponse deleteUser(String dbid, Boolean keepPlaces) throws ApiException {
         ApiResponse<ApiSuccessResponse> resp = deleteUserWithHttpInfo(dbid, keepPlaces);
         return resp.getData();
     }
@@ -268,7 +268,7 @@ public class UsersApi {
      * @return ApiResponse&lt;ApiSuccessResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiSuccessResponse> deleteUserWithHttpInfo(String dbid, String keepPlaces) throws ApiException {
+    public ApiResponse<ApiSuccessResponse> deleteUserWithHttpInfo(String dbid, Boolean keepPlaces) throws ApiException {
         com.squareup.okhttp.Call call = deleteUserValidateBeforeCall(dbid, keepPlaces, null, null);
         Type localVarReturnType = new TypeToken<ApiSuccessResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -283,7 +283,7 @@ public class UsersApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call deleteUserAsync(String dbid, String keepPlaces, final ApiCallback<ApiSuccessResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call deleteUserAsync(String dbid, Boolean keepPlaces, final ApiCallback<ApiSuccessResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
