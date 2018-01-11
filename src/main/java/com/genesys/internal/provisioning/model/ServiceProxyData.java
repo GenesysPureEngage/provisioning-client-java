@@ -24,50 +24,71 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * ApiErrorResponseStatus
+ * ServiceProxyData
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-01-11T10:04:40.122Z")
-public class ApiErrorResponseStatus {
-  @SerializedName("code")
-  private Integer code = null;
+public class ServiceProxyData {
+  @SerializedName("service")
+  private String service = null;
 
-  @SerializedName("message")
-  private String message = null;
+  @SerializedName("method")
+  private String method = null;
 
-  public ApiErrorResponseStatus code(Integer code) {
-    this.code = code;
+  @SerializedName("args")
+  private Object args = null;
+
+  public ServiceProxyData service(String service) {
+    this.service = service;
     return this;
   }
 
    /**
-   * On error will provide a code that can be used to get more detail about the error.
-   * @return code
+   * Service name
+   * @return service
   **/
-  @ApiModelProperty(value = "On error will provide a code that can be used to get more detail about the error.")
-  public Integer getCode() {
-    return code;
+  @ApiModelProperty(required = true, value = "Service name")
+  public String getService() {
+    return service;
   }
 
-  public void setCode(Integer code) {
-    this.code = code;
+  public void setService(String service) {
+    this.service = service;
   }
 
-  public ApiErrorResponseStatus message(String message) {
-    this.message = message;
+  public ServiceProxyData method(String method) {
+    this.method = method;
     return this;
   }
 
    /**
-   * On error will provide a message with more detail about the error. Keep in mind that the error message will be fairly general and internal details are not exposed.
-   * @return message
+   * Method name
+   * @return method
   **/
-  @ApiModelProperty(value = "On error will provide a message with more detail about the error. Keep in mind that the error message will be fairly general and internal details are not exposed.")
-  public String getMessage() {
-    return message;
+  @ApiModelProperty(required = true, value = "Method name")
+  public String getMethod() {
+    return method;
   }
 
-  public void setMessage(String message) {
-    this.message = message;
+  public void setMethod(String method) {
+    this.method = method;
+  }
+
+  public ServiceProxyData args(Object args) {
+    this.args = args;
+    return this;
+  }
+
+   /**
+   * Optional method arguments array
+   * @return args
+  **/
+  @ApiModelProperty(value = "Optional method arguments array")
+  public Object getArgs() {
+    return args;
+  }
+
+  public void setArgs(Object args) {
+    this.args = args;
   }
 
 
@@ -79,24 +100,26 @@ public class ApiErrorResponseStatus {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ApiErrorResponseStatus apiErrorResponseStatus = (ApiErrorResponseStatus) o;
-    return Objects.equals(this.code, apiErrorResponseStatus.code) &&
-        Objects.equals(this.message, apiErrorResponseStatus.message);
+    ServiceProxyData serviceProxyData = (ServiceProxyData) o;
+    return Objects.equals(this.service, serviceProxyData.service) &&
+        Objects.equals(this.method, serviceProxyData.method) &&
+        Objects.equals(this.args, serviceProxyData.args);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, message);
+    return Objects.hash(service, method, args);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ApiErrorResponseStatus {\n");
+    sb.append("class ServiceProxyData {\n");
     
-    sb.append("    code: ").append(toIndentedString(code)).append("\n");
-    sb.append("    message: ").append(toIndentedString(message)).append("\n");
+    sb.append("    service: ").append(toIndentedString(service)).append("\n");
+    sb.append("    method: ").append(toIndentedString(method)).append("\n");
+    sb.append("    args: ").append(toIndentedString(args)).append("\n");
     sb.append("}");
     return sb.toString();
   }
