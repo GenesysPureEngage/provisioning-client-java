@@ -28,7 +28,7 @@ import java.math.BigDecimal;
  * Object describing one audit line
  */
 @ApiModel(description = "Object describing one audit line")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-02-07T07:29:33.750Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-02-07T08:39:01.786Z")
 public class ApiAuditSuccessResponseDataRows {
   @SerializedName("id")
   private BigDecimal id = null;
