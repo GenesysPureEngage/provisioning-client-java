@@ -26,7 +26,7 @@ import java.io.IOException;
 /**
  * ServiceProxyData
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-02-16T21:05:49.458Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-02-19T01:04:52.317Z")
 public class ServiceProxyData {
   @SerializedName("service")
   private String service = null;
