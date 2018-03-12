@@ -31,7 +31,7 @@ import java.util.List;
 /**
  * AddUserDataData
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-03-06T16:35:30.170Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-03-12T14:38:15.539Z")
 public class AddUserDataData {
   @SerializedName("changePasswordOnNextLogin")
   private Boolean changePasswordOnNextLogin = null;
@@ -163,7 +163,7 @@ public class AddUserDataData {
    * @return changePasswordOnNextLogin
   **/
   @ApiModelProperty(value = "Specifies whether to ask the user to change their password the first time they login. The default is `false`. ")
-  public Boolean isChangePasswordOnNextLogin() {
+  public Boolean ChangePasswordOnNextLogin() {
     return changePasswordOnNextLogin;
   }
 
@@ -235,7 +235,7 @@ public class AddUserDataData {
    * @return enabled
   **/
   @ApiModelProperty(value = "Specifies whether the user is enabled. ")
-  public Boolean isEnabled() {
+  public Boolean Enabled() {
     return enabled;
   }
 
@@ -387,7 +387,7 @@ public class AddUserDataData {
    * @return isAgent
   **/
   @ApiModelProperty(value = "Specifies if the user is an agent (default 'true'). ")
-  public Boolean isIsAgent() {
+  public Boolean IsAgent() {
     return isAgent;
   }
 
@@ -475,7 +475,7 @@ public class AddUserDataData {
    * @return supportSoftPhone
   **/
   @ApiModelProperty(value = "Specifies whether to enable a SIP phone. This writes the corresponding information to the T-Server annex of the created DNs (see **sipPhoneType** below). ")
-  public Boolean isSupportSoftPhone() {
+  public Boolean SupportSoftPhone() {
     return supportSoftPhone;
   }
 

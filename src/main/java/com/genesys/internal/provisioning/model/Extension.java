@@ -26,7 +26,7 @@ import java.io.IOException;
 /**
  * Extension
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-03-06T16:35:30.170Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-03-12T14:38:15.539Z")
 public class Extension {
   @SerializedName("number")
   private String number = null;
@@ -86,7 +86,7 @@ public class Extension {
    * @return isDefault
   **/
   @ApiModelProperty(value = "Specifies whether this is the default phone number.")
-  public Boolean isIsDefault() {
+  public Boolean IsDefault() {
     return isDefault;
   }
 
