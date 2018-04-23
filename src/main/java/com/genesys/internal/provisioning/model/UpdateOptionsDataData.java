@@ -26,7 +26,7 @@ import java.io.IOException;
 /**
  * UpdateOptionsDataData
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-04-23T16:30:41.752Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-04-23T17:28:49.510Z")
 public class UpdateOptionsDataData {
   @SerializedName("application")
   private String application = null;
