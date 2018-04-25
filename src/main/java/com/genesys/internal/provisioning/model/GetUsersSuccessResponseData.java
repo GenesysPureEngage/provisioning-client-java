@@ -28,7 +28,7 @@ import java.util.List;
 /**
  * GetUsersSuccessResponseData
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-04-25T17:21:17.629Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-04-25T17:44:04.536Z")
 public class GetUsersSuccessResponseData {
   @SerializedName("users")
   private List<Object> users = null;
