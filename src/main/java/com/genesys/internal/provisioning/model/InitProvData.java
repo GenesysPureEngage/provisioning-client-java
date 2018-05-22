@@ -26,7 +26,7 @@ import java.io.IOException;
 /**
  * InitProvData
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-05-21T20:23:33.960Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-05-22T09:02:43.317Z")
 public class InitProvData {
   @SerializedName("code")
   private String code = null;
