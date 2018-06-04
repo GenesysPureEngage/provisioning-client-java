@@ -391,7 +391,7 @@ public class NotificationsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/notifications";
+        String localVarPath = "/notifications-cometd";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
