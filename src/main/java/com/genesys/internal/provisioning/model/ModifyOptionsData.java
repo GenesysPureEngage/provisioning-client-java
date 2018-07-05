@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * ModifyOptionsData
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-06-16T05:06:43.343Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-07-05T05:21:16.338Z")
 public class ModifyOptionsData {
   @SerializedName("data")
   private ModifyOptionsDataData data = null;
@@ -41,7 +41,7 @@ public class ModifyOptionsData {
    * Get data
    * @return data
   **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
   public ModifyOptionsDataData getData() {
     return data;
   }

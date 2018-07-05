@@ -29,7 +29,7 @@ import java.util.List;
 /**
  * GetImportStatusResponseData
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-06-16T05:06:43.343Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-07-05T05:21:16.338Z")
 public class GetImportStatusResponseData {
   @SerializedName("activeImporters")
   private List<String> activeImporters = null;
@@ -195,7 +195,7 @@ public class GetImportStatusResponseData {
    * @return stopRequested
   **/
   @ApiModelProperty(value = "This value is set to `true` if the user pressed **Stop Import**.")
-  public Boolean StopRequested() {
+  public Boolean getStopRequested() {
     return stopRequested;
   }
 
@@ -213,7 +213,7 @@ public class GetImportStatusResponseData {
    * @return stopped
   **/
   @ApiModelProperty(value = "This value is set to `true` if the import is stopped.")
-  public Boolean Stopped() {
+  public Boolean getStopped() {
     return stopped;
   }
 

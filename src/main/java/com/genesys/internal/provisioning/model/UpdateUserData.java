@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * UpdateUserData
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-06-16T05:06:43.343Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-07-05T05:21:16.338Z")
 public class UpdateUserData {
   @SerializedName("data")
   private UpdateUserDataData data = null;
@@ -41,7 +41,7 @@ public class UpdateUserData {
    * Get data
    * @return data
   **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
   public UpdateUserDataData getData() {
     return data;
   }
