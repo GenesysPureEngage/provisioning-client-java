@@ -29,7 +29,7 @@ import java.util.List;
  * Properties related to Workspace Web Edition. 
  */
 @ApiModel(description = "Properties related to Workspace Web Edition. ")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-07-05T13:05:04.991Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-07-05T15:04:48.210Z")
 public class AddUserDataDataWwe {
   @SerializedName("roles")
   private List<String> roles = null;
