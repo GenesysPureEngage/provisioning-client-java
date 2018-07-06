@@ -64,7 +64,7 @@ public class NotificationsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/notifications/connect";
+        String localVarPath = "/notifications-cometd/connect";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -173,7 +173,7 @@ public class NotificationsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/notifications/disconnect";
+        String localVarPath = "/notifications-cometd/disconnect";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -282,7 +282,7 @@ public class NotificationsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/notifications/handshake";
+        String localVarPath = "/notifications-cometd/handshake";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -391,7 +391,7 @@ public class NotificationsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/notifications";
+        String localVarPath = "/notifications-cometd";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -500,7 +500,7 @@ public class NotificationsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/notifications/subscribe";
+        String localVarPath = "/notifications-cometd/subscribe";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -609,7 +609,7 @@ public class NotificationsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/notifications/unsubscribe";
+        String localVarPath = "/notifications-cometd/unsubscribe";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
