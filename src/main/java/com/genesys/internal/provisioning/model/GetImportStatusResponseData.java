@@ -29,7 +29,7 @@ import java.util.List;
 /**
  * GetImportStatusResponseData
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-07-10T22:48:25.154Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-07-11T01:04:41.687Z")
 public class GetImportStatusResponseData {
   @SerializedName("activeImporters")
   private List<String> activeImporters = null;
