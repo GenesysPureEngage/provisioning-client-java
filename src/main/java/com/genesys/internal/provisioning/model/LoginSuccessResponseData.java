@@ -26,7 +26,7 @@ import java.io.IOException;
 /**
  * LoginSuccessResponseData
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-07-24T19:04:49.056Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-07-24T20:04:40.853Z")
 public class LoginSuccessResponseData {
   @SerializedName("sessionId")
   private String sessionId = null;
