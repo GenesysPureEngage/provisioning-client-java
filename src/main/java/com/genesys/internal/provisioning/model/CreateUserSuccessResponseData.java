@@ -14,7 +14,7 @@
 package com.genesys.internal.provisioning.model;
 
 import java.util.Objects;
-import com.genesys.internal.provisioning.model.GetOptionsResponseData;
+import com.genesys.internal.provisioning.model.CreateUserSuccessResponseDataPerson;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -25,50 +25,50 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * GetOptionsResponse
+ * CreateUserSuccessResponseData
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-07-31T00:18:42.780Z")
-public class GetOptionsResponse {
-  @SerializedName("code")
-  private Integer code = null;
+public class CreateUserSuccessResponseData {
+  @SerializedName("id")
+  private String id = null;
 
-  @SerializedName("data")
-  private GetOptionsResponseData data = null;
+  @SerializedName("person")
+  private CreateUserSuccessResponseDataPerson person = null;
 
-  public GetOptionsResponse code(Integer code) {
-    this.code = code;
+  public CreateUserSuccessResponseData id(String id) {
+    this.id = id;
     return this;
   }
 
    /**
-   * Get code
-   * @return code
+   * Get id
+   * @return id
   **/
   @ApiModelProperty(value = "")
-  public Integer getCode() {
-    return code;
+  public String getId() {
+    return id;
   }
 
-  public void setCode(Integer code) {
-    this.code = code;
+  public void setId(String id) {
+    this.id = id;
   }
 
-  public GetOptionsResponse data(GetOptionsResponseData data) {
-    this.data = data;
+  public CreateUserSuccessResponseData person(CreateUserSuccessResponseDataPerson person) {
+    this.person = person;
     return this;
   }
 
    /**
-   * Get data
-   * @return data
+   * Get person
+   * @return person
   **/
   @ApiModelProperty(value = "")
-  public GetOptionsResponseData getData() {
-    return data;
+  public CreateUserSuccessResponseDataPerson getPerson() {
+    return person;
   }
 
-  public void setData(GetOptionsResponseData data) {
-    this.data = data;
+  public void setPerson(CreateUserSuccessResponseDataPerson person) {
+    this.person = person;
   }
 
 
@@ -80,24 +80,24 @@ public class GetOptionsResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    GetOptionsResponse getOptionsResponse = (GetOptionsResponse) o;
-    return Objects.equals(this.code, getOptionsResponse.code) &&
-        Objects.equals(this.data, getOptionsResponse.data);
+    CreateUserSuccessResponseData createUserSuccessResponseData = (CreateUserSuccessResponseData) o;
+    return Objects.equals(this.id, createUserSuccessResponseData.id) &&
+        Objects.equals(this.person, createUserSuccessResponseData.person);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, data);
+    return Objects.hash(id, person);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class GetOptionsResponse {\n");
+    sb.append("class CreateUserSuccessResponseData {\n");
     
-    sb.append("    code: ").append(toIndentedString(code)).append("\n");
-    sb.append("    data: ").append(toIndentedString(data)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    person: ").append(toIndentedString(person)).append("\n");
     sb.append("}");
     return sb.toString();
   }

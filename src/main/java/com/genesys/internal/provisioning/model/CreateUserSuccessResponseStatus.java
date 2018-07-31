@@ -14,7 +14,6 @@
 package com.genesys.internal.provisioning.model;
 
 import java.util.Objects;
-import com.genesys.internal.provisioning.model.GetOptionsResponseData;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -25,17 +24,14 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * GetOptionsResponse
+ * CreateUserSuccessResponseStatus
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-07-31T00:18:42.780Z")
-public class GetOptionsResponse {
+public class CreateUserSuccessResponseStatus {
   @SerializedName("code")
   private Integer code = null;
 
-  @SerializedName("data")
-  private GetOptionsResponseData data = null;
-
-  public GetOptionsResponse code(Integer code) {
+  public CreateUserSuccessResponseStatus code(Integer code) {
     this.code = code;
     return this;
   }
@@ -53,24 +49,6 @@ public class GetOptionsResponse {
     this.code = code;
   }
 
-  public GetOptionsResponse data(GetOptionsResponseData data) {
-    this.data = data;
-    return this;
-  }
-
-   /**
-   * Get data
-   * @return data
-  **/
-  @ApiModelProperty(value = "")
-  public GetOptionsResponseData getData() {
-    return data;
-  }
-
-  public void setData(GetOptionsResponseData data) {
-    this.data = data;
-  }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -80,24 +58,22 @@ public class GetOptionsResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    GetOptionsResponse getOptionsResponse = (GetOptionsResponse) o;
-    return Objects.equals(this.code, getOptionsResponse.code) &&
-        Objects.equals(this.data, getOptionsResponse.data);
+    CreateUserSuccessResponseStatus createUserSuccessResponseStatus = (CreateUserSuccessResponseStatus) o;
+    return Objects.equals(this.code, createUserSuccessResponseStatus.code);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, data);
+    return Objects.hash(code);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class GetOptionsResponse {\n");
+    sb.append("class CreateUserSuccessResponseStatus {\n");
     
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
-    sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("}");
     return sb.toString();
   }

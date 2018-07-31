@@ -14,7 +14,8 @@
 package com.genesys.internal.provisioning.model;
 
 import java.util.Objects;
-import com.genesys.internal.provisioning.model.GetOptionsResponseData;
+import com.genesys.internal.provisioning.model.CreateUserSuccessResponseData;
+import com.genesys.internal.provisioning.model.CreateUserSuccessResponseStatus;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -25,35 +26,35 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * GetOptionsResponse
+ * CreateUserSuccessResponse
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-07-31T00:18:42.780Z")
-public class GetOptionsResponse {
-  @SerializedName("code")
-  private Integer code = null;
+public class CreateUserSuccessResponse {
+  @SerializedName("status")
+  private CreateUserSuccessResponseStatus status = null;
 
   @SerializedName("data")
-  private GetOptionsResponseData data = null;
+  private CreateUserSuccessResponseData data = null;
 
-  public GetOptionsResponse code(Integer code) {
-    this.code = code;
+  public CreateUserSuccessResponse status(CreateUserSuccessResponseStatus status) {
+    this.status = status;
     return this;
   }
 
    /**
-   * Get code
-   * @return code
+   * Get status
+   * @return status
   **/
   @ApiModelProperty(value = "")
-  public Integer getCode() {
-    return code;
+  public CreateUserSuccessResponseStatus getStatus() {
+    return status;
   }
 
-  public void setCode(Integer code) {
-    this.code = code;
+  public void setStatus(CreateUserSuccessResponseStatus status) {
+    this.status = status;
   }
 
-  public GetOptionsResponse data(GetOptionsResponseData data) {
+  public CreateUserSuccessResponse data(CreateUserSuccessResponseData data) {
     this.data = data;
     return this;
   }
@@ -63,11 +64,11 @@ public class GetOptionsResponse {
    * @return data
   **/
   @ApiModelProperty(value = "")
-  public GetOptionsResponseData getData() {
+  public CreateUserSuccessResponseData getData() {
     return data;
   }
 
-  public void setData(GetOptionsResponseData data) {
+  public void setData(CreateUserSuccessResponseData data) {
     this.data = data;
   }
 
@@ -80,23 +81,23 @@ public class GetOptionsResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    GetOptionsResponse getOptionsResponse = (GetOptionsResponse) o;
-    return Objects.equals(this.code, getOptionsResponse.code) &&
-        Objects.equals(this.data, getOptionsResponse.data);
+    CreateUserSuccessResponse createUserSuccessResponse = (CreateUserSuccessResponse) o;
+    return Objects.equals(this.status, createUserSuccessResponse.status) &&
+        Objects.equals(this.data, createUserSuccessResponse.data);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, data);
+    return Objects.hash(status, data);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class GetOptionsResponse {\n");
+    sb.append("class CreateUserSuccessResponse {\n");
     
-    sb.append("    code: ").append(toIndentedString(code)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("}");
     return sb.toString();
