@@ -18,27 +18,38 @@ public class Skill {
 	    } catch(NumberFormatException e) {}
   		if(in.containsKey("name")) this.name = (String)in.get("name");
 	}
+  	
+    public void setLevel(int level) {
+        this.level = level;
+    }
     
-    public Skill(Integer level, String name) {
-        super();
-        this.level = level;
-        this.name = name;
+    public int getLevel() {
+    	return this.level;
     }
-
-    public Integer getLevel() {
-        return level;
+  	
+    public Skill level(int level) {
+    	this.level = level;
+    	return this;
     }
-
-    public void setLevel(Integer level) {
-        this.level = level;
-    }
-
-    public String getName() {
-        return name;
-    }
-
+  	
     public void setName(String name) {
         this.name = name;
+    }
+    
+    public String getName() {
+    	return this.name;
+    }
+  	
+    public Skill name(String name) {
+    	this.name = name;
+    	return this;
+    }
+    
+    @Override
+    public String toString() {
+		return "{"
+			+ "name = " + this.name + " , "
+			+ "level = " + this.level + "}";
     }
 
 }

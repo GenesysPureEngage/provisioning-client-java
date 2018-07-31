@@ -6,52 +6,115 @@ import com.genesys.internal.common.ApiResponse;
 import com.genesys.internal.common.ApiException;
 
 import com.genesys.provisioning.models.*;
+import com.genesys.provisioning.events.*;
 
 import com.genesys.internal.provisioning.model.*;
 import com.genesys.internal.provisioning.api.SessionApi;
-import com.genesys.internal.provisioning.api.UsersApi;
+
+import java.math.BigDecimal;
+
+import java.io.File;
 
 import java.net.CookieManager;
-import java.net.CookieStore;
 import java.net.CookiePolicy;
-import java.net.HttpCookie;
-import java.net.URI;
-import java.util.List;
 
-import java.util.*;
+import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
+import java.util.TreeMap;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class ProvisioningApi {
-
+	
+	private final Logger logger = LoggerFactory.getLogger(ProvisioningApi.class);
+	
 	final static String SESSION_COOKIE = "PROVISIONING_SESSIONID";
 	
-	private String apiKey;
-	private String basePath;
+	private final String apiKey;
+	private final String provisioningUrl;
 	
-	private ApiClient client;
+	private final ApiClient client;
 	
 	private SessionApi sessionApi; 
 	private String sessionId;
+	/**
+	 * The users object contains API requests in the "users" category.
+	 */
+	public final UsersApi users;
+	/**
+	 * The exports object contains API requests in the "export" category.
+	 */
+	public ExportApi exports;
+	/**
+	 * The imports object contains API requests in the "import" category.
+	 */
+	public final ImportApi imports;
+	/**
+	 * The objects object contains API requests in the "objects" category.
+	 */
+	public final ObjectsApi objects;
+	/**
+	 * The options object contains API requests in the "options" category.
+	 */
+	public final OptionsApi options;
+	/**
+	 * The operations object contains API requests in the "operations" category.
+	 */
+	public final OperationsApi operations;
+	/**
+	 * The system object contains API requests in the "system" category.
+	 */
+	public final SystemApi system;
 	
-	private UsersApi usersApi;
+	private NotificationsApi notifications;
 	
-	public ProvisioningApi(String basePath, String apiKey) {
+	private final Map<String, AsyncCallback> asyncCallbacks = new HashMap();
+	private boolean initialized = false;
+	
+	/**
+	 * Create a ProvisioningApi object with your given provisioning URL and API key.
+	 * @param provisioningUrl the provisioning URL.
+	 * @param apiKey your API key.
+	 */
+	public ProvisioningApi(String provisioningUrl, String apiKey) {
 		this.apiKey = apiKey;
-		this.basePath = basePath;
+		this.provisioningUrl = provisioningUrl;
 		
+		client = new ApiClient();
 		
+		users = new UsersApi(client);
+		
+		imports = new ImportApi(client);
+		objects = new ObjectsApi(client);
+		options = new OptionsApi(client);
+		operations = new OperationsApi(client, asyncCallbacks);
+		system = new SystemApi(client);
 	}
 	
+	/**
+	 * Initialize the API with an token retrieved from the auth service.
+	 * @param authToken the token.
+	 * @throws ProvisioningApiException if the call is unsuccessful.
+	 */
 	public void initializeWithToken(String authToken) throws ProvisioningApiException {
 		initialize(authToken, null, null);
 	}
 	
+	/**
+	 * Initialize the API with an code from the auth service.
+	 * @param authCode the code.
+	 * @param redirectUri the redirect uri used in the original code request.
+	 * @throws ProvisioningApiException if the call is unsuccessful.
+	 */
 	public void initializeWithCode(String authCode, String redirectUri) throws ProvisioningApiException {
 		initialize(null, authCode, redirectUri);
 	}
 	
 	private static String extractSessionCookie(ApiResponse<LoginSuccessResponse> response) throws ProvisioningApiException {
         
-        String workspaceSessionCookie = null;
+        String provisioningSessionCookie = null;
 
         // Required to get case insensitive headers
         Map<String, List<String>> headers = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
@@ -60,16 +123,16 @@ public class ProvisioningApi {
         List<String> cookies = headers.get("set-cookie");
         for (String cookie : cookies) {
             if(cookie.startsWith(SESSION_COOKIE)){
-                workspaceSessionCookie = cookie;
+                provisioningSessionCookie = cookie;
                 break;
             }
         }
 
-        if(workspaceSessionCookie == null) {
+        if(provisioningSessionCookie == null) {
             throw new ProvisioningApiException("Failed to extract provisioning session cookie.");
         }
 
-        String value = workspaceSessionCookie;
+        String value = provisioningSessionCookie;
         String sessionId = value.split(";")[0].split("=")[1];
         
         
@@ -78,8 +141,8 @@ public class ProvisioningApi {
 	
 	private void initialize(String authToken, String authCode, String redirectUri) throws ProvisioningApiException {
 		try {
-			client = new ApiClient();
-			client.setBasePath(basePath + "/provisioning/v3");
+			
+			client.setBasePath(provisioningUrl);
 		
 			CookieStoreImpl cookieStore = new CookieStoreImpl();
 			client.getHttpClient().setCookieHandler(new CookieManager(cookieStore, CookiePolicy.ACCEPT_ALL));
@@ -92,100 +155,68 @@ public class ProvisioningApi {
 		
 			sessionApi = new SessionApi();
 			sessionApi.setApiClient(client);
-			usersApi = new UsersApi();
-			usersApi.setApiClient(client);
-		
 			
 			final ApiResponse<LoginSuccessResponse> response = 
 				sessionApi.initializeProvisioningWithHttpInfo(new InitProvData().code(authCode).redirectUri(redirectUri), authorization);
 			sessionId = extractSessionCookie(response);
 			client.addDefaultHeader("Cookie", String.format("%s=%s", SESSION_COOKIE, sessionId));
 			
+			Map<String, NotificationsApi.NotificationListener> listeners = new HashMap();
+			listeners.put("/*", (String ch, Map<String, Object> message) -> {
+				
+				String channel = (String) message.get("channel");
+				logger.debug("Message on channel: {}", channel);
+				Map<String, Object> data = (Map<String, Object>) message.get("data");
+				logger.debug("With data: {}", data);
+				
+				if(channel.equals("aio")) {
+					String aioId = (String) data.get("id");
+					Map<String, Object> responseData = (Map<String, Object>) data.get("data");
+					
+					if(asyncCallbacks.containsKey(aioId)) {
+						asyncCallbacks.get(aioId).response(responseData);
+						asyncCallbacks.remove(aioId);
+					} else {
+						logger.error("Extra Async Notification, ID: {}", aioId);
+					}
+					String path = (String) data.get("path");
+					
+					logger.info("Async Response Id: {} Path: {}", aioId, path);
+					logger.debug("Async Response Data: {}", responseData);
+				} else {
+					logger.debug("Message Data: {}", data);
+				}		
+				
+			});
+			
+			notifications = new NotificationsApi(listeners);
+			notifications.setCookieStore(cookieStore);
+			notifications.initialize(provisioningUrl + "/notifications-cometd", apiKey);
+			
+			exports = new ExportApi(client, apiKey, sessionId);
+			
+			initialized = true;
+					
 		} catch (ApiException e) {
 			
-			throw new ProvisioningApiException("Error initializing",e);
+			throw new ProvisioningApiException("Error initializing", e);
 		}
 		
 	}
-	
-	public void addUser(User user) throws ProvisioningApiException {
-		try {
-			ApiSuccessResponse resp = usersApi.addUser(new AddUserData().data(Converters.convertUserToAddUserDataData(user)));
-			
-			if (!resp.getStatus().getCode().equals(0)) {
-				throw new ProvisioningApiException("Error adding user. Code: " + resp.getStatus().getCode());
+	/**
+	* Logout and disconnect from cometD.
+	* When your code is done using the API call this to log out of Provisioning and disconnect cometD.
+	* @throws ProvisioningApiException if the call is unsuccessful.
+	*/
+	public void done() throws ProvisioningApiException {
+		if(initialized) {
+			try {
+				sessionApi.logout();
+			} catch(ApiException e) {
+				throw new ProvisioningApiException("Error logging out", e);
 			}
-        } catch(ApiException e) {
-        	throw new ProvisioningApiException("Error adding user", e);
-        }
-	}
-	
-	public void deleteUser(String userDbid, boolean keepPlaces) throws ProvisioningApiException {
-		try {
-			ApiSuccessResponse resp = usersApi.deleteUser(userDbid, keepPlaces);
-		
-			if (!resp.getStatus().getCode().equals(0)) {
-				throw new ProvisioningApiException("Error deleting user. Code: " + resp.getStatus().getCode());
-			}
-        } catch(ApiException e) {
-        	throw new ProvisioningApiException("Error deleting user", e);
-        }
-	}
-	
-	
-	public List<User> getUsers(int limit, int offset, String order, String sortBy, String filterName, String filterParameters, String roles, String skills, boolean userEnabled, String userValid) throws ProvisioningApiException {
-		List<User> out = new ArrayList();
-		
-		try {
-			GetUsersSuccessResponse resp = usersApi.getUsers(limit, offset, order, sortBy, filterName, filterParameters, roles, skills, userEnabled, userValid);
-		
-			if (!resp.getStatus().getCode().equals(0)) {
-				throw new ProvisioningApiException("Error getting users. Code: " + resp.getStatus().getCode());
-			}
-			
-			for(Object i:resp.getData().getUsers()) {
-				out.add(new User((Map<String, Object>)i));
-			}
-			
-        } catch(ApiException e) {
-        	throw new ProvisioningApiException("Error getting users", e);
-        }
-        
-        return out;
-	}
-	
-	
-	private static class CookieStoreImpl implements CookieStore {
-		private final CookieStore manager = new CookieManager().getCookieStore();
-
-		@Override
-		public void add(URI uri, HttpCookie cookie) {
-			manager.add(uri, cookie);
-		}
-
-		@Override
-		public List<HttpCookie> get(URI uri) {
-			return manager.get(uri);
-		}
-
-		@Override
-		public List<HttpCookie> getCookies() {
-			return manager.getCookies();
-		}
-
-		@Override
-		public List<URI> getURIs() {
-			return manager.getURIs();
-		}
-
-		@Override
-		public boolean remove(URI uri, HttpCookie cookie) {
-			return manager.remove(uri, cookie);
-		}
-
-		@Override
-		public boolean removeAll() {
-			return manager.removeAll();
+			notifications.disconnect();
+			initialized = false;
 		}
 	}
 	

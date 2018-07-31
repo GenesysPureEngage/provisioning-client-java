@@ -7,7 +7,9 @@ import java.util.ArrayList;
 public class WweProperties {
 	private List<String> roles = new ArrayList();
 	
-	WweProperties() {}
+	WweProperties() {
+		
+	}
 	
 	WweProperties(Map<String, Object> in) {
 		if(in.containsKey("roles")) this.roles = (List<String>)in.get("roles");
@@ -19,5 +21,10 @@ public class WweProperties {
 	
 	public List<String> getRoles() {
 		return this.roles;
+	}
+	
+	@Override
+	public String toString() {
+		return roles.toString();
 	}
 }

@@ -30,36 +30,56 @@ public class Phone {
         this.placeName = placeName;
     }
 
-    public String getNumber() {
-        return number;
-    }
-
     public void setNumber(String number) {
         this.number = number;
     }
-
-    public String getDescription() {
-        return description;
+    
+    public String getNumber() {
+    	return this.number;
     }
-
+  	
+    public Phone number(String number) {
+    	this.number = number;
+    	return this;
+    }
+  	
     public void setDescription(String description) {
         this.description = description;
     }
-
-    public Boolean getIsDefault() {
-        return isDefault;
+    
+    public String getDescription() {
+    	return this.description;
     }
-
-    public void setIsDefault(Boolean isDefault) {
+  	
+    public Phone description(String description) {
+    	this.description = description;
+    	return this;
+    }
+  	
+    public void setIsDefault(boolean isDefault) {
         this.isDefault = isDefault;
     }
-
-    public String getPlaceName() {
-        return placeName;
+    
+    public boolean getIsDefault() {
+    	return this.isDefault;
     }
-
+  	
+    public Phone isDefault(boolean isDefault) {
+    	this.isDefault = isDefault;
+    	return this;
+    }
+  	
     public void setPlaceName(String placeName) {
         this.placeName = placeName;
+    }
+    
+    public String getPlaceName() {
+    	return this.placeName;
+    }
+  	
+    public Phone placeName(String placeName) {
+    	this.placeName = placeName;
+    	return this;
     }
 
 }
