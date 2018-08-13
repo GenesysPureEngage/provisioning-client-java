@@ -48,11 +48,11 @@ dependencies {
     compile 'org.slf4j:slf4j-api:1.7.25'
     testCompile 'junit:junit:4.12'
 }
-/*
+
 signing {
     sign configurations.archives
 }
-*/
+
 task incrementBuildNumber { 
     doLast {
         if (versionPropsFile.canRead()) {
@@ -88,7 +88,7 @@ task execute(type:JavaExec) {
    classpath = sourceSets.main.runtimeClasspath
 }
 
-/*
+
 uploadArchives {
   repositories {
     mavenDeployer {
@@ -138,4 +138,4 @@ nexusStaging {
     username = ossrhUsername
     password = ossrhPassword
 }
-*/
+
