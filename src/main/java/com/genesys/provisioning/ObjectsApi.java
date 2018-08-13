@@ -60,8 +60,8 @@ public class ObjectsApi {
 				null
 			);
 			
-			if (!resp.getCode().equals(0)) {
-				throw new ProvisioningApiException("Error getting objects. Code: " + resp.getCode());
+			if (!resp.getStatus().getCode().equals(0)) {
+				throw new ProvisioningApiException("Error getting objects. Code: " + resp.getStatus().getCode());
 			}
 			
 			Results<Dn> out = new Results<Dn>();
@@ -131,8 +131,8 @@ public class ObjectsApi {
 				null
 			);
 			
-			if (!resp.getCode().equals(0)) {
-				throw new ProvisioningApiException("Error getting objects. Code: " + resp.getCode());
+			if (!resp.getStatus().getCode().equals(0)) {
+				throw new ProvisioningApiException("Error getting objects. Code: " + resp.getStatus().getCode());
 			}
 			
 			Results<Dn> out = new Results<Dn>();
@@ -190,8 +190,8 @@ public class ObjectsApi {
 				null
 			);
 			
-			if (!resp.getCode().equals(0)) {
-				throw new ProvisioningApiException("Error getting objects. Code: " + resp.getCode());
+			if (!resp.getStatus().getCode().equals(0)) {
+				throw new ProvisioningApiException("Error getting objects. Code: " + resp.getStatus().getCode());
 			}
 			
 			Results<AgentGroup> out = new Results<AgentGroup>();
@@ -259,8 +259,8 @@ public class ObjectsApi {
 				null
 			);
 			
-			if (!resp.getCode().equals(0)) {
-				throw new ProvisioningApiException("Error getting objects. Code: " + resp.getCode());
+			if (!resp.getStatus().getCode().equals(0)) {
+				throw new ProvisioningApiException("Error getting objects. Code: " + resp.getStatus().getCode());
 			}
 			
 			Results<DnGroup> out = new Results();

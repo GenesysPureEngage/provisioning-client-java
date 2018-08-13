@@ -41,8 +41,8 @@ public class OptionsApi {
 				application
 			);
 			
-			if (!resp.getCode().equals(0)) {
-				throw new ProvisioningApiException("Error getting options. Code: " + resp.getCode());
+			if (!resp.getStatus().getCode().equals(0)) {
+				throw new ProvisioningApiException("Error getting options. Code: " + resp.getStatus().getCode());
 			}
 			
 			Options out = new Options();

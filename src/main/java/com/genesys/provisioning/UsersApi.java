@@ -4,11 +4,13 @@ import com.genesys.internal.common.ApiClient;
 import com.genesys.internal.common.ApiException;
 
 import com.genesys.internal.provisioning.model.ApiSuccessResponse;
+import com.genesys.internal.provisioning.model.CreateUserSuccessResponse;
 import com.genesys.internal.provisioning.model.AddUserData;
 import com.genesys.internal.provisioning.model.UpdateUserData;
 import com.genesys.internal.provisioning.model.GetUsersSuccessResponse;
 
 import com.genesys.provisioning.models.User;
+import com.genesys.provisioning.models.Person;
 import com.genesys.provisioning.models.Converters;
 import com.genesys.provisioning.models.UserSearchParams;
 
@@ -26,14 +28,17 @@ public class UsersApi {
 	 * Creates a user ([CfgPerson](https://docs.genesys.com/Documentation/PSDK/latest/ConfigLayerRef/CfgPerson)) with the given attributes.
 	 * @param user The user to be created. (required)
 	 * @throws ProvisioningApiException if the call is unsuccessful.
+	 * @return Person a Person object with info on the user created.
 	 */
-	public void addUser(User user) throws ProvisioningApiException {
+	public Person addUser(User user) throws ProvisioningApiException {
 		try {
-			ApiSuccessResponse resp = usersApi.addUser(new AddUserData().data(Converters.convertUserToAddUserDataData(user)));
+			CreateUserSuccessResponse resp = usersApi.addUser(new AddUserData().data(Converters.convertUserToAddUserDataData(user)));
 			
 			if (!resp.getStatus().getCode().equals(0)) {
 				throw new ProvisioningApiException("Error adding user. Code: " + resp.getStatus().getCode());
 			}
+			
+			return Converters.convertCreateUserSuccessResponseDataPersonToPerson(resp.getData().getPerson());
         } catch(ApiException e) {
         	throw new ProvisioningApiException("Error adding user", e);
         }

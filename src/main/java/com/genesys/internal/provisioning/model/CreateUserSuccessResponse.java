@@ -14,8 +14,8 @@
 package com.genesys.internal.provisioning.model;
 
 import java.util.Objects;
-import com.genesys.internal.provisioning.model.GetImportStatusResponseData;
-import com.genesys.internal.provisioning.model.GetImportStatusResponseStatus;
+import com.genesys.internal.provisioning.model.CreateUserSuccessResponseData;
+import com.genesys.internal.provisioning.model.CreateUserSuccessResponseStatus;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -26,17 +26,17 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * GetImportStatusResponse
+ * CreateUserSuccessResponse
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-08-13T17:29:37.601Z")
-public class GetImportStatusResponse {
+public class CreateUserSuccessResponse {
   @SerializedName("status")
-  private GetImportStatusResponseStatus status = null;
+  private CreateUserSuccessResponseStatus status = null;
 
   @SerializedName("data")
-  private GetImportStatusResponseData data = null;
+  private CreateUserSuccessResponseData data = null;
 
-  public GetImportStatusResponse status(GetImportStatusResponseStatus status) {
+  public CreateUserSuccessResponse status(CreateUserSuccessResponseStatus status) {
     this.status = status;
     return this;
   }
@@ -46,15 +46,15 @@ public class GetImportStatusResponse {
    * @return status
   **/
   @ApiModelProperty(value = "")
-  public GetImportStatusResponseStatus getStatus() {
+  public CreateUserSuccessResponseStatus getStatus() {
     return status;
   }
 
-  public void setStatus(GetImportStatusResponseStatus status) {
+  public void setStatus(CreateUserSuccessResponseStatus status) {
     this.status = status;
   }
 
-  public GetImportStatusResponse data(GetImportStatusResponseData data) {
+  public CreateUserSuccessResponse data(CreateUserSuccessResponseData data) {
     this.data = data;
     return this;
   }
@@ -64,11 +64,11 @@ public class GetImportStatusResponse {
    * @return data
   **/
   @ApiModelProperty(value = "")
-  public GetImportStatusResponseData getData() {
+  public CreateUserSuccessResponseData getData() {
     return data;
   }
 
-  public void setData(GetImportStatusResponseData data) {
+  public void setData(CreateUserSuccessResponseData data) {
     this.data = data;
   }
 
@@ -81,9 +81,9 @@ public class GetImportStatusResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    GetImportStatusResponse getImportStatusResponse = (GetImportStatusResponse) o;
-    return Objects.equals(this.status, getImportStatusResponse.status) &&
-        Objects.equals(this.data, getImportStatusResponse.data);
+    CreateUserSuccessResponse createUserSuccessResponse = (CreateUserSuccessResponse) o;
+    return Objects.equals(this.status, createUserSuccessResponse.status) &&
+        Objects.equals(this.data, createUserSuccessResponse.data);
   }
 
   @Override
@@ -95,7 +95,7 @@ public class GetImportStatusResponse {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class GetImportStatusResponse {\n");
+    sb.append("class CreateUserSuccessResponse {\n");
     
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");

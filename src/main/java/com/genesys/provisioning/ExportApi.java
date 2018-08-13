@@ -41,7 +41,7 @@ public class ExportApi {
      * @return Id of the export.
      * @throws ProvisioningApiException if the call is unsuccessful.
      */
-	public BigDecimal exportFile(List<String> fields, String fileName, List<String> personDBIDs, ExportFilterParams filterParameters) throws ProvisioningApiException {
+	public String exportFile(List<String> fields, String fileName, List<String> personDBIDs, ExportFilterParams filterParameters) throws ProvisioningApiException {
 		try {
 			ExportFileResponse resp = exportApi.exportFile(new ExportFileData()
 				.fields(fields)
@@ -50,8 +50,8 @@ public class ExportApi {
 				.filterParameters(Converters.convertExportFilterParamsToExportFileDataFilterParameters(filterParameters))
 			);
 			
-			if (!resp.getCode().equals(0)) {
-				throw new ProvisioningApiException("Error exporting file. Code: " + resp.getCode());
+			if (!resp.getStatus().getCode().equals(0)) {
+				throw new ProvisioningApiException("Error exporting file. Code: " + resp.getStatus().getCode());
 			}
 			
 			return resp.getData().getId();
@@ -67,12 +67,12 @@ public class ExportApi {
      * @return Export status.
      * @throws ProvisioningApiException if the call is unsuccessful.
      */
-	public BigDecimal getExportStatus(Integer id) throws ProvisioningApiException {
+	public BigDecimal getExportStatus(String id) throws ProvisioningApiException {
 		try {
 			ExportStatusResponse resp = exportApi.getExportStatus(id);
 	
-			if (!resp.getCode().equals(0)) {
-				throw new ProvisioningApiException("Error getting export status. Code: " + resp.getCode());
+			if (!resp.getStatus().getCode().equals(0)) {
+				throw new ProvisioningApiException("Error getting export status. Code: " + resp.getStatus().getCode());
 			}
 	
 			return resp.getData().getProgress();
@@ -81,11 +81,11 @@ public class ExportApi {
 		}
 	}
 	
-	public String getDownloadUrl(BigDecimal id) {
+	public String getDownloadUrl(String id) {
 		return client.getBasePath()+"/export-users/?id="+id+"&download=true";
 	}
 	
-	public String downloadFile(BigDecimal id) throws ProvisioningApiException {
+	public String downloadFile(String id) throws ProvisioningApiException {
 	
 		try {
 			URL url = new URL(getDownloadUrl(id));

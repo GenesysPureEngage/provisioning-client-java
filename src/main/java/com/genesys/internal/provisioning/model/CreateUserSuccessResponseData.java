@@ -14,8 +14,7 @@
 package com.genesys.internal.provisioning.model;
 
 import java.util.Objects;
-import com.genesys.internal.provisioning.model.GetImportStatusResponseData;
-import com.genesys.internal.provisioning.model.GetImportStatusResponseStatus;
+import com.genesys.internal.provisioning.model.CreateUserSuccessResponseDataPerson;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -26,50 +25,50 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * GetImportStatusResponse
+ * CreateUserSuccessResponseData
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-08-13T17:29:37.601Z")
-public class GetImportStatusResponse {
-  @SerializedName("status")
-  private GetImportStatusResponseStatus status = null;
+public class CreateUserSuccessResponseData {
+  @SerializedName("id")
+  private String id = null;
 
-  @SerializedName("data")
-  private GetImportStatusResponseData data = null;
+  @SerializedName("person")
+  private CreateUserSuccessResponseDataPerson person = null;
 
-  public GetImportStatusResponse status(GetImportStatusResponseStatus status) {
-    this.status = status;
+  public CreateUserSuccessResponseData id(String id) {
+    this.id = id;
     return this;
   }
 
    /**
-   * Get status
-   * @return status
+   * Get id
+   * @return id
   **/
   @ApiModelProperty(value = "")
-  public GetImportStatusResponseStatus getStatus() {
-    return status;
+  public String getId() {
+    return id;
   }
 
-  public void setStatus(GetImportStatusResponseStatus status) {
-    this.status = status;
+  public void setId(String id) {
+    this.id = id;
   }
 
-  public GetImportStatusResponse data(GetImportStatusResponseData data) {
-    this.data = data;
+  public CreateUserSuccessResponseData person(CreateUserSuccessResponseDataPerson person) {
+    this.person = person;
     return this;
   }
 
    /**
-   * Get data
-   * @return data
+   * Get person
+   * @return person
   **/
   @ApiModelProperty(value = "")
-  public GetImportStatusResponseData getData() {
-    return data;
+  public CreateUserSuccessResponseDataPerson getPerson() {
+    return person;
   }
 
-  public void setData(GetImportStatusResponseData data) {
-    this.data = data;
+  public void setPerson(CreateUserSuccessResponseDataPerson person) {
+    this.person = person;
   }
 
 
@@ -81,24 +80,24 @@ public class GetImportStatusResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    GetImportStatusResponse getImportStatusResponse = (GetImportStatusResponse) o;
-    return Objects.equals(this.status, getImportStatusResponse.status) &&
-        Objects.equals(this.data, getImportStatusResponse.data);
+    CreateUserSuccessResponseData createUserSuccessResponseData = (CreateUserSuccessResponseData) o;
+    return Objects.equals(this.id, createUserSuccessResponseData.id) &&
+        Objects.equals(this.person, createUserSuccessResponseData.person);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(status, data);
+    return Objects.hash(id, person);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class GetImportStatusResponse {\n");
+    sb.append("class CreateUserSuccessResponseData {\n");
     
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    data: ").append(toIndentedString(data)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    person: ").append(toIndentedString(person)).append("\n");
     sb.append("}");
     return sb.toString();
   }

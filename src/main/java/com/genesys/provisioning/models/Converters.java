@@ -8,6 +8,8 @@ import com.genesys.internal.provisioning.model.AddUserDataData;
 import com.genesys.internal.provisioning.model.AddUserDataDataWwe;
 import com.genesys.internal.provisioning.model.UpdateUserDataData;
 import com.genesys.internal.provisioning.model.UpdateUserDataDataWwe;
+import com.genesys.internal.provisioning.model.CreateUserSuccessResponseDataPerson;
+import com.genesys.internal.provisioning.model.CreateUserSuccessResponseDataPersonCfgAgentInfo;
 import com.genesys.internal.provisioning.model.GetImportStatusResponseData;
 import com.genesys.internal.provisioning.model.ExportFileDataFilterParameters;
 import com.genesys.internal.provisioning.model.Extension;
@@ -72,6 +74,40 @@ public class Converters {
 		out.setAccessGroups(in.getAccessGroups());
 		out.setVoiceMail(in.getVoiceMail());
 		out.setWrapUpTime(in.getWrapUpTime().toString());
+
+		return out;
+	}
+	
+	public static Person convertCreateUserSuccessResponseDataPersonToPerson(CreateUserSuccessResponseDataPerson in) {
+		Person out = new Person();
+
+		out.setDBID(in.getDBID());
+		out.setTenantDBID(in.getTenantDBID());
+		out.setLastName(in.getLastName());
+		out.setFirstName(in.getFirstName());
+		out.setUserName(in.getUserName());
+		out.setPassword(in.getPassword());
+		out.setIsAgent(in.getIsAgent());
+		out.setIsAdmin(in.getIsAdmin());
+		out.setState(in.getState());
+		out.setIsExternalAuth(in.getIsExternalAuth());
+		out.setChangePasswordOnNextLogin(in.getChangePasswordOnNextLogin());
+		out.setPasswordHashAlgorithm(in.getPasswordHashAlgorithm());
+		out.setPasswordUpdatingDate(in.getPasswordUpdatingDate());
+		out.setEmailAddress(in.getEmailAddress());
+		out.setAgentInfo(convertCreateUserSuccessResponseDataPersonCfgAgentInfoToAgentInfo(in.getCfgAgentInfo()));
+		out.setId(in.getId());
+
+		return out;
+	}
+	
+	public static AgentInfo convertCreateUserSuccessResponseDataPersonCfgAgentInfoToAgentInfo(CreateUserSuccessResponseDataPersonCfgAgentInfo in) {
+		AgentInfo out = new AgentInfo();
+
+		out.setPlaceDBID(in.getPlaceDBID());
+		out.setSiteDBID(in.getSiteDBID());
+		out.setContractDBID(in.getContractDBID());
+		out.setCapacityRuleDBID(in.getCapacityRuleDBID());
 
 		return out;
 	}

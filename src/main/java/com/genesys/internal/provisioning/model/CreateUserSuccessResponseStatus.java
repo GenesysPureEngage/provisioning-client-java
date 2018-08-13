@@ -14,8 +14,6 @@
 package com.genesys.internal.provisioning.model;
 
 import java.util.Objects;
-import com.genesys.internal.provisioning.model.GetImportStatusResponseData;
-import com.genesys.internal.provisioning.model.GetImportStatusResponseStatus;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -26,50 +24,29 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * GetImportStatusResponse
+ * CreateUserSuccessResponseStatus
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-08-13T17:29:37.601Z")
-public class GetImportStatusResponse {
-  @SerializedName("status")
-  private GetImportStatusResponseStatus status = null;
+public class CreateUserSuccessResponseStatus {
+  @SerializedName("code")
+  private Integer code = null;
 
-  @SerializedName("data")
-  private GetImportStatusResponseData data = null;
-
-  public GetImportStatusResponse status(GetImportStatusResponseStatus status) {
-    this.status = status;
+  public CreateUserSuccessResponseStatus code(Integer code) {
+    this.code = code;
     return this;
   }
 
    /**
-   * Get status
-   * @return status
+   * Get code
+   * @return code
   **/
   @ApiModelProperty(value = "")
-  public GetImportStatusResponseStatus getStatus() {
-    return status;
+  public Integer getCode() {
+    return code;
   }
 
-  public void setStatus(GetImportStatusResponseStatus status) {
-    this.status = status;
-  }
-
-  public GetImportStatusResponse data(GetImportStatusResponseData data) {
-    this.data = data;
-    return this;
-  }
-
-   /**
-   * Get data
-   * @return data
-  **/
-  @ApiModelProperty(value = "")
-  public GetImportStatusResponseData getData() {
-    return data;
-  }
-
-  public void setData(GetImportStatusResponseData data) {
-    this.data = data;
+  public void setCode(Integer code) {
+    this.code = code;
   }
 
 
@@ -81,24 +58,22 @@ public class GetImportStatusResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    GetImportStatusResponse getImportStatusResponse = (GetImportStatusResponse) o;
-    return Objects.equals(this.status, getImportStatusResponse.status) &&
-        Objects.equals(this.data, getImportStatusResponse.data);
+    CreateUserSuccessResponseStatus createUserSuccessResponseStatus = (CreateUserSuccessResponseStatus) o;
+    return Objects.equals(this.code, createUserSuccessResponseStatus.code);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(status, data);
+    return Objects.hash(code);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class GetImportStatusResponse {\n");
+    sb.append("class CreateUserSuccessResponseStatus {\n");
     
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    data: ").append(toIndentedString(data)).append("\n");
+    sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("}");
     return sb.toString();
   }
