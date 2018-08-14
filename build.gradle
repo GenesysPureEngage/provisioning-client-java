@@ -42,6 +42,10 @@ dependencies {
     compile 'com.google.code.gson:gson:2.8.1'
     compile 'org.threeten:threetenbp:1.3.5'
 	compile 'io.gsonfire:gson-fire:1.8.1'
+	compile 'org.cometd.java:cometd-api:1.1.5'
+    compile 'org.cometd.java:cometd-java-client:3.1.2'
+    compile 'org.cometd.java:bayeux-api:3.1.2'
+    compile 'org.slf4j:slf4j-api:1.7.25'
     testCompile 'junit:junit:4.12'
 }
 
@@ -83,6 +87,7 @@ task execute(type:JavaExec) {
    main = System.getProperty('mainClass')
    classpath = sourceSets.main.runtimeClasspath
 }
+
 
 uploadArchives {
   repositories {
@@ -132,6 +137,6 @@ uploadArchives {
 nexusStaging {  
     username = ossrhUsername
     password = ossrhPassword
-	numberOfRetries = 50
-	delayBetweenRetriesInMillis = 4000
+    numberOfRetries = 50
+	  delayBetweenRetriesInMillis = 4000	
 }
