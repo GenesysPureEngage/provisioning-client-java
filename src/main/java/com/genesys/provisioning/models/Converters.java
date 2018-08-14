@@ -73,7 +73,7 @@ public class Converters {
 		out.setAgentGroups(in.getAgentGroups());
 		out.setAccessGroups(in.getAccessGroups());
 		out.setVoiceMail(in.getVoiceMail());
-		out.setWrapUpTime(in.getWrapUpTime().toString());
+		out.setWrapUpTime(doubleToString(in.getWrapUpTime()));
 
 		return out;
 	}
@@ -102,6 +102,7 @@ public class Converters {
 	}
 	
 	public static AgentInfo convertCreateUserSuccessResponseDataPersonCfgAgentInfoToAgentInfo(CreateUserSuccessResponseDataPersonCfgAgentInfo in) {
+		if(in == null) return null;
 		AgentInfo out = new AgentInfo();
 
 		out.setPlaceDBID(in.getPlaceDBID());

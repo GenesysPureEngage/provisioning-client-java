@@ -91,7 +91,7 @@ public class ExportApi {
 			URL url = new URL(getDownloadUrl(id));
 			URLConnection conn = (URLConnection) url.openConnection();
 			conn.setRequestProperty("x-api-key", apiKey);
-			conn.setRequestProperty("Cookie", sessionId);
+			conn.setRequestProperty("Cookie", "PROVISIONING_SESSIONID=" + sessionId);
 		
 			String response = (new Scanner(conn.getInputStream())).useDelimiter("\\A").next();
 			return response;
