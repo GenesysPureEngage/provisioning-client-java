@@ -169,7 +169,7 @@ public class ProvisioningApi {
 				Map<String, Object> data = (Map<String, Object>) message.get("data");
 				logger.debug("With data: {}", data);
 				
-				if(channel.equals("aio")) {
+				if(channel.equals("operations")) {
 					String aioId = (String) data.get("id");
 					Map<String, Object> responseData = (Map<String, Object>) data.get("data");
 					

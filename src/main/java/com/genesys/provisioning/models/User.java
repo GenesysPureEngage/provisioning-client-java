@@ -52,7 +52,12 @@ public class User {
 		if(in.containsKey("switchNames")) this.switchNames = (List<String>)in.get("switchNames");
 		if(in.containsKey("phones")) this.phones = Converters.convertMapListToPhones((List<Map>)in.get("phones"));
 		if(in.containsKey("supportSoftPhone")) this.supportSoftPhone = (Boolean)in.get("supportSoftPhone");
-		if(in.containsKey("sipPhoneType")) this.sipPhoneType = SipPhoneType.fromString((String)((Map<String, Object>)in.get("sipPhoneType")).get("name"));
+		
+		if(in.containsKey("sipPhoneType")) {
+			Object sipPhoneType = in.get("sipPhoneType");
+			if(sipPhoneType instanceof Map) this.sipPhoneType = SipPhoneType.fromString((String)((Map<String, Object>)sipPhoneType).get("name"));
+			if(sipPhoneType instanceof String) this.sipPhoneType = SipPhoneType.fromString((String) sipPhoneType);
+		}
 		if(in.containsKey("skills")) this.skills = Converters.convertMapListToSkills((List<Map>)in.get("skills"));
 		if(in.containsKey("agentGroups")) this.agentGroups = (List<String>)in.get("agentGroups");
 		if(in.containsKey("accessGroups")) this.accessGroups = (List<String>)in.get("accessGroups");

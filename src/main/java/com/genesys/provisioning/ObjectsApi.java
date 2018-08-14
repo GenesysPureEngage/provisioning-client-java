@@ -12,6 +12,7 @@ import com.genesys.provisioning.models.Dn;
 import com.genesys.provisioning.models.AgentGroup;
 import com.genesys.provisioning.models.DnGroup;
 import com.genesys.provisioning.models.SearchParams;
+import com.genesys.provisioning.models.Skill;
 
 import java.io.File;
 import java.util.List;
@@ -293,8 +294,74 @@ public class ObjectsApi {
 		);
 	}
 	
-	/*
-		Will add public Results<Map<String, Object>> searchSkills ...
-	*/
+	/**
+     * Get Skills.
+     * Get Skills from Configuration Server with the specified filters.
+     * @param limit The number of objects the Provisioning API should return. (optional)
+     * @param offset The number of matches the Provisioning API should skip in the returned objects. (optional)
+     * @param searchTerm The term that you want to search for in the object keys. The Provisioning API searches for the this term in the value of the key you specify in &#39;search_key&#39;.  (optional)
+     * @param searchKey The key you want the Provisioning API to use when searching for the term you specified in &#39;search_term&#39;. You can find valid key names in the Platform SDK documentation for [CfgDN](https://docs.genesys.com/Documentation/PSDK/9.0.x/ConfigLayerRef/CfgDN) and [CfgAgentGroup](https://docs.genesys.com/Documentation/PSDK/latest/ConfigLayerRef/CfgAgentGroup).  (optional)
+     * @param matchMethod The method the Provisioning API should use to match the &#39;search_term&#39;. Possible values are includes, startsWith, endsWith, and isEqual.  (optional, default to includes)
+     * @param sortKey A key in [CfgDN](https://docs.genesys.com/Documentation/PSDK/9.0.x/ConfigLayerRef/CfgDN), [CfgSkill](https://docs.genesys.com/Documentation/PSDK/9.0.x/ConfigLayerRef/CfgSkill) or [CfgAgentGroup](https://docs.genesys.com/Documentation/PSDK/latest/ConfigLayerRef/CfgAgentGroup) to sort the search results.  (optional)
+     * @param sortAscending Specifies whether to sort the search results in ascending or descending order.  (optional, default to true)
+     * @param sortMethod Specifies the sort method. Possible values are caseSensitive, caseInsensitive or numeric.  (optional, default to caseSensitive)
+     * @param inUse Specifies whether to return only skills actually assigned to agents.  (optional, default to false)
+     * @return Results object which includes list of Skills and the total count.
+     * @throws ProvisioningApiException if the call is unsuccessful.
+     */
+	public Results<Skill> searchSkills(Integer limit, Integer offset, String searchTerm, String searchKey, String matchMethod, String sortKey, Boolean sortAscending, String sortMethod, Boolean inUse) throws ProvisioningApiException {
+		try {
+			GetObjectsSuccessResponse resp = objectsApi.getObject(
+				"dn-groups",
+				null,
+				null,
+				null,
+				limit,
+				offset,
+				searchTerm,
+				searchKey,
+				matchMethod,
+				sortKey,
+				sortAscending,
+				sortMethod,
+				null,
+				inUse
+			);
+			
+			if (!resp.getStatus().getCode().equals(0)) {
+				throw new ProvisioningApiException("Error getting objects. Code: " + resp.getStatus().getCode());
+			}
+			
+			Results<Skill> out = new Results();
+			out.setResults(Converters.convertMapListToSkillsList(resp.getData().getDnGroups()));
+			out.setTotalCount(resp.getData().getTotalCount());
+			
+			return out;
+        } catch(ApiException e) {
+        	throw new ProvisioningApiException("Error getting objects", e);
+        }
+	}
+	
+	/**
+     * Get Skills.
+     * Get Skills from Configuration Server with the specified filters.
+     * @param searchParams object containing remaining search parameters (limit, offset, searchTerm, searchKey, matchMethod, sortKey, sortAscending, sortMethod).
+	 * @param inUse Specifies whether to return only skills actually assigned to agents.  (optional, default to false)
+	 * @return Results object which includes list of Skills and total count.
+     * @throws ProvisioningApiException if the call is unsuccessful.
+     */
+	public Results<Skill> searchSkills(SearchParams searchParams, Boolean inUse) throws ProvisioningApiException {
+		return searchSkills(
+			searchParams.getLimit(),
+			searchParams.getOffset(),
+			searchParams.getSearchTerm(),
+			searchParams.getSearchKey(),
+			searchParams.getMatchMethod(),
+			searchParams.getSortKey(),
+			searchParams.getSortAscending(),
+			searchParams.getSortMethod(),
+			inUse
+		);
+	}
 	
 }

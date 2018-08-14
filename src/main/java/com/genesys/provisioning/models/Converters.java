@@ -68,7 +68,7 @@ public class Converters {
 		out.setSwitchNames(in.getSwitchNames());
 		out.setPhones(convertPhonesToExtensions(in.getPhones()));
 		out.setSupportSoftPhone(in.getSupportSoftPhone());
-		//out.setSipPhoneType(convertSipPhoneTypeToUpdateUserSipPhoneTypeEnum(in.getSipPhoneType()));
+		out.setSipPhoneType(convertSipPhoneTypeToUpdateUserSipPhoneTypeEnum(in.getSipPhoneType()));
 		out.setSkills(convertSkillsToSkills(in.getSkills()));
 		out.setAgentGroups(in.getAgentGroups());
 		out.setAccessGroups(in.getAccessGroups());
@@ -166,6 +166,19 @@ public class Converters {
 		return null;
 	}
 	
+	public static UpdateUserDataData.SipPhoneTypeEnum convertSipPhoneTypeToUpdateUserSipPhoneTypeEnum(SipPhoneType in) {
+		if(in == null) return null;
+		
+		switch(in) {
+			case DISABLE_CTI: return UpdateUserDataData.SipPhoneTypeEnum.DISABLE_CTI;
+			case GENESYS_SOFTPHONE: return UpdateUserDataData.SipPhoneTypeEnum.GENESYS_SOFTPHONE;
+			case GENESYS_420HT_AUDIOCODES_4XXHD: return UpdateUserDataData.SipPhoneTypeEnum.GENESYS_420HT_AUDIOCODES_4XXHD;
+			case GENERIC_PHONE: return UpdateUserDataData.SipPhoneTypeEnum.GENERIC_PHONE;
+			
+		}
+		return null;
+	}
+	
 	public static AddUserDataDataWwe convertWwePropertiesToAddUserDataDataWwe(WweProperties in) {
 		if(in == null) return null;
 		
@@ -255,6 +268,14 @@ public class Converters {
 		
 		List<DnGroup> out = new ArrayList();
 		for(Object i:in) out.add(new DnGroup((Map<String,Object>)i));
+		return out;
+	}
+	
+	public static List<Skill> convertMapListToSkillsList(List<Object> in) {
+		if(in == null) return null;
+		
+		List<Skill> out = new ArrayList();
+		for(Object i:in) out.add(new Skill((Map<String,Object>)i));
 		return out;
 	}
 	

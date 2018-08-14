@@ -95,7 +95,7 @@ public class UsersApi {
      * @return The list of users found for the given parameters.
      * @throws ProvisioningApiException if the call is unsuccessful.
      */
-	public List<User> getUsers(int limit, int offset, String order, String sortBy, String filterName, String filterParameters, String roles, String skills, boolean userEnabled, String userValid) throws ProvisioningApiException {
+	public List<User> getUsers(Integer limit, Integer offset, String order, String sortBy, String filterName, String filterParameters, String roles, String skills, Boolean userEnabled, String userValid) throws ProvisioningApiException {
 		List<User> out = new ArrayList();
 		
 		try {
