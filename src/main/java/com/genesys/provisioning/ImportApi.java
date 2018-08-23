@@ -9,33 +9,54 @@ import com.genesys.internal.provisioning.model.GetImportStatusResponse;
 import com.genesys.provisioning.models.Converters;
 import com.genesys.provisioning.models.ImportStatus;
 
-import java.io.File;
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.MultipartBuilder;
+import com.squareup.okhttp.MediaType;
+import com.squareup.okhttp.Headers;
+import com.squareup.okhttp.RequestBody;
+import com.squareup.okhttp.Response;
+
+import java.io.IOException;
 
 public class ImportApi {
 	private com.genesys.internal.provisioning.api.ImportApi importApi;
+	private ApiClient client;
 	
 	public ImportApi(ApiClient client) {
+		this.client = client;
 		importApi = new com.genesys.internal.provisioning.api.ImportApi(client);
 	}
 	
 	/**
      * Import users.
      * Import users in the specified CSV/XLS file.
-     * @param csvfile The CSV/XLS file to import. (optional)
+     * @param fileName the name of the CSV/XLS file to import.
+     * @param fileContents the contents of the CSV/XLS file to import.
      * @param validateBeforeImport Specifies whether the Provisioning API should validate the file before the actual import takes place. (optional, default to false)
      * @throws ProvisioningApiException if the call is unsuccessful.
      */
-	public void importFile(File csvfile, Boolean validateBeforeImport) throws ProvisioningApiException {
+	public void importFile(String fileName, String fileContents, Boolean validateBeforeImport) throws ProvisioningApiException {
+		
+		RequestBody requestBody = new MultipartBuilder()
+		.type(MultipartBuilder.FORM)
+		.addPart(
+		  	Headers.of("Content-Disposition", "form-data; name=\"csvfile\"; filename=\""+fileName+"\""),
+		  	RequestBody.create(MediaType.parse("text/csv"), fileContents))
+		.addPart(
+		  	Headers.of("Content-Disposition", "form-data; name=\"validateBeforeImport\""),
+		  	RequestBody.create(null, validateBeforeImport.toString()))
+		.build();
+
+ 		Request request = new Request.Builder()
+			.url(this.client.getBasePath()+"/import-users/csv")
+			.post(requestBody)
+			.build();
 		try {
-			ApiSuccessResponse resp = importApi.importFile(csvfile, validateBeforeImport);
-			
-			if (!resp.getStatus().getCode().equals(0)) {
-				throw new ProvisioningApiException("Error importing file. Code: " + resp.getStatus().getCode());
-			}
-			
-        } catch(ApiException e) {
-        	throw new ProvisioningApiException("Error importing file", e);
-        }
+			Response response = this.client.getHttpClient().newCall(request).execute();
+		} catch(IOException e) {
+			throw new ProvisioningApiException("Error importing file", e);
+		}
+		
 	}
 	
 	/**
@@ -59,20 +80,29 @@ public class ImportApi {
 	/**
      * Validate the import file.
      * Performs pre-validation on the specified CSV/XLS file.
-     * @param csvfile The CSV/XLS file to import. (optional)
+     * @param fileName The name of the CSV/XLS file to validate.
+     * @param fileContents The contents of the CSV/XLS file to validate.
      * @throws ProvisioningApiException if the call is unsuccessful.
      */
-	public void validateImportFile(File csvfile) throws ProvisioningApiException {
+	public void validateFile(String fileName, String fileContents) throws ProvisioningApiException {
+		
+		RequestBody requestBody = new MultipartBuilder()
+		.type(MultipartBuilder.FORM)
+		.addPart(
+		  	Headers.of("Content-Disposition", "form-data; name=\"csvfile\"; filename=\""+fileName+"\""),
+		  	RequestBody.create(MediaType.parse("text/csv"), fileContents))
+		.build();
+
+ 		Request request = new Request.Builder()
+			.url(this.client.getBasePath()+"/import-users/validate-csv")
+			.post(requestBody)
+			.build();
 		try {
-			ApiSuccessResponse resp = importApi.validateImportFile(csvfile);
-			
-			if (!resp.getStatus().getCode().equals(0)) {
-				throw new ProvisioningApiException("Error validating file. Code: " + resp.getStatus().getCode());
-			}
-			
-        } catch(ApiException e) {
-        	throw new ProvisioningApiException("Error validating file", e);
-        }
+			Response response = this.client.getHttpClient().newCall(request).execute();
+		} catch(IOException e) {
+			throw new ProvisioningApiException("Error validating file", e);
+		}
+		
 	}
 	
 	/**
@@ -87,7 +117,7 @@ public class ImportApi {
 		try {
 			GetImportStatusResponse resp = importApi.getImportStatus(adminName, tenantName);
 			
-			if (!resp.getStatus().getCode().equals(0)) {
+			if (resp.getStatus().getCode().intValue() != 0) {
 				throw new ProvisioningApiException("Error getting import status. Code: " + resp.getStatus().getCode());
 			}
 			

@@ -241,8 +241,8 @@ public class Converters {
 		out.setSheetName(in.getSheetName());
 		out.setStopRequested(in.StopRequested());
 		out.setStopped(in.Stopped());
-		out.setSucceedCount(in.getSucceedCount());
-		out.setTotalCount(in.getTotalCount());
+		out.setSucceedCount(in.getSucceedCount().intValue());
+		out.setTotalCount(in.getTotalCount().intValue());
 
 		return out;
 	}

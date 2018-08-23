@@ -1,7 +1,5 @@
 package com.genesys.provisioning.models;
 
-import java.math.BigDecimal;
-
 import java.util.List;
 import java.util.ArrayList;
 
@@ -15,8 +13,8 @@ public class ImportStatus {
 	private String sheetName = null;
 	private Boolean stopRequested = null;
 	private Boolean stopped = null;
-	private BigDecimal succeedCount = null;
-	private BigDecimal totalCount = null;
+	private Integer succeedCount = null;
+	private Integer totalCount = null;
 
 	public ImportStatus() {
 		
@@ -86,19 +84,19 @@ public class ImportStatus {
 		return this.stopped;
 	}
 
-	public void setSucceedCount(BigDecimal succeedCount) {
+	public void setSucceedCount(Integer succeedCount) {
 		this.succeedCount = succeedCount;
 	}
 
-	public BigDecimal getSucceedCount() {
+	public Integer getSucceedCount() {
 		return this.succeedCount;
 	}
 
-	public void setTotalCount(BigDecimal totalCount) {
+	public void setTotalCount(Integer totalCount) {
 		this.totalCount = totalCount;
 	}
 
-	public BigDecimal getTotalCount() {
+	public Integer getTotalCount() {
 		return this.totalCount;
 	}
 	
