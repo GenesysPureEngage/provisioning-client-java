@@ -8,11 +8,11 @@ def versionBuild
 
 /*Setting default value for versionBuild which is the last incremented value stored in the file */
 if (versionPropsFile.canRead()) {
-	def Properties versionProps = new Properties()
-	versionProps.load(new FileInputStream(versionPropsFile))
-	versionBuild = versionProps['VERSION_BUILD'].toInteger()
+    def Properties versionProps = new Properties()
+    versionProps.load(new FileInputStream(versionPropsFile))
+    versionBuild = versionProps['VERSION_BUILD'].toInteger()
 } else {
-	throw new GradleException("Could not read version.properties!")
+    throw new GradleException("Could not read version.properties!")
 }
 
 group = 'com.genesys'
@@ -24,7 +24,7 @@ buildscript {
     repositories {
         jcenter()
     }
-	dependencies {
+    dependencies {
         classpath "io.codearte.gradle.nexus:gradle-nexus-staging-plugin:0.11.0"
     }
 }
@@ -41,19 +41,15 @@ dependencies {
     compile 'com.squareup.okhttp:logging-interceptor:2.7.5'
     compile 'com.google.code.gson:gson:2.8.1'
     compile 'org.threeten:threetenbp:1.3.5'
-	compile 'io.gsonfire:gson-fire:1.8.1'
-	compile 'org.cometd.java:cometd-api:1.1.5'
+    compile 'io.gsonfire:gson-fire:1.8.1'
+    compile 'org.cometd.java:cometd-api:1.1.5'
     compile 'org.cometd.java:cometd-java-client:3.1.2'
     compile 'org.cometd.java:bayeux-api:3.1.2'
     compile 'org.slf4j:slf4j-api:1.7.25'
     testCompile 'junit:junit:4.12'
 }
 
-signing {
-    sign configurations.archives
-}
-
-task incrementBuildNumber { 
+task incrementBuildNumber {
     doLast {
         if (versionPropsFile.canRead()) {
             def Properties versionProps = new Properties()
@@ -64,7 +60,7 @@ task incrementBuildNumber {
         } else {
             throw new GradleException("Could not read version.properties!")
         }
-		
+
         println 'Version build updated to: ' + versionBuild
     }
 }
@@ -83,60 +79,65 @@ artifacts {
     archives javadocJar, sourcesJar
 }
 
-task execute(type:JavaExec) {
-   main = System.getProperty('mainClass')
-   classpath = sourceSets.main.runtimeClasspath
+task execute(type: JavaExec) {
+    main = System.getProperty('mainClass')
+    classpath = sourceSets.main.runtimeClasspath
 }
 
-
-uploadArchives {
-  repositories {
-    mavenDeployer {
-      beforeDeployment { deployment -> signing.signPom(deployment) }
-
-      repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
-        authentication(userName: ossrhUsername, password: ossrhPassword)
-      }
-
-      snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
-        authentication(userName: ossrhUsername, password: ossrhPassword)
-      }
-
-      pom.project {
-        name 'Provisioning API'	  
-        description 'A Java library to interface to Genesys Provisioning public API'
-        url 'https://developer.genhtcc.com/api/provisioning/index.html'
-
-        scm {
-          connection 'scm:git:git@github.com:GenesysPureEngage/provisioning-client-java.git'
-          developerConnection 'scm:git:git@github.com:GenesysPureEngage/provisioning-client-java.git'
-          url 'https://github.com/GenesysPureEngage/provisioning-client-java'
-        }
-
-        licenses {
-          license {
-            name 'MIT License'
-            url 'https://opensource.org/licenses/MIT'
-            distribution 'repo'
-          }
-        }
-
-        developers {
-          developer {
-            name 'Genesys Inc'
-            email 'support@genesys.com'
-            organization 'Genesys Inc'
-            organizationUrl 'https://developer.genhtcc.com'
-          }
-        }
-      }
+if (hasProperty('ossrhUsername') && hasProperty('ossrhPassword')) {
+    signing {
+        sign configurations.archives
     }
-  }
-}
 
-nexusStaging {  
-    username = ossrhUsername
-    password = ossrhPassword
-    numberOfRetries = 50
-	  delayBetweenRetriesInMillis = 4000	
+    uploadArchives {
+        repositories {
+            mavenDeployer {
+                beforeDeployment { deployment -> signing.signPom(deployment) }
+
+                repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
+                    authentication(userName: ossrhUsername, password: ossrhPassword)
+                }
+
+                snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
+                    authentication(userName: ossrhUsername, password: ossrhPassword)
+                }
+
+                pom.project {
+                    name 'Provisioning API'
+                    description 'A Java library to interface to Genesys Provisioning public API'
+                    url 'https://developer.genhtcc.com/api/provisioning/index.html'
+
+                    scm {
+                        connection 'scm:git:git@github.com:GenesysPureEngage/provisioning-client-java.git'
+                        developerConnection 'scm:git:git@github.com:GenesysPureEngage/provisioning-client-java.git'
+                        url 'https://github.com/GenesysPureEngage/provisioning-client-java'
+                    }
+
+                    licenses {
+                        license {
+                            name 'MIT License'
+                            url 'https://opensource.org/licenses/MIT'
+                            distribution 'repo'
+                        }
+                    }
+
+                    developers {
+                        developer {
+                            name 'Genesys Inc'
+                            email 'support@genesys.com'
+                            organization 'Genesys Inc'
+                            organizationUrl 'https://developer.genhtcc.com'
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    nexusStaging {
+        username = ossrhUsername
+        password = ossrhPassword
+        numberOfRetries = 50
+        delayBetweenRetriesInMillis = 4000
+    }
 }
