@@ -14,6 +14,7 @@
 package com.genesys.internal.provisioning.model;
 
 import java.util.Objects;
+import com.genesys.internal.provisioning.model.InboundData;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -22,42 +23,31 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
- * Properties related to Workspace Web Edition. 
+ * ModifyInboundData
  */
-@ApiModel(description = "Properties related to Workspace Web Edition. ")
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-09-04T14:50:38.182Z")
-public class AddUserDataDataWwe {
-  @SerializedName("roles")
-  private List<String> roles = null;
+public class ModifyInboundData {
+  @SerializedName("data")
+  private InboundData data = null;
 
-  public AddUserDataDataWwe roles(List<String> roles) {
-    this.roles = roles;
-    return this;
-  }
-
-  public AddUserDataDataWwe addRolesItem(String rolesItem) {
-    if (this.roles == null) {
-      this.roles = new ArrayList<String>();
-    }
-    this.roles.add(rolesItem);
+  public ModifyInboundData data(InboundData data) {
+    this.data = data;
     return this;
   }
 
    /**
-   * The roles that are added to the user. If **isAgent** is &#x60;true&#x60;, then you should set this field to &#x60;ROLE_AGENT&#x60;. 
-   * @return roles
+   * Get data
+   * @return data
   **/
-  @ApiModelProperty(value = "The roles that are added to the user. If **isAgent** is `true`, then you should set this field to `ROLE_AGENT`. ")
-  public List<String> getRoles() {
-    return roles;
+  @ApiModelProperty(required = true, value = "")
+  public InboundData getData() {
+    return data;
   }
 
-  public void setRoles(List<String> roles) {
-    this.roles = roles;
+  public void setData(InboundData data) {
+    this.data = data;
   }
 
 
@@ -69,22 +59,22 @@ public class AddUserDataDataWwe {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    AddUserDataDataWwe addUserDataDataWwe = (AddUserDataDataWwe) o;
-    return Objects.equals(this.roles, addUserDataDataWwe.roles);
+    ModifyInboundData modifyInboundData = (ModifyInboundData) o;
+    return Objects.equals(this.data, modifyInboundData.data);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(roles);
+    return Objects.hash(data);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class AddUserDataDataWwe {\n");
+    sb.append("class ModifyInboundData {\n");
     
-    sb.append("    roles: ").append(toIndentedString(roles)).append("\n");
+    sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -29,8 +29,10 @@ import java.io.IOException;
 
 import com.genesys.internal.provisioning.model.ApiErrorResponse;
 import com.genesys.internal.provisioning.model.ApiSuccessResponse;
-import java.io.File;
-import com.genesys.internal.provisioning.model.GetImportStatusResponse;
+import com.genesys.internal.provisioning.model.GetInboundResponse;
+import com.genesys.internal.provisioning.model.GetOutboundResponse;
+import com.genesys.internal.provisioning.model.ModifyInboundData;
+import com.genesys.internal.provisioning.model.ModifyOutboundData;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -38,14 +40,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ImportApi {
+public class EmailSettingsApi {
     private ApiClient apiClient;
 
-    public ImportApi() {
+    public EmailSettingsApi() {
         this(Configuration.getDefaultApiClient());
     }
 
-    public ImportApi(ApiClient apiClient) {
+    public EmailSettingsApi(ApiClient apiClient) {
         this.apiClient = apiClient;
     }
 
@@ -58,280 +60,23 @@ public class ImportApi {
     }
 
     /**
-     * Build call for getImportStatus
-     * @param adminName The login name of an administrator for the tenant. (required)
-     * @param tenantName The name of the tenant. (required)
+     * Build call for deleteInboundSettings
+     * @param name Name of an inbound client. (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getImportStatusCall(String adminName, String tenantName, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call deleteInboundSettingsCall(String name, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/import-users/check-status";
+        String localVarPath = "/email-settings/inbound";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        if (adminName != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("adminName", adminName));
-        if (tenantName != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("tenantName", tenantName));
-
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
-
-        if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                    .build();
-                }
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {  };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getImportStatusValidateBeforeCall(String adminName, String tenantName, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
-        // verify the required parameter 'adminName' is set
-        if (adminName == null) {
-            throw new ApiException("Missing the required parameter 'adminName' when calling getImportStatus(Async)");
-        }
-        
-        // verify the required parameter 'tenantName' is set
-        if (tenantName == null) {
-            throw new ApiException("Missing the required parameter 'tenantName' when calling getImportStatus(Async)");
-        }
-        
-
-        com.squareup.okhttp.Call call = getImportStatusCall(adminName, tenantName, progressListener, progressRequestListener);
-        return call;
-
-    }
-
-    /**
-     * Get import status.
-     * Get all active imports for the specified tenant.
-     * @param adminName The login name of an administrator for the tenant. (required)
-     * @param tenantName The name of the tenant. (required)
-     * @return GetImportStatusResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public GetImportStatusResponse getImportStatus(String adminName, String tenantName) throws ApiException {
-        ApiResponse<GetImportStatusResponse> resp = getImportStatusWithHttpInfo(adminName, tenantName);
-        return resp.getData();
-    }
-
-    /**
-     * Get import status.
-     * Get all active imports for the specified tenant.
-     * @param adminName The login name of an administrator for the tenant. (required)
-     * @param tenantName The name of the tenant. (required)
-     * @return ApiResponse&lt;GetImportStatusResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<GetImportStatusResponse> getImportStatusWithHttpInfo(String adminName, String tenantName) throws ApiException {
-        com.squareup.okhttp.Call call = getImportStatusValidateBeforeCall(adminName, tenantName, null, null);
-        Type localVarReturnType = new TypeToken<GetImportStatusResponse>(){}.getType();
-        return apiClient.execute(call, localVarReturnType);
-    }
-
-    /**
-     * Get import status. (asynchronously)
-     * Get all active imports for the specified tenant.
-     * @param adminName The login name of an administrator for the tenant. (required)
-     * @param tenantName The name of the tenant. (required)
-     * @param callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public com.squareup.okhttp.Call getImportStatusAsync(String adminName, String tenantName, final ApiCallback<GetImportStatusResponse> callback) throws ApiException {
-
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
-        com.squareup.okhttp.Call call = getImportStatusValidateBeforeCall(adminName, tenantName, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<GetImportStatusResponse>(){}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
-    }
-    /**
-     * Build call for importFile
-     * @param csvfile The CSV/XLS file to import. (optional)
-     * @param validateBeforeImport Specifies whether the Provisioning API should validate the file before the actual import takes place. (optional, default to false)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public com.squareup.okhttp.Call importFileCall(File csvfile, Boolean validateBeforeImport, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/import-users/csv";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-        if (csvfile != null)
-        localVarFormParams.put("csvfile", csvfile);
-        if (validateBeforeImport != null)
-        localVarFormParams.put("validateBeforeImport", validateBeforeImport);
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
-
-        final String[] localVarContentTypes = {
-            "multipart/form-data"
-        };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
-
-        if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                    .build();
-                }
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {  };
-        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call importFileValidateBeforeCall(File csvfile, Boolean validateBeforeImport, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
-
-        com.squareup.okhttp.Call call = importFileCall(csvfile, validateBeforeImport, progressListener, progressRequestListener);
-        return call;
-
-    }
-
-    /**
-     * Import users.
-     * Import users in the specified CSV/XLS file.
-     * @param csvfile The CSV/XLS file to import. (optional)
-     * @param validateBeforeImport Specifies whether the Provisioning API should validate the file before the actual import takes place. (optional, default to false)
-     * @return ApiSuccessResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiSuccessResponse importFile(File csvfile, Boolean validateBeforeImport) throws ApiException {
-        ApiResponse<ApiSuccessResponse> resp = importFileWithHttpInfo(csvfile, validateBeforeImport);
-        return resp.getData();
-    }
-
-    /**
-     * Import users.
-     * Import users in the specified CSV/XLS file.
-     * @param csvfile The CSV/XLS file to import. (optional)
-     * @param validateBeforeImport Specifies whether the Provisioning API should validate the file before the actual import takes place. (optional, default to false)
-     * @return ApiResponse&lt;ApiSuccessResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<ApiSuccessResponse> importFileWithHttpInfo(File csvfile, Boolean validateBeforeImport) throws ApiException {
-        com.squareup.okhttp.Call call = importFileValidateBeforeCall(csvfile, validateBeforeImport, null, null);
-        Type localVarReturnType = new TypeToken<ApiSuccessResponse>(){}.getType();
-        return apiClient.execute(call, localVarReturnType);
-    }
-
-    /**
-     * Import users. (asynchronously)
-     * Import users in the specified CSV/XLS file.
-     * @param csvfile The CSV/XLS file to import. (optional)
-     * @param validateBeforeImport Specifies whether the Provisioning API should validate the file before the actual import takes place. (optional, default to false)
-     * @param callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public com.squareup.okhttp.Call importFileAsync(File csvfile, Boolean validateBeforeImport, final ApiCallback<ApiSuccessResponse> callback) throws ApiException {
-
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
-        com.squareup.okhttp.Call call = importFileValidateBeforeCall(csvfile, validateBeforeImport, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<ApiSuccessResponse>(){}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
-    }
-    /**
-     * Build call for terminateImport
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public com.squareup.okhttp.Call terminateImportCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/import-users/csv";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (name != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("name", name));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -366,45 +111,53 @@ public class ImportApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call terminateImportValidateBeforeCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call deleteInboundSettingsValidateBeforeCall(String name, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling deleteInboundSettings(Async)");
+        }
         
 
-        com.squareup.okhttp.Call call = terminateImportCall(progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = deleteInboundSettingsCall(name, progressListener, progressRequestListener);
         return call;
 
     }
 
     /**
-     * Stop import.
-     * Terminates the current user import operation.
-     * @return ApiSuccessResponse
+     * Delete inbound settings.
+     * Deletes data of one inbound client identified by it&#39;s name.
+     * @param name Name of an inbound client. (required)
+     * @return GetInboundResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiSuccessResponse terminateImport() throws ApiException {
-        ApiResponse<ApiSuccessResponse> resp = terminateImportWithHttpInfo();
+    public GetInboundResponse deleteInboundSettings(String name) throws ApiException {
+        ApiResponse<GetInboundResponse> resp = deleteInboundSettingsWithHttpInfo(name);
         return resp.getData();
     }
 
     /**
-     * Stop import.
-     * Terminates the current user import operation.
-     * @return ApiResponse&lt;ApiSuccessResponse&gt;
+     * Delete inbound settings.
+     * Deletes data of one inbound client identified by it&#39;s name.
+     * @param name Name of an inbound client. (required)
+     * @return ApiResponse&lt;GetInboundResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiSuccessResponse> terminateImportWithHttpInfo() throws ApiException {
-        com.squareup.okhttp.Call call = terminateImportValidateBeforeCall(null, null);
-        Type localVarReturnType = new TypeToken<ApiSuccessResponse>(){}.getType();
+    public ApiResponse<GetInboundResponse> deleteInboundSettingsWithHttpInfo(String name) throws ApiException {
+        com.squareup.okhttp.Call call = deleteInboundSettingsValidateBeforeCall(name, null, null);
+        Type localVarReturnType = new TypeToken<GetInboundResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
     /**
-     * Stop import. (asynchronously)
-     * Terminates the current user import operation.
+     * Delete inbound settings. (asynchronously)
+     * Deletes data of one inbound client identified by it&#39;s name.
+     * @param name Name of an inbound client. (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call terminateImportAsync(final ApiCallback<ApiSuccessResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call deleteInboundSettingsAsync(String name, final ApiCallback<GetInboundResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -425,24 +178,23 @@ public class ImportApi {
             };
         }
 
-        com.squareup.okhttp.Call call = terminateImportValidateBeforeCall(progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<ApiSuccessResponse>(){}.getType();
+        com.squareup.okhttp.Call call = deleteInboundSettingsValidateBeforeCall(name, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<GetInboundResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
-     * Build call for validateImportFile
-     * @param csvfile The CSV/XLS file to import. (optional)
+     * Build call for getInboundSettings
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call validateImportFileCall(File csvfile, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getInboundSettingsCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/import-users/validate-csv";
+        String localVarPath = "/email-settings/inbound";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -450,8 +202,6 @@ public class ImportApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-        if (csvfile != null)
-        localVarFormParams.put("csvfile", csvfile);
 
         final String[] localVarAccepts = {
             "application/json"
@@ -460,7 +210,234 @@ public class ImportApi {
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
 
         final String[] localVarContentTypes = {
-            "multipart/form-data"
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getInboundSettingsValidateBeforeCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+
+        com.squareup.okhttp.Call call = getInboundSettingsCall(progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Get inbound settings.
+     * Returns inbound settings.
+     * @return GetInboundResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public GetInboundResponse getInboundSettings() throws ApiException {
+        ApiResponse<GetInboundResponse> resp = getInboundSettingsWithHttpInfo();
+        return resp.getData();
+    }
+
+    /**
+     * Get inbound settings.
+     * Returns inbound settings.
+     * @return ApiResponse&lt;GetInboundResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<GetInboundResponse> getInboundSettingsWithHttpInfo() throws ApiException {
+        com.squareup.okhttp.Call call = getInboundSettingsValidateBeforeCall(null, null);
+        Type localVarReturnType = new TypeToken<GetInboundResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Get inbound settings. (asynchronously)
+     * Returns inbound settings.
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getInboundSettingsAsync(final ApiCallback<GetInboundResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getInboundSettingsValidateBeforeCall(progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<GetInboundResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getOutboundSettings
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getOutboundSettingsCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/email-settings/outbound";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getOutboundSettingsValidateBeforeCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+
+        com.squareup.okhttp.Call call = getOutboundSettingsCall(progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Get outbound settings.
+     * Returns outbound settings.
+     * @return GetOutboundResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public GetOutboundResponse getOutboundSettings() throws ApiException {
+        ApiResponse<GetOutboundResponse> resp = getOutboundSettingsWithHttpInfo();
+        return resp.getData();
+    }
+
+    /**
+     * Get outbound settings.
+     * Returns outbound settings.
+     * @return ApiResponse&lt;GetOutboundResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<GetOutboundResponse> getOutboundSettingsWithHttpInfo() throws ApiException {
+        com.squareup.okhttp.Call call = getOutboundSettingsValidateBeforeCall(null, null);
+        Type localVarReturnType = new TypeToken<GetOutboundResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Get outbound settings. (asynchronously)
+     * Returns outbound settings.
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getOutboundSettingsAsync(final ApiCallback<GetOutboundResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getOutboundSettingsValidateBeforeCall(progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<GetOutboundResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for modifyInboundSettings
+     * @param body Body Data (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call modifyInboundSettingsCall(ModifyInboundData body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = body;
+
+        // create path and map variables
+        String localVarPath = "/email-settings/inbound";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
@@ -482,48 +459,53 @@ public class ImportApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call validateImportFileValidateBeforeCall(File csvfile, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call modifyInboundSettingsValidateBeforeCall(ModifyInboundData body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException("Missing the required parameter 'body' when calling modifyInboundSettings(Async)");
+        }
         
 
-        com.squareup.okhttp.Call call = validateImportFileCall(csvfile, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = modifyInboundSettingsCall(body, progressListener, progressRequestListener);
         return call;
 
     }
 
     /**
-     * Validate the import file.
-     * Performs pre-validation on the specified CSV/XLS file.
-     * @param csvfile The CSV/XLS file to import. (optional)
+     * Modify inbound settings.
+     * Adds or updates inbound settings.
+     * @param body Body Data (required)
      * @return ApiSuccessResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiSuccessResponse validateImportFile(File csvfile) throws ApiException {
-        ApiResponse<ApiSuccessResponse> resp = validateImportFileWithHttpInfo(csvfile);
+    public ApiSuccessResponse modifyInboundSettings(ModifyInboundData body) throws ApiException {
+        ApiResponse<ApiSuccessResponse> resp = modifyInboundSettingsWithHttpInfo(body);
         return resp.getData();
     }
 
     /**
-     * Validate the import file.
-     * Performs pre-validation on the specified CSV/XLS file.
-     * @param csvfile The CSV/XLS file to import. (optional)
+     * Modify inbound settings.
+     * Adds or updates inbound settings.
+     * @param body Body Data (required)
      * @return ApiResponse&lt;ApiSuccessResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiSuccessResponse> validateImportFileWithHttpInfo(File csvfile) throws ApiException {
-        com.squareup.okhttp.Call call = validateImportFileValidateBeforeCall(csvfile, null, null);
+    public ApiResponse<ApiSuccessResponse> modifyInboundSettingsWithHttpInfo(ModifyInboundData body) throws ApiException {
+        com.squareup.okhttp.Call call = modifyInboundSettingsValidateBeforeCall(body, null, null);
         Type localVarReturnType = new TypeToken<ApiSuccessResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
     /**
-     * Validate the import file. (asynchronously)
-     * Performs pre-validation on the specified CSV/XLS file.
-     * @param csvfile The CSV/XLS file to import. (optional)
+     * Modify inbound settings. (asynchronously)
+     * Adds or updates inbound settings.
+     * @param body Body Data (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call validateImportFileAsync(File csvfile, final ApiCallback<ApiSuccessResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call modifyInboundSettingsAsync(ModifyInboundData body, final ApiCallback<ApiSuccessResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -544,7 +526,129 @@ public class ImportApi {
             };
         }
 
-        com.squareup.okhttp.Call call = validateImportFileValidateBeforeCall(csvfile, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = modifyInboundSettingsValidateBeforeCall(body, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ApiSuccessResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for modifyOutboundSettings
+     * @param body Body Data (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call modifyOutboundSettingsCall(ModifyOutboundData body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = body;
+
+        // create path and map variables
+        String localVarPath = "/email-settings/outbound";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call modifyOutboundSettingsValidateBeforeCall(ModifyOutboundData body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException("Missing the required parameter 'body' when calling modifyOutboundSettings(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = modifyOutboundSettingsCall(body, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Modify outbound settings.
+     * Adds or updates outbound settings.
+     * @param body Body Data (required)
+     * @return ApiSuccessResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiSuccessResponse modifyOutboundSettings(ModifyOutboundData body) throws ApiException {
+        ApiResponse<ApiSuccessResponse> resp = modifyOutboundSettingsWithHttpInfo(body);
+        return resp.getData();
+    }
+
+    /**
+     * Modify outbound settings.
+     * Adds or updates outbound settings.
+     * @param body Body Data (required)
+     * @return ApiResponse&lt;ApiSuccessResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ApiSuccessResponse> modifyOutboundSettingsWithHttpInfo(ModifyOutboundData body) throws ApiException {
+        com.squareup.okhttp.Call call = modifyOutboundSettingsValidateBeforeCall(body, null, null);
+        Type localVarReturnType = new TypeToken<ApiSuccessResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Modify outbound settings. (asynchronously)
+     * Adds or updates outbound settings.
+     * @param body Body Data (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call modifyOutboundSettingsAsync(ModifyOutboundData body, final ApiCallback<ApiSuccessResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = modifyOutboundSettingsValidateBeforeCall(body, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiSuccessResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

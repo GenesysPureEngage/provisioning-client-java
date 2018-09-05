@@ -14,6 +14,7 @@
 package com.genesys.internal.provisioning.model;
 
 import java.util.Objects;
+import com.genesys.internal.provisioning.model.OutboundData;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -26,38 +27,37 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Properties related to Workspace Web Edition. 
+ * GetOutboundResponseData
  */
-@ApiModel(description = "Properties related to Workspace Web Edition. ")
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-09-04T14:50:38.182Z")
-public class AddUserDataDataWwe {
-  @SerializedName("roles")
-  private List<String> roles = null;
+public class GetOutboundResponseData {
+  @SerializedName("settings")
+  private List<OutboundData> settings = null;
 
-  public AddUserDataDataWwe roles(List<String> roles) {
-    this.roles = roles;
+  public GetOutboundResponseData settings(List<OutboundData> settings) {
+    this.settings = settings;
     return this;
   }
 
-  public AddUserDataDataWwe addRolesItem(String rolesItem) {
-    if (this.roles == null) {
-      this.roles = new ArrayList<String>();
+  public GetOutboundResponseData addSettingsItem(OutboundData settingsItem) {
+    if (this.settings == null) {
+      this.settings = new ArrayList<OutboundData>();
     }
-    this.roles.add(rolesItem);
+    this.settings.add(settingsItem);
     return this;
   }
 
    /**
-   * The roles that are added to the user. If **isAgent** is &#x60;true&#x60;, then you should set this field to &#x60;ROLE_AGENT&#x60;. 
-   * @return roles
+   * Get settings
+   * @return settings
   **/
-  @ApiModelProperty(value = "The roles that are added to the user. If **isAgent** is `true`, then you should set this field to `ROLE_AGENT`. ")
-  public List<String> getRoles() {
-    return roles;
+  @ApiModelProperty(value = "")
+  public List<OutboundData> getSettings() {
+    return settings;
   }
 
-  public void setRoles(List<String> roles) {
-    this.roles = roles;
+  public void setSettings(List<OutboundData> settings) {
+    this.settings = settings;
   }
 
 
@@ -69,22 +69,22 @@ public class AddUserDataDataWwe {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    AddUserDataDataWwe addUserDataDataWwe = (AddUserDataDataWwe) o;
-    return Objects.equals(this.roles, addUserDataDataWwe.roles);
+    GetOutboundResponseData getOutboundResponseData = (GetOutboundResponseData) o;
+    return Objects.equals(this.settings, getOutboundResponseData.settings);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(roles);
+    return Objects.hash(settings);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class AddUserDataDataWwe {\n");
+    sb.append("class GetOutboundResponseData {\n");
     
-    sb.append("    roles: ").append(toIndentedString(roles)).append("\n");
+    sb.append("    settings: ").append(toIndentedString(settings)).append("\n");
     sb.append("}");
     return sb.toString();
   }
