@@ -63,10 +63,6 @@ public class ProvisioningApi {
 	 * The operations object contains API requests in the "operations" category.
 	 */
 	public final OperationsApi operations;
-	/**
-	 * The system object contains API requests in the "system" category.
-	 */
-	public final SystemApi system;
 	
 	private NotificationsApi notifications;
 	
@@ -90,7 +86,6 @@ public class ProvisioningApi {
 		objects = new ObjectsApi(client);
 		options = new OptionsApi(client);
 		operations = new OperationsApi(client, asyncCallbacks);
-		system = new SystemApi(client);
 	}
 	
 	/**
