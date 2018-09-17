@@ -186,7 +186,7 @@ public class ProvisioningApi {
 			
 			notifications = new NotificationsApi(listeners);
 			notifications.setCookieStore(cookieStore);
-			notifications.initialize(provisioningUrl + "/notifications-cometd", apiKey);
+			notifications.initialize(provisioningUrl + "/notifications", apiKey);
 			
 			exports = new ExportApi(client, apiKey, sessionId);
 			
