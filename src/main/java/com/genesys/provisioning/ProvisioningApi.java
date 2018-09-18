@@ -63,11 +63,7 @@ public class ProvisioningApi {
 	 * The operations object contains API requests in the "operations" category.
 	 */
 	public final OperationsApi operations;
-	/**
-	 * The system object contains API requests in the "system" category.
-	 */
-	public final SystemApi system;
-	
+
 	private NotificationsApi notifications;
 	
 	private final Map<String, AsyncCallback> asyncCallbacks = new HashMap();
@@ -90,7 +86,6 @@ public class ProvisioningApi {
 		objects = new ObjectsApi(client);
 		options = new OptionsApi(client);
 		operations = new OperationsApi(client, asyncCallbacks);
-		system = new SystemApi(client);
 	}
 	
 	/**
@@ -191,7 +186,7 @@ public class ProvisioningApi {
 			
 			notifications = new NotificationsApi(listeners);
 			notifications.setCookieStore(cookieStore);
-			notifications.initialize(provisioningUrl + "/notifications-cometd", apiKey);
+			notifications.initialize(provisioningUrl + "/notifications", apiKey);
 			
 			exports = new ExportApi(client, apiKey, sessionId);
 			
