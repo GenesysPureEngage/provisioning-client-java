@@ -26,7 +26,7 @@ import java.io.IOException;
 /**
  * CreateUserSuccessResponseDataPersonCfgAgentInfo
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-12-22T05:15:58.926Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-05T01:33:58.446Z")
 public class CreateUserSuccessResponseDataPersonCfgAgentInfo {
   @SerializedName("placeDBID")
   private String placeDBID = null;
