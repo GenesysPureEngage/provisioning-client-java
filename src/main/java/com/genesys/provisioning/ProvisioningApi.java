@@ -199,9 +199,7 @@ public class ProvisioningApi {
 		
 	}
 	/**
-	* Logout and disconnect from cometD.
-	* When your code is done using the API call this to log out of Provisioning and disconnect cometD.
-	* @throws ProvisioningApiException if the call is unsuccessful.
+	* @see #done(long)
 	*/
 	public void done() throws ProvisioningApiException {
 		if(initialized) {
@@ -211,6 +209,24 @@ public class ProvisioningApi {
 				throw new ProvisioningApiException("Error logging out", e);
 			}
 			notifications.disconnect();
+			initialized = false;
+		}
+	}
+
+	/**
+	 * Logout and disconnect from cometD.
+	 * When your code is done using the API call this to log out of Provisioning and disconnect cometD.
+	 * @param disconnectRequestTimeout The timeout in ms to wait for the disconnect to complete
+	 * @throws ProvisioningApiException if the call is unsuccessful.
+	 */
+	public void done(long disconnectRequestTimeout) throws ProvisioningApiException {
+		if(initialized) {
+			try {
+				sessionApi.logout();
+			} catch(ApiException e) {
+				throw new ProvisioningApiException("Error logging out", e);
+			}
+			notifications.disconnect(disconnectRequestTimeout);
 			initialized = false;
 		}
 	}

@@ -97,11 +97,15 @@ public class NotificationsApi {
         });
         
     }
-    
+
     public void disconnect() throws ProvisioningApiException {
+        disconnect(10000); // 10 second timeout by default
+    }
+
+    public void disconnect(long disconnectRequestTimeout) throws ProvisioningApiException {
     	try {
             if(client != null) {
-                client.disconnect();
+                client.disconnect(disconnectRequestTimeout);
             }
             if(httpClient != null) {
                 httpClient.stop();
