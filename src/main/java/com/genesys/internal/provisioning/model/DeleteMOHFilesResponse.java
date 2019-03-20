@@ -28,7 +28,7 @@ import java.io.IOException;
 /**
  * DeleteMOHFilesResponse
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-13T19:27:42.300Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-19T11:01:53.047Z")
 public class DeleteMOHFilesResponse {
   @SerializedName("status")
   private GetConfigResponseStatus status = null;
