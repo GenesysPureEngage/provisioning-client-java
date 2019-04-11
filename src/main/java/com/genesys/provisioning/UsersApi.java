@@ -20,7 +20,7 @@ import java.util.ArrayList;
 
 public class UsersApi {
 	private com.genesys.internal.provisioning.api.UsersApi usersApi;
-	
+
 	public UsersApi(ApiClient client) {
 		usersApi = new com.genesys.internal.provisioning.api.UsersApi(client);
 	}
@@ -33,11 +33,11 @@ public class UsersApi {
 	public Person addUser(User user) throws ProvisioningApiException {
 		try {
 			CreateUserSuccessResponse resp = usersApi.addUser(new AddUserData().data(Converters.convertUserToAddUserDataData(user)));
-			
+
 			if (!resp.getStatus().getCode().equals(0)) {
 				throw new ProvisioningApiException("Error adding user. Code: " + resp.getStatus().getCode());
 			}
-			
+
 			return Converters.convertCreateUserSuccessResponseDataPersonToPerson(resp.getData().getPerson());
         } catch(ApiException e) {
         	throw new ProvisioningApiException("Error adding user", e);
@@ -52,7 +52,7 @@ public class UsersApi {
 	public void deleteUser(String userDBID, Boolean keepPlaces) throws ProvisioningApiException {
 		try {
 			ApiSuccessResponse resp = usersApi.deleteUser(userDBID, keepPlaces);
-		
+
 			if (!resp.getStatus().getCode().equals(0)) {
 				throw new ProvisioningApiException("Error deleting user. Code: " + resp.getStatus().getCode());
 			}
@@ -60,7 +60,7 @@ public class UsersApi {
         	throw new ProvisioningApiException("Error deleting user", e);
         }
 	}
-	
+
 	/**
  	 * Updates the attributes of a user with the given DBID.
  	 * @param userDBID the DBID of the user to be updated. (required)
@@ -70,7 +70,7 @@ public class UsersApi {
 	public void updateUser(String userDBID, User user) throws ProvisioningApiException {
 		try {
 			ApiSuccessResponse resp = usersApi.updateUser(userDBID, new UpdateUserData().data(Converters.convertUserToUpdateUserDataData(user)));
-			
+
 			if (!resp.getStatus().getCode().equals(0)) {
 				throw new ProvisioningApiException("Error updating user. Code: " + resp.getStatus().getCode());
 			}
@@ -78,7 +78,7 @@ public class UsersApi {
         	throw new ProvisioningApiException("Error updating user", e);
         }
 	}
-	
+
 	/**
      * Get users.
      * Get [CfgPerson](https://docs.genesys.com/Documentation/PSDK/latest/ConfigLayerRef/CfgPerson) objects based on the specified filters.
@@ -97,25 +97,25 @@ public class UsersApi {
      */
 	public List<User> getUsers(Integer limit, Integer offset, String order, String sortBy, String filterName, String filterParameters, String roles, String skills, Boolean userEnabled, String userValid) throws ProvisioningApiException {
 		List<User> out = new ArrayList();
-		
+
 		try {
 			GetUsersSuccessResponse resp = usersApi.getUsers(limit, offset, order, sortBy, filterName, filterParameters, roles, skills, userEnabled, userValid);
-		
+
 			if (!resp.getStatus().getCode().equals(0)) {
 				throw new ProvisioningApiException("Error getting users. Code: " + resp.getStatus().getCode());
 			}
-			
+
 			for(Object i:resp.getData().getUsers()) {
 				out.add(new User((Map<String, Object>)i));
 			}
-			
+
         } catch(ApiException e) {
         	throw new ProvisioningApiException("Error getting users", e);
         }
-        
+
         return out;
 	}
-	
+
 	/**
      * Get users.
      * Get [CfgPerson](https://docs.genesys.com/Documentation/PSDK/latest/ConfigLayerRef/CfgPerson) objects based on the specified filters.
@@ -137,7 +137,7 @@ public class UsersApi {
 			searchParams.getUserValid()
 		);
 	}
-	
+
 	/**
      * Get a user.
      * Get the specified [CfgPerson](https://docs.genesys.com/Documentation/PSDK/latest/ConfigLayerRef/CfgPerson) object.
@@ -146,25 +146,20 @@ public class UsersApi {
      * @throws ProvisioningApiException if the call is unsuccessful.
      */
 	public User getUser(String DBID) throws ProvisioningApiException {
-		
+
 		try {
 			GetUsersSuccessResponse resp = usersApi.getUser(DBID);
-		
+
 			if (!resp.getStatus().getCode().equals(0)) {
 				throw new ProvisioningApiException("Error getting user. Code: " + resp.getStatus().getCode());
 			}
-			
-			for(Object i:resp.getData().getUsers()) {
-				return new User((Map<String, Object>)i);
-			}
-			
+			return new User((Map<String, Object>)resp.getData().getUser());
+
         } catch(ApiException e) {
-        	throw new ProvisioningApiException("Error getting user", e);
+        	throw new ProvisioningApiException("Error getting user with DBID: " + DBID, e);
         }
-        
-        throw new ProvisioningApiException("User not found with DBID: " + DBID);
 	}
-	
+
 	 /**
      * Get the logged in user.
      * Get the [CfgPerson](https://docs.genesys.com/Documentation/PSDK/latest/ConfigLayerRef/CfgPerson) object for the currently logged in user.
@@ -172,23 +167,18 @@ public class UsersApi {
    	 * @throws ProvisioningApiException if the call is unsuccessful.
    	 */
 	public User getCurrentUser() throws ProvisioningApiException {
-		
+
 		try {
 			GetUsersSuccessResponse resp = usersApi.getCurrentUser();
-		
+
 			if (!resp.getStatus().getCode().equals(0)) {
 				throw new ProvisioningApiException("Error getting current user. Code: " + resp.getStatus().getCode());
 			}
-			
-			for(Object i:resp.getData().getUsers()) {
-				return new User((Map<String, Object>)i);
-			}
-			
+            return new User((Map<String, Object>)resp.getData().getUser());
+
         } catch(ApiException e) {
         	throw new ProvisioningApiException("Error getting current user", e);
         }
-        
-        throw new ProvisioningApiException("User not found");
 	}
-	
+
 }
