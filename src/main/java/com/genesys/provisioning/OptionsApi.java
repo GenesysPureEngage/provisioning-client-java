@@ -41,9 +41,9 @@ public class OptionsApi {
 
             Options out = new Options();
 
-            out.setOptions((Map<String, Object>) resp.getStatus().getData().getOptions());
-            out.setCmeAppName(resp.getStatus().getData().getCmeAppName());
-            out.setCmeAppDBID(resp.getStatus().getData().getCmeAppDBID());
+            out.setOptions((Map<String, Object>) resp.getData().getOptions());
+            out.setCmeAppName(resp.getData().getCmeAppName());
+            out.setCmeAppDBID(resp.getData().getCmeAppDBID());
 
             return out;
         } catch (ApiException e) {
@@ -63,8 +63,8 @@ public class OptionsApi {
 
             OptionsPostResponseStatusSuccess resp = optionsApi.optionsPost(new OptionsPost().data(new OptionsPostData().options(options)));
 
-            if (!resp.getCode().equals(0)) {
-                throw new ProvisioningApiException("Error modifying options. Code: " + resp.getCode());
+            if (!resp.getStatus().getCode().equals(0)) {
+                throw new ProvisioningApiException("Error modifying options. Code: " + resp.getStatus().getCode());
             }
 
         } catch (ApiException e) {
@@ -94,8 +94,8 @@ public class OptionsApi {
                             )
             );
 
-            if (!resp.getCode().equals(0)) {
-                throw new ProvisioningApiException("Error updating options. Code: " + resp.getCode());
+            if (!resp.getStatus().getCode().equals(0)) {
+                throw new ProvisioningApiException("Error updating options. Code: " + resp.getStatus().getCode());
             }
 
         } catch (ApiException e) {
