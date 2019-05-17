@@ -239,8 +239,8 @@ public class Converters {
 		out.setLastEntity(in.getLastEntity());
 		out.setOperation(in.getOperation());
 		out.setSheetName(in.getSheetName());
-		out.setStopRequested(in.StopRequested());
-		out.setStopped(in.Stopped());
+		out.setStopRequested(in.isStopRequested());
+		out.setStopped(in.isStopped());
 		out.setSucceedCount(in.getSucceedCount().intValue());
 		out.setTotalCount(in.getTotalCount().intValue());
 
