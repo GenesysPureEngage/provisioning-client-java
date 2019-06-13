@@ -30,7 +30,7 @@ import java.util.List;
  * Properties related to Developer Console. 
  */
 @ApiModel(description = "Properties related to Developer Console. ")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-05-30T18:18:20.281Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-06-13T18:08:44.721Z")
 public class UpdateUserDataDataDevConsole {
   @SerializedName("roles")
   private List<String> roles = null;
