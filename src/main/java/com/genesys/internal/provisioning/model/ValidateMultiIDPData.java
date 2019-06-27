@@ -15,7 +15,6 @@ package com.genesys.internal.provisioning.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.genesys.internal.provisioning.model.GetConfigResponseStatus;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -26,29 +25,29 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * SendMetadataResponse
+ * ValidateMultiIDPData
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-06-25T17:48:20.833Z")
-public class SendMetadataResponse {
-  @SerializedName("status")
-  private GetConfigResponseStatus status = null;
+public class ValidateMultiIDPData {
+  @SerializedName("metadataId")
+  private String metadataId = null;
 
-  public SendMetadataResponse status(GetConfigResponseStatus status) {
-    this.status = status;
+  public ValidateMultiIDPData metadataId(String metadataId) {
+    this.metadataId = metadataId;
     return this;
   }
 
    /**
-   * Get status
-   * @return status
+   * Data identifier for the app-provisioning /temporary-storage API
+   * @return metadataId
   **/
-  @ApiModelProperty(value = "")
-  public GetConfigResponseStatus getStatus() {
-    return status;
+  @ApiModelProperty(value = "Data identifier for the app-provisioning /temporary-storage API")
+  public String getMetadataId() {
+    return metadataId;
   }
 
-  public void setStatus(GetConfigResponseStatus status) {
-    this.status = status;
+  public void setMetadataId(String metadataId) {
+    this.metadataId = metadataId;
   }
 
 
@@ -60,22 +59,22 @@ public class SendMetadataResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    SendMetadataResponse sendMetadataResponse = (SendMetadataResponse) o;
-    return Objects.equals(this.status, sendMetadataResponse.status);
+    ValidateMultiIDPData validateMultiIDPData = (ValidateMultiIDPData) o;
+    return Objects.equals(this.metadataId, validateMultiIDPData.metadataId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(status);
+    return Objects.hash(metadataId);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class SendMetadataResponse {\n");
+    sb.append("class ValidateMultiIDPData {\n");
     
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    metadataId: ").append(toIndentedString(metadataId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

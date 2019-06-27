@@ -26,14 +26,14 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * SendMetadataResponse
+ * ValidateMultiIDPResponse
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-06-25T17:48:20.833Z")
-public class SendMetadataResponse {
+public class ValidateMultiIDPResponse {
   @SerializedName("status")
   private GetConfigResponseStatus status = null;
 
-  public SendMetadataResponse status(GetConfigResponseStatus status) {
+  public ValidateMultiIDPResponse status(GetConfigResponseStatus status) {
     this.status = status;
     return this;
   }
@@ -60,8 +60,8 @@ public class SendMetadataResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    SendMetadataResponse sendMetadataResponse = (SendMetadataResponse) o;
-    return Objects.equals(this.status, sendMetadataResponse.status);
+    ValidateMultiIDPResponse validateMultiIDPResponse = (ValidateMultiIDPResponse) o;
+    return Objects.equals(this.status, validateMultiIDPResponse.status);
   }
 
   @Override
@@ -73,7 +73,7 @@ public class SendMetadataResponse {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class SendMetadataResponse {\n");
+    sb.append("class ValidateMultiIDPResponse {\n");
     
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
