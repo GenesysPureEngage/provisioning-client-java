@@ -81,5 +81,14 @@ public class Phone {
     	this.placeName = placeName;
     	return this;
     }
+    
+    @Override
+	public String toString() {
+		return "{"
+			+ "number = " + this.number+" , "
+			+ "description = " + this.description+" , "
+			+ "isDefault = " + this.isDefault+" , "
+			+ "placeName = " + this.placeName+"}";
+	}
 
 }
