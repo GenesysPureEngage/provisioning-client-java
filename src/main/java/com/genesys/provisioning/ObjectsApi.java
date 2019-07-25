@@ -312,7 +312,7 @@ public class ObjectsApi {
 	public Results<Skill> searchSkills(Integer limit, Integer offset, String searchTerm, String searchKey, String matchMethod, String sortKey, Boolean sortAscending, String sortMethod, Boolean inUse) throws ProvisioningApiException {
 		try {
 			GetObjectsSuccessResponse resp = objectsApi.getObject(
-				"dn-groups",
+				"skills",
 				null,
 				null,
 				null,
