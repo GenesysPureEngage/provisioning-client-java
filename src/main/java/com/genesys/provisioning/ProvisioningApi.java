@@ -71,14 +71,13 @@ public class ProvisioningApi {
 	
 	/**
 	 * Create a ProvisioningApi object with your given provisioning URL and API key.
-	 * @param baseUrl the base URL of the API
+	 * @param provisioningUrl the provisioning URL.
 	 * @param apiKey your API key.
 	 */
-	public ProvisioningApi(String baseUrl, String apiKey) {
+	public ProvisioningApi(String provisioningUrl, String apiKey) {
 		this.apiKey = apiKey;
-		//For backwards compatibility:
-		baseUrl = (baseUrl+"\n").replaceAll("/provisioning/v3\n","").replaceAll("/provisioning/v3/\n","").replaceAll("\n","");
-		this.provisioningUrl = baseUrl + "/provisioning/v3";
+		this.provisioningUrl = provisioningUrl;
+		
 		client = new ApiClient();
 		
 		users = new UsersApi(client);
@@ -199,12 +198,10 @@ public class ProvisioningApi {
 		}
 		
 	}
-	
-	
 	/**
-	* @see #destroy(long)
+	* @see #done(long)
 	*/
-	public void destroy() throws ProvisioningApiException {
+	public void done() throws ProvisioningApiException {
 		if(initialized) {
 			try {
 				sessionApi.logout();
@@ -215,14 +212,14 @@ public class ProvisioningApi {
 			initialized = false;
 		}
 	}
-	
+
 	/**
 	 * Logout and disconnect from cometD.
 	 * When your code is done using the API call this to log out of Provisioning and disconnect cometD.
 	 * @param disconnectRequestTimeout The timeout in ms to wait for the disconnect to complete
 	 * @throws ProvisioningApiException if the call is unsuccessful.
 	 */
-	public void destroy(long disconnectRequestTimeout) throws ProvisioningApiException {
+	public void done(long disconnectRequestTimeout) throws ProvisioningApiException {
 		if(initialized) {
 			try {
 				sessionApi.logout();
@@ -232,16 +229,6 @@ public class ProvisioningApi {
 			notifications.disconnect(disconnectRequestTimeout);
 			initialized = false;
 		}
-	}
-	
-	//For backwards compatibility
-	public void done() throws ProvisioningApiException {
-		destroy();
-	}
-	
-	//For backwards compatibility
-	public void done(long disconnectRequestTimeout) throws ProvisioningApiException {
-		destroy(disconnectRequestTimeout);
 	}
 	
 }

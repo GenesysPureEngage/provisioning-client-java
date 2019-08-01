@@ -15,6 +15,7 @@ package com.genesys.internal.provisioning.model;
 
 import java.util.Objects;
 import java.util.Arrays;
+import com.genesys.internal.provisioning.model.CheckMigrateConflictsStatus;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -25,50 +26,29 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * OptionsGetResponseStatusError
+ * PostUpdateResetTimesStatistics
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-08-01T03:29:21.526Z")
-public class OptionsGetResponseStatusError {
-  @SerializedName("code")
-  private Integer code = null;
+public class PostUpdateResetTimesStatistics {
+  @SerializedName("status")
+  private CheckMigrateConflictsStatus status = null;
 
-  @SerializedName("message")
-  private String message = null;
-
-  public OptionsGetResponseStatusError code(Integer code) {
-    this.code = code;
+  public PostUpdateResetTimesStatistics status(CheckMigrateConflictsStatus status) {
+    this.status = status;
     return this;
   }
 
    /**
-   * Get code
-   * @return code
+   * Get status
+   * @return status
   **/
   @ApiModelProperty(value = "")
-  public Integer getCode() {
-    return code;
+  public CheckMigrateConflictsStatus getStatus() {
+    return status;
   }
 
-  public void setCode(Integer code) {
-    this.code = code;
-  }
-
-  public OptionsGetResponseStatusError message(String message) {
-    this.message = message;
-    return this;
-  }
-
-   /**
-   * Message describing error
-   * @return message
-  **/
-  @ApiModelProperty(value = "Message describing error")
-  public String getMessage() {
-    return message;
-  }
-
-  public void setMessage(String message) {
-    this.message = message;
+  public void setStatus(CheckMigrateConflictsStatus status) {
+    this.status = status;
   }
 
 
@@ -80,24 +60,22 @@ public class OptionsGetResponseStatusError {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    OptionsGetResponseStatusError optionsGetResponseStatusError = (OptionsGetResponseStatusError) o;
-    return Objects.equals(this.code, optionsGetResponseStatusError.code) &&
-        Objects.equals(this.message, optionsGetResponseStatusError.message);
+    PostUpdateResetTimesStatistics postUpdateResetTimesStatistics = (PostUpdateResetTimesStatistics) o;
+    return Objects.equals(this.status, postUpdateResetTimesStatistics.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, message);
+    return Objects.hash(status);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class OptionsGetResponseStatusError {\n");
+    sb.append("class PostUpdateResetTimesStatistics {\n");
     
-    sb.append("    code: ").append(toIndentedString(code)).append("\n");
-    sb.append("    message: ").append(toIndentedString(message)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();
   }
