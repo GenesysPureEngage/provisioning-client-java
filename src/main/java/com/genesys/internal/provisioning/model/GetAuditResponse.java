@@ -30,7 +30,7 @@ import java.util.List;
 /**
  * GetAuditResponse
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-08-01T03:29:21.526Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-08-15T18:48:36.605Z")
 public class GetAuditResponse {
   @SerializedName("rows")
   private List<GetAuditResponseRows> rows = null;
