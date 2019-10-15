@@ -7,7 +7,7 @@ public class ImportStatus {
 
 	private List<String> activeImporters = new ArrayList();
 	private String adminName = null;
-	private List<String> failed = new ArrayList();
+	private List<Object> failed = new ArrayList();
 	private String lastEntity = null;
 	private String operation = null;
 	private String sheetName = null;
@@ -36,11 +36,11 @@ public class ImportStatus {
 		return this.adminName;
 	}
 
-	public void setFailed(List<String> failed) {
+	public void setFailed(List<Object> failed) {
 		this.failed = failed;
 	}
 
-	public List<String> getFailed() {
+	public List<Object> getFailed() {
 		return this.failed;
 	}
 
