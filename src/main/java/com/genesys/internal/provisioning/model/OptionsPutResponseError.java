@@ -28,7 +28,7 @@ import java.io.IOException;
 /**
  * OptionsPutResponseError
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-10-24T21:43:04.896Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-11-07T11:07:15.242Z")
 public class OptionsPutResponseError {
   @SerializedName("status")
   private OptionsPutResponseStatus status = null;

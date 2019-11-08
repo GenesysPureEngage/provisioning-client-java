@@ -29,7 +29,7 @@ import java.util.List;
 /**
  * GetAnyLocationsResponseData
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-10-24T21:43:04.896Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-11-07T11:07:15.242Z")
 public class GetAnyLocationsResponseData {
   @SerializedName("useExternalUserId")
   private Boolean useExternalUserId = null;
