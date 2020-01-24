@@ -131,17 +131,4 @@ public class UserSearchParams {
     	this.userEnabled = userEnabled;
     	return this;
     }
-  	
-    public void setUserValid(String userValid) {
-        this.userValid = userValid;
-    }
-    
-    public String getUserValid() {
-    	return this.userValid;
-    }
-  	
-    public UserSearchParams userValid(String userValid) {
-    	this.userValid = userValid;
-    	return this;
-    }
 }

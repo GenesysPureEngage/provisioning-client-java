@@ -91,15 +91,14 @@ public class UsersApi {
      * @param roles Return only users who have the Workspace Web Edition roles. The roles can be specified in a comma-separated list. Possible values are ROLE_AGENT and ROLE_ADMIN,ROLE_SUPERVISOR.  (optional)
      * @param skills Return only users who have these skills. The skills can be specified in a comma-separated list.  (optional)
      * @param userEnabled Return only enabled or disabled users. (optional)
-     * @param userValid Return only valid or invalid users. (optional)
      * @return The list of users found for the given parameters.
      * @throws ProvisioningApiException if the call is unsuccessful.
      */
-	public List<User> getUsers(Integer limit, Integer offset, String order, String sortBy, String filterName, String filterParameters, String roles, String skills, Boolean userEnabled, String userValid) throws ProvisioningApiException {
+	public List<User> getUsers(Integer limit, Integer offset, String order, String sortBy, String filterName, String filterParameters, String roles, String skills, Boolean userEnabled) throws ProvisioningApiException {
 		List<User> out = new ArrayList();
 
 		try {
-			GetUsersSuccessResponse resp = usersApi.getUsers(limit, offset, order, sortBy, filterName, filterParameters, roles, skills, userEnabled, userValid);
+			GetUsersSuccessResponse resp = usersApi.getUsers(limit, offset, order, sortBy, filterName, filterParameters, roles, skills, userEnabled);
 
 			if (!resp.getStatus().getCode().equals(0)) {
 				throw new ProvisioningApiException("Error getting users. Code: " + resp.getStatus().getCode());
@@ -133,8 +132,7 @@ public class UsersApi {
 			searchParams.getFilterParameters(),
 			searchParams.getRoles(),
 			searchParams.getSkills(),
-			searchParams.getUserEnabled(),
-			searchParams.getUserValid()
+			searchParams.getUserEnabled()
 		);
 	}
 

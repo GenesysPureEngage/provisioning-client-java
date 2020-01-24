@@ -55,11 +55,10 @@ public class OperationsApi {
      * @param roles Return only return users who have these Workspace Web Edition roles. The roles can be specified in a comma-separated list. Possible values are ROLE_AGENT and ROLE_ADMIN,ROLE_SUPERVISOR.  (optional)
      * @param skills Return only users who have these skills. The skills can be specified in a comma-separated list.  (optional)
      * @param userEnabled Return only enabled or disabled users. (optional)
-     * @param userValid Return only valid or invalid users. (optional)
      * @param callback The callback function called when the skills are returned asynchronously. Callback takes one parameter: Map&lt;String, Object&lt; results.
      * @throws ProvisioningApiException if the call is unsuccessful.
      */
-	public void getUsersAsync(Integer limit, Integer offset, String order, String sortBy, String filterName, String filterParameters, String roles, String skills, Boolean userEnabled, String userValid, AsyncCallback callback) throws ProvisioningApiException {
+	public void getUsersAsync(Integer limit, Integer offset, String order, String sortBy, String filterName, String filterParameters, String roles, String skills, Boolean userEnabled, AsyncCallback callback) throws ProvisioningApiException {
 		String aioId = UUID.randomUUID().toString();
 		asyncCallbacks.put(aioId, callback);
 		try {
@@ -73,8 +72,7 @@ public class OperationsApi {
 				filterParameters,
 				roles,
 				skills,
-				userEnabled,
-				userValid
+				userEnabled
 			);
 			
 			if (!resp.getStatus().getCode().equals(1)) {
@@ -104,7 +102,6 @@ public class OperationsApi {
 			searchParams.getRoles(),
 			searchParams.getSkills(),
 			searchParams.getUserEnabled(),
-			searchParams.getUserValid(),
 			callback
 		);
 	}
