@@ -19,10 +19,10 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class UsersApi {
-	private com.genesys.internal.provisioning.api.UsersApi usersApi;
+	private com.genesys.internal.provisioning.api.UsersDeprecatedApi usersApi;
 
 	public UsersApi(ApiClient client) {
-		usersApi = new com.genesys.internal.provisioning.api.UsersApi(client);
+		usersApi = new com.genesys.internal.provisioning.api.UsersDeprecatedApi(client);
 	}
 	/**
 	 * Creates a user ([CfgPerson](https://docs.genesys.com/Documentation/PSDK/latest/ConfigLayerRef/CfgPerson)) with the given attributes.

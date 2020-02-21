@@ -25,50 +25,29 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * Skill
+ * WhitelistStatusBodyDataData
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-02-13T21:20:25.893Z")
-public class Skill {
-  @SerializedName("level")
-  private Integer level = null;
+public class WhitelistStatusBodyDataData {
+  @SerializedName("whitelistStatus")
+  private String whitelistStatus = null;
 
-  @SerializedName("name")
-  private String name = null;
-
-  public Skill level(Integer level) {
-    this.level = level;
+  public WhitelistStatusBodyDataData whitelistStatus(String whitelistStatus) {
+    this.whitelistStatus = whitelistStatus;
     return this;
   }
 
    /**
-   * The user&#39;s skill level. This must be a positive integer in numeric or string format. If the level is equal to &#39;&#39; the skill is unassigned.
-   * @return level
+   * Value of status to set.
+   * @return whitelistStatus
   **/
-  @ApiModelProperty(value = "The user's skill level. This must be a positive integer in numeric or string format. If the level is equal to '' the skill is unassigned.")
-  public Integer getLevel() {
-    return level;
+  @ApiModelProperty(value = "Value of status to set.")
+  public String getWhitelistStatus() {
+    return whitelistStatus;
   }
 
-  public void setLevel(Integer level) {
-    this.level = level;
-  }
-
-  public Skill name(String name) {
-    this.name = name;
-    return this;
-  }
-
-   /**
-   * The name of the skill.
-   * @return name
-  **/
-  @ApiModelProperty(value = "The name of the skill.")
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
+  public void setWhitelistStatus(String whitelistStatus) {
+    this.whitelistStatus = whitelistStatus;
   }
 
 
@@ -80,24 +59,22 @@ public class Skill {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Skill skill = (Skill) o;
-    return Objects.equals(this.level, skill.level) &&
-        Objects.equals(this.name, skill.name);
+    WhitelistStatusBodyDataData whitelistStatusBodyDataData = (WhitelistStatusBodyDataData) o;
+    return Objects.equals(this.whitelistStatus, whitelistStatusBodyDataData.whitelistStatus);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(level, name);
+    return Objects.hash(whitelistStatus);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Skill {\n");
+    sb.append("class WhitelistStatusBodyDataData {\n");
     
-    sb.append("    level: ").append(toIndentedString(level)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    whitelistStatus: ").append(toIndentedString(whitelistStatus)).append("\n");
     sb.append("}");
     return sb.toString();
   }

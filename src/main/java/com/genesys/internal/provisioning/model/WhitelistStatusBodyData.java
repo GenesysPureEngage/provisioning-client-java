@@ -15,6 +15,7 @@ package com.genesys.internal.provisioning.model;
 
 import java.util.Objects;
 import java.util.Arrays;
+import com.genesys.internal.provisioning.model.WhitelistStatusBodyDataData;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -25,50 +26,29 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * Skill
+ * WhitelistStatusBodyData
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-02-13T21:20:25.893Z")
-public class Skill {
-  @SerializedName("level")
-  private Integer level = null;
+public class WhitelistStatusBodyData {
+  @SerializedName("data")
+  private WhitelistStatusBodyDataData data = null;
 
-  @SerializedName("name")
-  private String name = null;
-
-  public Skill level(Integer level) {
-    this.level = level;
+  public WhitelistStatusBodyData data(WhitelistStatusBodyDataData data) {
+    this.data = data;
     return this;
   }
 
    /**
-   * The user&#39;s skill level. This must be a positive integer in numeric or string format. If the level is equal to &#39;&#39; the skill is unassigned.
-   * @return level
+   * Get data
+   * @return data
   **/
-  @ApiModelProperty(value = "The user's skill level. This must be a positive integer in numeric or string format. If the level is equal to '' the skill is unassigned.")
-  public Integer getLevel() {
-    return level;
+  @ApiModelProperty(value = "")
+  public WhitelistStatusBodyDataData getData() {
+    return data;
   }
 
-  public void setLevel(Integer level) {
-    this.level = level;
-  }
-
-  public Skill name(String name) {
-    this.name = name;
-    return this;
-  }
-
-   /**
-   * The name of the skill.
-   * @return name
-  **/
-  @ApiModelProperty(value = "The name of the skill.")
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
+  public void setData(WhitelistStatusBodyDataData data) {
+    this.data = data;
   }
 
 
@@ -80,24 +60,22 @@ public class Skill {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Skill skill = (Skill) o;
-    return Objects.equals(this.level, skill.level) &&
-        Objects.equals(this.name, skill.name);
+    WhitelistStatusBodyData whitelistStatusBodyData = (WhitelistStatusBodyData) o;
+    return Objects.equals(this.data, whitelistStatusBodyData.data);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(level, name);
+    return Objects.hash(data);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Skill {\n");
+    sb.append("class WhitelistStatusBodyData {\n");
     
-    sb.append("    level: ").append(toIndentedString(level)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("}");
     return sb.toString();
   }
