@@ -28,7 +28,7 @@ import java.io.IOException;
 /**
  * OptionsPutResponseStatusSuccess
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-03-13T13:17:31.926Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-04-24T13:59:00.983Z")
 public class OptionsPutResponseStatusSuccess {
   @SerializedName("status")
   private CheckMigrateConflictsStatus status = null;

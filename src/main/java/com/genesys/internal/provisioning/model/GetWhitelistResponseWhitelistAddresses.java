@@ -28,7 +28,7 @@ import java.math.BigDecimal;
 /**
  * GetWhitelistResponseWhitelistAddresses
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-03-13T13:17:31.926Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-04-24T13:59:00.983Z")
 public class GetWhitelistResponseWhitelistAddresses {
   @SerializedName("id")
   private BigDecimal id = null;
