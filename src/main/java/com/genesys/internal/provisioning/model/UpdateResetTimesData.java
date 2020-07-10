@@ -15,8 +15,6 @@ package com.genesys.internal.provisioning.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.genesys.internal.provisioning.model.ApiSuccessResponseStatus;
-import com.genesys.internal.provisioning.model.LoginSuccessResponseData;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -27,50 +25,50 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * LoginSuccessResponse
+ * UpdateResetTimesData
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-07-10T14:03:02.651Z")
-public class LoginSuccessResponse {
-  @SerializedName("status")
-  private ApiSuccessResponseStatus status = null;
+public class UpdateResetTimesData {
+  @SerializedName("resetTime")
+  private String resetTime = null;
 
-  @SerializedName("data")
-  private LoginSuccessResponseData data = null;
+  @SerializedName("location")
+  private String location = null;
 
-  public LoginSuccessResponse status(ApiSuccessResponseStatus status) {
-    this.status = status;
+  public UpdateResetTimesData resetTime(String resetTime) {
+    this.resetTime = resetTime;
     return this;
   }
 
    /**
-   * Get status
-   * @return status
+   * Set to dynamicTimeProfile of matching stat
+   * @return resetTime
   **/
-  @ApiModelProperty(value = "")
-  public ApiSuccessResponseStatus getStatus() {
-    return status;
+  @ApiModelProperty(required = true, value = "Set to dynamicTimeProfile of matching stat")
+  public String getResetTime() {
+    return resetTime;
   }
 
-  public void setStatus(ApiSuccessResponseStatus status) {
-    this.status = status;
+  public void setResetTime(String resetTime) {
+    this.resetTime = resetTime;
   }
 
-  public LoginSuccessResponse data(LoginSuccessResponseData data) {
-    this.data = data;
+  public UpdateResetTimesData location(String location) {
+    this.location = location;
     return this;
   }
 
    /**
-   * Get data
-   * @return data
+   * The normalized location
+   * @return location
   **/
-  @ApiModelProperty(value = "")
-  public LoginSuccessResponseData getData() {
-    return data;
+  @ApiModelProperty(required = true, value = "The normalized location")
+  public String getLocation() {
+    return location;
   }
 
-  public void setData(LoginSuccessResponseData data) {
-    this.data = data;
+  public void setLocation(String location) {
+    this.location = location;
   }
 
 
@@ -82,24 +80,24 @@ public class LoginSuccessResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    LoginSuccessResponse loginSuccessResponse = (LoginSuccessResponse) o;
-    return Objects.equals(this.status, loginSuccessResponse.status) &&
-        Objects.equals(this.data, loginSuccessResponse.data);
+    UpdateResetTimesData updateResetTimesData = (UpdateResetTimesData) o;
+    return Objects.equals(this.resetTime, updateResetTimesData.resetTime) &&
+        Objects.equals(this.location, updateResetTimesData.location);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(status, data);
+    return Objects.hash(resetTime, location);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class LoginSuccessResponse {\n");
+    sb.append("class UpdateResetTimesData {\n");
     
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    data: ").append(toIndentedString(data)).append("\n");
+    sb.append("    resetTime: ").append(toIndentedString(resetTime)).append("\n");
+    sb.append("    location: ").append(toIndentedString(location)).append("\n");
     sb.append("}");
     return sb.toString();
   }
