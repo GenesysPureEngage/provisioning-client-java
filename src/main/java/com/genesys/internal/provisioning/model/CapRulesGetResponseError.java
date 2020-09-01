@@ -28,7 +28,7 @@ import java.io.IOException;
 /**
  * CapRulesGetResponseError
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-07-21T19:21:38.245Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-08-31T08:41:05.861Z")
 public class CapRulesGetResponseError {
   @SerializedName("status")
   private CapRulesGetResponseStatusError status = null;
