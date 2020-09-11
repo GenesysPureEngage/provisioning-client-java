@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * RecCertKeyCheckResponseStatus
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-09-04T15:08:17.043Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-09-09T20:06:47.736Z")
 public class RecCertKeyCheckResponseStatus {
   @SerializedName("code")
   private Integer code = null;

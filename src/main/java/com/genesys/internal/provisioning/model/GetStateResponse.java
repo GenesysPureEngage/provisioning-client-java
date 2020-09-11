@@ -28,7 +28,7 @@ import java.io.IOException;
 /**
  * GetStateResponse
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-09-04T15:08:17.043Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-09-09T20:06:47.736Z")
 public class GetStateResponse {
   @SerializedName("data")
   private GetStateResponseData data = null;

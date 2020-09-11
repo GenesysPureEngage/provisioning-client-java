@@ -28,7 +28,7 @@ import java.io.IOException;
 /**
  * PostImportStatisticDefinitions
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-09-04T15:08:17.043Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-09-09T20:06:47.736Z")
 public class PostImportStatisticDefinitions {
   @SerializedName("status")
   private CheckMigrateConflictsStatus status = null;

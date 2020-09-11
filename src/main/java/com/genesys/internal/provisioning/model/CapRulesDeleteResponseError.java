@@ -28,7 +28,7 @@ import java.io.IOException;
 /**
  * CapRulesDeleteResponseError
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-09-04T15:08:17.043Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-09-09T20:06:47.736Z")
 public class CapRulesDeleteResponseError {
   @SerializedName("status")
   private CapRulesDeleteResponseStatusError status = null;
