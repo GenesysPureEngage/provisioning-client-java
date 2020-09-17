@@ -30,7 +30,7 @@ import java.util.List;
 /**
  * GetWhitelistResponseWhitelist
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-09-09T20:06:47.736Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-09-17T14:40:57.389Z")
 public class GetWhitelistResponseWhitelist {
   @SerializedName("addresses")
   private List<GetWhitelistResponseWhitelistAddresses> addresses = null;

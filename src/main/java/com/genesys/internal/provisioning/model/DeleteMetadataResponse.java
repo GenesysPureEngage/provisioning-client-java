@@ -28,7 +28,7 @@ import java.io.IOException;
 /**
  * DeleteMetadataResponse
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-09-09T20:06:47.736Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-09-17T14:40:57.389Z")
 public class DeleteMetadataResponse {
   @SerializedName("status")
   private GetConfigResponseStatus status = null;
