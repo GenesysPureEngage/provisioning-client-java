@@ -28,7 +28,7 @@ import java.io.IOException;
 /**
  * GetMultiIDPSettingsResponse
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-09-17T14:40:57.389Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-09-28T15:31:13.650Z")
 public class GetMultiIDPSettingsResponse {
   @SerializedName("status")
   private GetLocationResponseStatus status = null;
