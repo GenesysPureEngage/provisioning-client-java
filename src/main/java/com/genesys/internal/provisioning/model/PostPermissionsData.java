@@ -28,7 +28,7 @@ import java.io.IOException;
 /**
  * PostPermissionsData
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2021-01-08T16:07:06.990Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2021-02-17T16:42:52.897Z")
 public class PostPermissionsData {
   @SerializedName("data")
   private PostPermissionsDataData data = null;

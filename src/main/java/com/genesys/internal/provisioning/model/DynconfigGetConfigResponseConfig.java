@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * DynconfigGetConfigResponseConfig
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2021-01-08T16:07:06.990Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2021-02-17T16:42:52.897Z")
 public class DynconfigGetConfigResponseConfig {
   @SerializedName("config")
   private Object config = null;
