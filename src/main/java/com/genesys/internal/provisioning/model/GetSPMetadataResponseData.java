@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * GetSPMetadataResponseData
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2021-02-17T16:42:52.897Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2021-03-02T18:40:27.784Z")
 public class GetSPMetadataResponseData {
   @SerializedName("file")
   private Object file = null;
