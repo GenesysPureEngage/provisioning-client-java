@@ -28,7 +28,7 @@ import java.io.IOException;
 /**
  * RecCertKeyCheckResponseStatusError
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2022-01-27T00:26:09.820Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2022-03-03T19:44:33.854Z")
 public class RecCertKeyCheckResponseStatusError {
   @SerializedName("status")
   private RecCertKeyCheckResponseStatus status = null;

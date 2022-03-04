@@ -28,7 +28,7 @@ import java.io.IOException;
  * Parsed msg value.
  */
 @ApiModel(description = "Parsed msg value.")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2022-01-27T00:26:09.820Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2022-03-03T19:44:33.854Z")
 public class GetAuditResponseMessage {
   @SerializedName("action")
   private String action = null;

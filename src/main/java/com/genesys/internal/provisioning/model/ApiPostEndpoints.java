@@ -28,7 +28,7 @@ import java.io.IOException;
 /**
  * ApiPostEndpoints
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2022-01-27T00:26:09.820Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2022-03-03T19:44:33.854Z")
 public class ApiPostEndpoints {
   @SerializedName("data")
   private ApiPostEndpointsData data = null;

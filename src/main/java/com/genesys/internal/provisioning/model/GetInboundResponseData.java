@@ -30,7 +30,7 @@ import java.util.List;
 /**
  * GetInboundResponseData
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2022-01-27T00:26:09.820Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2022-03-03T19:44:33.854Z")
 public class GetInboundResponseData {
   @SerializedName("settings")
   private List<InboundData> settings = null;
